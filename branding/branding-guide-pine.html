@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TechPersona Studio — Pine Editorial brand guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EE;
+    --paper-deep:#EFEAE1;
+    --pine-wash:#E8EFEC;
+    --core:#FBFAF7;
+    --ink:#171717;
+    --ink-soft:#4E4E4E;
+    --ink-faint:#857F75;
+    --pine:#1E3A34;
+    --pine-soft:#2E5148;
+    --terra:#C06A45;
+    --terra-deep:#9F4F33;
+    --terra-light:#E7A282;
+    --hair:rgba(23,23,23,.10);
+    --hair-light:rgba(246,243,238,.18);
+    --lift:0 1px 2px rgba(30,58,52,.05), 0 16px 34px -20px rgba(30,58,52,.32);
+    --lift-sm:0 1px 2px rgba(30,58,52,.05), 0 10px 22px -14px rgba(30,58,52,.28);
+    --inner-hi:inset 0 1px 1px rgba(255,255,255,.7);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  @page{size:A4;margin:0}
+  body{
+    font-family:"Hanken Grotesk",sans-serif;
+    color:var(--ink);
+    background:#D9D3CA;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    print-color-adjust:exact;
+    -webkit-print-color-adjust:exact;
+  }
+
+  h1,h2,h3{font-family:"Hanken Grotesk",sans-serif;font-weight:800;line-height:1.04;letter-spacing:-.045em}
+  .serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.025em}
+  .serif-i{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:500;color:var(--terra)}
+
+  .page{
+    width:210mm;height:297mm;margin:0 auto;
+    padding:22mm 20mm;background:var(--paper);
+    position:relative;overflow:hidden;
+    break-after:page;break-inside:avoid;
+  }
+  .page:last-child{break-after:auto}
+  .page.dark{background:var(--pine);color:var(--paper)}
+  .page.deep{background:var(--paper-deep)}
+  .page.wash{background:var(--pine-wash)}
+
+  .kicker{
+    font-weight:700;font-size:.7rem;letter-spacing:.20em;text-transform:uppercase;
+    color:var(--terra-deep);margin-bottom:16px;display:flex;align-items:center;gap:12px;
+  }
+  .kicker .rule{height:1.5px;width:50px;background:var(--terra-deep)}
+  .dark .kicker{color:var(--terra-light)}
+  .dark .kicker .rule{background:var(--terra-light)}
+
+  h2.title{font-size:2.5rem;max-width:20ch;margin-bottom:8px;letter-spacing:-.05em}
+  .lead{font-size:1.06rem;color:var(--ink-soft);max-width:60ch;margin:14px 0 30px}
+  .dark .lead{color:rgba(246,243,238,.8)}
+
+  /* ---------- cover ---------- */
+  .cover{display:flex;flex-direction:column;justify-content:center}
+  .cover .logo{display:flex;align-items:baseline;gap:.5em;font-weight:800;font-size:1.45rem;letter-spacing:-.04em;margin-bottom:60px}
+  .cover .logo .mark{
+    font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--pine);background:var(--paper);padding:.42em .7em;border-radius:999px;
+  }
+  .cover h1{font-size:4.3rem;max-width:13ch;color:var(--paper)}
+  .cover h1 .e{font-family:"Fraunces";font-style:italic;font-weight:500;color:var(--terra-light)}
+  .cover .sub{font-size:1.2rem;color:rgba(246,243,238,.82);max-width:44ch;margin-top:28px}
+  .cover .foot{
+    position:absolute;bottom:22mm;left:20mm;right:20mm;display:flex;justify-content:space-between;
+    font-size:.8rem;color:rgba(246,243,238,.58);border-top:1.5px solid var(--hair-light);padding-top:16px;
+  }
+
+  /* ---------- principles ---------- */
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .pr{border:1.5px solid var(--hair-light);padding:20px 22px;border-radius:20px;background:rgba(246,243,238,.04)}
+  .pr h3{font-size:1.1rem;color:var(--paper);margin-bottom:7px;letter-spacing:-.03em}
+  .pr p{font-size:.9rem;color:rgba(246,243,238,.74)}
+
+  /* ---------- swatches ---------- */
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  .sw{border:1px solid var(--hair);box-shadow:var(--lift-sm);overflow:hidden;border-radius:18px;background:var(--core)}
+  .sw .chip{height:78px;display:flex;align-items:flex-end;padding:11px}
+  .sw .tag{font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.25em .55em;background:rgba(255,255,255,.3);border-radius:999px}
+  .sw .meta{padding:11px 13px;border-top:1px solid var(--hair)}
+  .sw .nm{font-weight:800;font-size:.92rem}
+  .sw .hex{font-family:"Fraunces";font-size:.86rem;color:var(--ink-soft)}
+  .sw .use{font-size:.72rem;color:var(--ink-faint);margin-top:3px;line-height:1.3}
+
+  .ratio{display:flex;height:50px;margin-top:24px;border:1px solid var(--hair);box-shadow:var(--lift-sm);border-radius:999px;overflow:hidden}
+  .ratio span{display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem}
+  .ratio .r1{flex:60;background:var(--paper);color:var(--ink)}
+  .ratio .r2{flex:30;background:var(--pine);color:var(--paper)}
+  .ratio .r3{flex:10;background:var(--terra);color:#fff;font-size:.74rem}
+
+  /* ---------- type specs ---------- */
+  .spec{border-top:1.5px solid var(--hair);padding:22px 0}
+  .spec .label{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+  .big-sans{font-weight:800;font-size:3rem;line-height:1.02;letter-spacing:-.06em}
+  .big-serif{font-family:"Fraunces";font-weight:500;font-size:2.7rem;line-height:1.04;letter-spacing:-.03em}
+  .weights{display:flex;gap:22px;flex-wrap:wrap;margin-top:10px}
+  .weights span{font-size:1.04rem}
+  .body-sample{font-size:1rem;color:var(--ink-soft);max-width:58ch}
+
+  /* ---------- components ---------- */
+  .demo-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+
+  .shell{background:rgba(30,58,52,.05);border:1px solid var(--hair);padding:9px;border-radius:26px;box-shadow:var(--lift);max-width:268px}
+  .core{background:var(--core);border-radius:18px;padding:24px 24px 26px;box-shadow:var(--inner-hi)}
+  .core .num{font-family:"Fraunces";font-style:italic;font-size:.92rem;color:var(--terra)}
+  .core h3{font-size:1.3rem;margin:10px 0 8px;letter-spacing:-.04em}
+  .core p{font-size:.9rem;color:var(--ink-soft)}
+  .core .tag{display:inline-block;margin-top:16px;font-size:.72rem;font-weight:700;color:var(--pine);background:var(--pine-wash);padding:.35em .8em;border-radius:999px}
+
+  .btns{display:flex;flex-direction:column;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:.65em;font-weight:700;font-size:.95rem;padding:.65em .65em .65em 1.25em;border-radius:999px;background:var(--pine);color:var(--paper);border:1px solid var(--pine);box-shadow:var(--inner-hi),var(--lift-sm);width:max-content}
+  .btn .ic{width:28px;height:28px;border-radius:999px;background:rgba(246,243,238,.16);display:grid;place-items:center;font-size:.9rem}
+  .btn.accent{background:var(--terra);border-color:var(--terra-deep)}
+  .btn-ghost{font-weight:700;color:var(--pine);border-bottom:2px solid var(--pine);padding-bottom:2px;width:max-content}
+
+  .chips{display:flex;flex-direction:column;gap:12px}
+  .chip{display:flex;gap:11px;align-items:center;background:var(--core);border:1px solid var(--hair);box-shadow:var(--lift-sm);border-radius:16px;padding:11px 14px;width:max-content}
+  .chip .cic{width:34px;height:34px;border-radius:999px;display:grid;place-items:center;font-size:.95rem;flex:none}
+  .chip .cic.g{background:var(--pine-wash);color:var(--pine)}
+  .chip .cic.t{background:rgba(192,106,69,.14);color:var(--terra-deep)}
+  .chip .t1{display:block;font-weight:800;font-size:.84rem;letter-spacing:-.02em;line-height:1.15}
+  .chip .t2{display:block;font-size:.72rem;color:var(--ink-faint)}
+
+  .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  .oc .oic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.1rem;background:var(--core);border:1px solid var(--hair);box-shadow:var(--lift-sm);margin-bottom:13px}
+  .oc h3{font-size:1.02rem;letter-spacing:-.03em;margin-bottom:5px}
+  .oc p{font-size:.82rem;color:var(--ink-soft)}
+
+  .note{border-top:1.5px solid var(--hair);margin-top:26px;padding-top:18px}
+  .note .label{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+  .note p{font-size:.96rem;color:var(--ink-soft);max-width:60ch}
+
+  /* ---------- avoid ---------- */
+  .avoid{list-style:none;margin-top:6px}
+  .avoid li{display:flex;align-items:flex-start;gap:13px;padding:11px 0;border-bottom:1.5px dashed var(--hair);font-size:.98rem}
+  .dark .avoid li{border-color:var(--hair-light);color:rgba(246,243,238,.9)}
+  .avoid li .x{font-family:"Fraunces";font-weight:600;color:var(--terra-light);font-size:1.2rem;line-height:1;flex:none}
+
+  .do-dont{display:grid;grid-template-columns:1fr 1fr;margin-top:24px;border:1px solid var(--hair-light);border-radius:20px;overflow:hidden}
+  .do-dont .col{padding:20px 22px}
+  .do-dont .col.do{background:rgba(246,243,238,.06);border-right:1px solid var(--hair-light)}
+  .do-dont h3{font-size:1rem;margin-bottom:12px;letter-spacing:-.025em;color:var(--paper)}
+  .do-dont .col.do h3{color:var(--terra-light)}
+  .do-dont ul{list-style:none}
+  .do-dont li{font-size:.86rem;color:rgba(246,243,238,.82);padding:5px 0;line-height:1.4}
+
+  /* ---------- tokens ---------- */
+  .tokens{background:var(--core);border:1px solid var(--hair);border-radius:18px;box-shadow:var(--lift-sm);padding:22px 24px;margin-top:8px;font-family:"Fraunces";font-size:.84rem;color:var(--ink-soft);line-height:1.9;white-space:pre-wrap}
+  .tokens b{color:var(--pine);font-family:"Fraunces";font-weight:600}
+
+  .pagenum{position:absolute;bottom:13mm;right:20mm;font-size:.7rem;color:var(--ink-faint);letter-spacing:.1em}
+  .dark .pagenum{color:rgba(246,243,238,.46)}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="page dark cover">
+  <div class="logo">TechPersona <span class="mark">Studio</span></div>
+  <h1>The <span class="e">Pine Editorial</span> brand guide</h1>
+  <p class="sub">Websites and quiet systems for service businesses. Founder-led, calm, credible, and human, never another AI vendor or faceless agency.</p>
+  <div class="foot">
+    <span>Lawyers · real estate · coaches · plumbers · roofers</span>
+    <span>v4 · 2026</span>
+  </div>
+</section>
+
+<!-- THE VIBE -->
+<section class="page dark">
+  <div class="kicker"><span class="rule"></span> The vibe</div>
+  <h2 class="title" style="color:var(--paper)">You're hiring a person, <span class="serif-i" style="color:var(--terra-light)">not an agency</span>.</h2>
+  <p class="lead">Pine Editorial should feel like a calm, capable studio run by one named human. Warm editorial moments with an operational backbone, serious enough for a law firm, grounded enough for a roofer, and never mistakable for a SaaS startup.</p>
+  <div class="principles">
+    <div class="pr"><h3>Founder-led, not faceless</h3><p>A real person carries the brand. First-person voice, a real face, plain owner-language.</p></div>
+    <div class="pr"><h3>Calm, not loud</h3><p>One rare accent holds all the warmth. Pine and stone do the rest of the work.</p></div>
+    <div class="pr"><h3>Premium, not precious</h3><p>Soft depth, generous space, restrained color. Expensive, never over-art-directed.</p></div>
+    <div class="pr"><h3>Operational, not decorative</h3><p>Outcomes an owner gets in five seconds. The technology stays behind the wall.</p></div>
+  </div>
+  <span class="pagenum">01</span>
+</section>
+
+<!-- COLOR -->
+<section class="page">
+  <div class="kicker"><span class="rule"></span> Color</div>
+  <h2 class="title">Pine anchors. Stone calms. <span class="serif-i">Terracotta warms.</span></h2>
+  <p class="lead">Pine is the trust anchor that survives the whole range. Stone neutrals keep it calm. Terracotta is warmth and emphasis only, never a base and never competing with pine.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#F6F3EE"><span class="tag" style="color:#171717">paper</span></div><div class="meta"><div class="nm">Paper</div><div class="hex">#F6F3EE</div><div class="use">Default background, warm stone.</div></div></div>
+    <div class="sw"><div class="chip" style="background:#E8EFEC"><span class="tag" style="color:#171717">pine wash</span></div><div class="meta"><div class="nm">Pine wash</div><div class="hex">#E8EFEC</div><div class="use">Quiet bands, tags, panels.</div></div></div>
+    <div class="sw"><div class="chip" style="background:#FBFAF7"><span class="tag" style="color:#171717">core</span></div><div class="meta"><div class="nm">Core</div><div class="hex">#FBFAF7</div><div class="use">Card interiors. Never pure white.</div></div></div>
+    <div class="sw"><div class="chip" style="background:#1E3A34"><span class="tag" style="color:#F6F3EE">pine</span></div><div class="meta"><div class="nm">Pine</div><div class="hex">#1E3A34</div><div class="use">Primary brand, CTAs, dark bands.</div></div></div>
+    <div class="sw"><div class="chip" style="background:#171717"><span class="tag" style="color:#F6F3EE">ink</span></div><div class="meta"><div class="nm">Ink</div><div class="hex">#171717</div><div class="use">Primary text, top contrast.</div></div></div>
+    <div class="sw"><div class="chip" style="background:#C06A45"><span class="tag" style="color:#fff">accent</span></div><div class="meta"><div class="nm">Terracotta</div><div class="hex">#C06A45</div><div class="use">The one accent. Rare warmth.</div></div></div>
+  </div>
+  <div class="ratio">
+    <span class="r1">60% stone</span>
+    <span class="r2">30% pine / ink</span>
+    <span class="r3">~8%</span>
+  </div>
+  <span class="pagenum">02</span>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="page deep">
+  <div class="kicker"><span class="rule"></span> Typography</div>
+  <h2 class="title">Hanken leads. <span class="serif-i">Fraunces accents.</span></h2>
+  <p class="lead">Hanken Grotesk does ~90% of the work and keeps the brand operationally competent. Fraunces is the premium accent for hero moments, and the italic phrase is the signature, used once per section, not for whole sentences.</p>
+
+  <div class="spec">
+    <div class="label">Hanken Grotesk · primary · ~90% usage</div>
+    <div class="big-sans">Systems that turn inquiries into booked clients.</div>
+    <div class="weights"><span style="font-weight:400">Regular 400</span><span style="font-weight:500">Medium 500</span><span style="font-weight:600">Semibold 600</span><span style="font-weight:700">Bold 700</span><span style="font-weight:800">ExtraBold 800</span></div>
+  </div>
+
+  <div class="spec">
+    <div class="label">Fraunces · accent · ~10% usage</div>
+    <div class="big-serif">Built for owners who value <span class="serif-i">response time</span>.</div>
+    <p class="body-sample" style="margin-top:12px">Use Fraunces for hero headlines and a single emphasized phrase. The italic, set in terracotta, is the brand's signature move.</p>
+  </div>
+
+  <div class="spec" style="border-bottom:1.5px solid var(--hair)">
+    <div class="label">Rules</div>
+    <p class="body-sample">Sentence case for headings. Tight tracking on display (<code style="font-family:Fraunces">-.045em</code>). Uppercase only for small tracked kickers. No serif body, no Title Case, no magazine layouts.</p>
+  </div>
+  <span class="pagenum">03</span>
+</section>
+
+<!-- COMPONENTS -->
+<section class="page">
+  <div class="kicker"><span class="rule"></span> Components</div>
+  <h2 class="title">Double-bezel cards, island buttons, <span class="serif-i">soft depth.</span></h2>
+  <p class="lead">Cards are machined hardware: a pine-tinted outer shell wrapping a soft core. Buttons are rounded pills with a nested icon. Shadows are soft and pine-tinted, never hard offset blocks.</p>
+
+  <div class="demo-row">
+    <div class="shell">
+      <div class="core">
+        <span class="num">01 — websites</span>
+        <h3>A site that gets found and converts.</h3>
+        <p>Built to your brand. Found on Google and AI assistants. Every page points to one next step.</p>
+        <span class="tag">One-time build</span>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a class="btn">Get in touch <span class="ic">→</span></a>
+      <a class="btn accent">Get my free audit <span class="ic">→</span></a>
+      <a class="btn-ghost">See what I build</a>
+    </div>
+
+    <div class="chips">
+      <div class="chip"><span class="cic g">✓</span><span><span class="t1">New booking</span><span class="t2">Sat · 9:48 pm</span></span></div>
+      <div class="chip"><span class="cic t">↩</span><span><span class="t1">Replied in 2 min</span><span class="t2">while you were on a job</span></span></div>
+    </div>
+  </div>
+
+  <div class="outcomes">
+    <div class="oc"><div class="oic">🔎</div><h3>They find you first</h3><p>A search or AI answer points to you, not the competitor.</p></div>
+    <div class="oc"><div class="oic">⚡</div><h3>They hear back fast</h3><p>An answer lands in minutes, before they cool off.</p></div>
+    <div class="oc"><div class="oic">🤝</div><h3>They feel remembered</h3><p>Follow-ups go out on their own. The first job becomes the next.</p></div>
+  </div>
+
+  <div class="note">
+    <div class="label">The visual rule</div>
+    <p>Show the human and the outcome, never the machinery. No phone-chatbot hero, no workflow diagrams, no dashboards. The customer journey is the only flow allowed.</p>
+  </div>
+  <span class="pagenum">04</span>
+</section>
+
+<!-- WHAT TO AVOID -->
+<section class="page dark">
+  <div class="kicker"><span class="rule"></span> What to avoid</div>
+  <h2 class="title" style="color:var(--paper)">The fastest ways to <span class="serif-i" style="color:var(--terra-light)">weaken</span> the brand.</h2>
+  <ul class="avoid">
+    <li><span class="x">✕</span> Hard offset block shadows. The biggest "indie agency" tell, use soft, pine-tinted depth only.</li>
+    <li><span class="x">✕</span> Purple/blue AI gradients, glassmorphism, or frosted blur on content.</li>
+    <li><span class="x">✕</span> Workflow/node diagrams, dashboards, integration logos. The tech stays behind the wall.</li>
+    <li><span class="x">✕</span> Pure white fields, a second accent color, or large fields of terracotta.</li>
+    <li><span class="x">✕</span> Serif body or serif everywhere. Fraunces is a 10% accent.</li>
+    <li><span class="x">✕</span> Fake metrics, fake case studies, faceless-agency framing.</li>
+  </ul>
+  <div class="do-dont">
+    <div class="col do"><h3>● Do</h3><ul>
+      <li>Lead with the founder and the outcome</li>
+      <li>Use pine as the main trust signal</li>
+      <li>Keep terracotta rare and warm</li>
+      <li>Soft depth, squircle corners</li>
+      <li>Hanken for reading, Fraunces for moments</li>
+      <li>Speak plainly to owners</li>
+    </ul></div>
+    <div class="col dont"><h3>✕ Don't</h3><ul>
+      <li>Look like a generic AI agency</li>
+      <li>Look like a brutalist design studio</li>
+      <li>Overuse Fraunces or terracotta</li>
+      <li>Show the machinery</li>
+      <li>Use corporate jargon</li>
+      <li>Optimize for only one vertical</li>
+    </ul></div>
+  </div>
+  <span class="pagenum">05</span>
+</section>
+
+<!-- TOKENS -->
+<section class="page wash">
+  <div class="kicker"><span class="rule"></span> Quick reference</div>
+  <h2 class="title">Copy-paste tokens.</h2>
+  <p class="lead">Drop these into <code style="font-family:Fraunces">:root</code>. Soft, pine-tinted depth is baked into the shadow tokens, never hard offset blocks.</p>
+  <div class="tokens"><b>--paper</b>:#F6F3EE;      <b>--paper-deep</b>:#EFEAE1;   <b>--pine-wash</b>:#E8EFEC;
+<b>--core</b>:#FBFAF7;       <b>--ink</b>:#171717;         <b>--ink-soft</b>:#4E4E4E;
+<b>--ink-faint</b>:#857F75;  <b>--pine</b>:#1E3A34;        <b>--pine-soft</b>:#2E5148;
+<b>--terra</b>:#C06A45;      <b>--terra-deep</b>:#9F4F33;  <b>--terra-light</b>:#E7A282;
+<b>--hair</b>:rgba(23,23,23,.10);
+
+/* soft, pine-tinted depth — never hard offset blocks */
+<b>--lift</b>:0 1px 2px rgba(30,58,52,.04), 0 18px 40px -22px rgba(30,58,52,.30);
+<b>--inner-hi</b>:inset 0 1px 1px rgba(255,255,255,.7);
+<b>--ease</b>:cubic-bezier(.32,.72,0,1);</div>
+  <div class="note" style="border-color:var(--hair)">
+    <div class="label">Fonts</div>
+    <p>Fraunces (ital + roman, 400–600) and Hanken Grotesk (400–800), from Google Fonts. Reference build: <code style="font-family:Fraunces">branding/techpersona_pine_editorial.html</code>.</p>
+  </div>
+  <span class="pagenum">06</span>
+</section>
+
+</body>
+</html>
