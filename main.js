@@ -340,6 +340,7 @@
   };
 
   var currentLang = 'en';
+  var onLangChange = null;
 
   function setLang(lang) {
     currentLang = lang;
@@ -376,6 +377,8 @@
       var isVI = id.indexOf('VI') !== -1;
       el.classList.toggle('active', (isVI && lang === 'vi') || (!isVI && lang === 'en'));
     });
+
+    if (onLangChange) onLangChange(lang);
   }
 
   function initLang() {
@@ -553,9 +556,12 @@
       });
     }
 
-    function runOnce() {
-      body.innerHTML = '';
-      // calendar card — reset booked state
+    function clearTimers() {
+      timers.forEach(clearTimeout);
+      timers = [];
+    }
+
+    function resetNotifs() {
       document.getElementById('calCheck').classList.remove('visible');
       document.getElementById('calTimeBadge').classList.remove('booked');
       document.getElementById('calTimeBadge').style.opacity = '0';
@@ -565,6 +571,28 @@
       titleEl.style.color = '';
       titleEl.style.opacity = '1';
       document.getElementById('notifEmail').classList.remove('visible');
+    }
+
+    function showStaticChat() {
+      clearTimers();
+      body.innerHTML = '';
+      resetNotifs();
+      var msgs = CHAT[currentLang] || CHAT.en;
+      msgs.forEach(function(m, i){ showMsg(i, m); });
+      var titleEl = document.getElementById('calTitle');
+      titleEl.textContent = STRINGS[currentLang].notif_cal_booking_confirmed || 'Booking confirmed';
+      document.getElementById('calCheck').classList.add('visible');
+      var badge = document.getElementById('calTimeBadge');
+      badge.style.opacity = '1';
+      badge.classList.add('booked');
+      document.getElementById('calDateToday').classList.add('booked');
+      document.getElementById('notifEmail').classList.add('visible');
+    }
+
+    function runOnce() {
+      clearTimers();
+      body.innerHTML = '';
+      resetNotifs();
 
       var msgs = CHAT[currentLang] || CHAT.en;
       msgs.forEach(function(m, i){
@@ -597,22 +625,22 @@
       timers.push(tEmail);
     }
 
+    var started = false;
+
+    onLangChange = function() {
+      if (rm) {
+        showStaticChat();
+        return;
+      }
+      if (started) runOnce();
+    };
+
     if (rm) {
-      var rmMsgs = CHAT[currentLang] || CHAT.en;
-      rmMsgs.forEach(function(m, i){ showMsg(i, m); });
-      var titleEl = document.getElementById('calTitle');
-      titleEl.textContent = STRINGS[currentLang].notif_cal_booking_confirmed || 'Booking confirmed';
-      document.getElementById('calCheck').classList.add('visible');
-      var badge = document.getElementById('calTimeBadge');
-      badge.style.opacity = '1';
-      badge.classList.add('booked');
-      document.getElementById('calDateToday').classList.add('booked');
-      document.getElementById('notifEmail').classList.add('visible');
+      showStaticChat();
       return;
     }
 
     // run once when hero enters viewport
-    var started = false;
     if ('IntersectionObserver' in window) {
       var heroObs = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
