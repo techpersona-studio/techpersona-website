@@ -399,6 +399,18 @@
   // run before anything else renders
   initLang();
 
+  // Keep the mobile language toggle pinned above the overlay links,
+  // even if a stale HTML version still places it in the footer.
+  (function placeMobileLangToggle() {
+    var mobileToggle = document.getElementById('langToggleMobile');
+    var overlayNav = document.querySelector('.overlay-nav');
+    if (!mobileToggle || !overlayNav) return;
+    mobileToggle.classList.add('overlay-lang-toggle');
+    if (overlayNav.firstElementChild !== mobileToggle) {
+      overlayNav.insertBefore(mobileToggle, overlayNav.firstChild);
+    }
+  })();
+
   // wire both toggle buttons
   ['langToggle', 'langToggleMobile'].forEach(function(id) {
     var btn = document.getElementById(id);
