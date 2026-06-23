@@ -62,6 +62,7 @@ h1,h2,h3{font-family:"Hanken Grotesk",sans-serif;font-weight:800;line-height:1.0
   padding:7px 14px;border-radius:999px;
 }
 .eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--terra);flex:none}
+.eyebrow-suffix{white-space:nowrap}
 
 /* ---------- placeholder markers (remove before launch) ---------- */
 .ph-block{
@@ -891,6 +892,15 @@ section{position:relative}
   .nav-shell{padding:14px 12px;padding-top:max(14px,env(safe-area-inset-top))}
   .nav{gap:10px;padding:8px 8px 8px 16px}
   .logo{font-size:.96rem}
+  .hero .eyebrow{
+    white-space:nowrap;
+    gap:8px;
+    font-size:9px;
+    letter-spacing:.18em;
+    padding:7px 12px;
+  }
+  .hero .eyebrow .dot{width:5px;height:5px}
+  .hero .eyebrow .eyebrow-suffix{display:none}
   .sec{padding:clamp(56px,12vw,88px) 0}
   .wrap{padding:0 16px}
   .hero{padding-top:clamp(120px,22vw,160px)}

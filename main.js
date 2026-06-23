@@ -10,7 +10,8 @@
       nav_cta: 'Get in touch <span class="ic" aria-hidden="true">→</span>',
       nav_overlay_audit: 'Get my free audit <span class="ic" aria-hidden="true">→</span>',
 
-      hero_eyebrow: 'Websites & quiet systems · founder-led',
+      hero_eyebrow_main: 'Websites & quiet systems',
+      hero_eyebrow_suffix: '· founder-led',
       hero_h1: 'I build the website that wins the customer <span class="serif-i">before</span> they call the next name.',
       hero_sub: "Most service owners lose customers they never knew were there. I'm Thao. One person on your project, start to finish. Your website gets you found and earns the trust. A quiet system makes sure they hear back before they move on.",
       hero_cta_primary: 'Get my free website audit <span class="ic" aria-hidden="true">→</span>',
@@ -179,7 +180,8 @@
       nav_cta: 'Liên hệ <span class="ic" aria-hidden="true">→</span>',
       nav_overlay_audit: 'Nhận đánh giá miễn phí <span class="ic" aria-hidden="true">→</span>',
 
-      hero_eyebrow: 'Website & hệ thống hỗ trợ khách hàng',
+      hero_eyebrow_main: 'Website & hệ thống hỗ trợ khách hàng',
+      hero_eyebrow_suffix: '',
       hero_h1: 'Tôi xây dựng website giúp khách hàng chọn bạn <span class="serif-i">trước khi</span> tìm đến đối thủ.',
       hero_sub: 'Nhiều doanh nghiệp đang bỏ lỡ khách hàng mà không hề nhận ra. Tôi là Thảo. Tôi xây dựng website và giải pháp hỗ trợ khách hàng giúp doanh nghiệp được tìm thấy dễ hơn, tạo dựng niềm tin nhanh hơn và không bỏ lỡ cơ hội khi khách hàng liên hệ.',
       hero_cta_primary: 'Nhận đánh giá website miễn phí <span class="ic" aria-hidden="true">→</span>',
