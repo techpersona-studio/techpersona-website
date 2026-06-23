@@ -308,8 +308,8 @@
       form_placeholder_problems: 'Điều gì đang không hoạt động? Bạn đang cố sửa gì? Ngay cả suy nghĩ đầu tiên lộn xộn cũng được.',
       form_submit: 'Nhận đánh giá miễn phí <span class="ic" aria-hidden="true">→</span>',
       form_fine: 'Không spam. Không gọi điện bán hàng trừ khi bạn muốn.',
-      form_success_big: 'Đã gửi. Tôi nhận được rồi.',
-      form_success_msg: 'Hãy chú ý email từ Thảo với đánh giá của bạn — những gì đang hoạt động và những gì đang khiến bạn mất khách mới.',
+      form_success_big: 'Cám ơn bạn.',
+      form_success_msg: 'Tôi đã nhận được thông tin và sẽ bắt đầu xem xét. Bạn sẽ nhận email từ Thảo cùng những đề xuất và ưu tiên tiếp theo trong khoảng 2 ngày làm việc.',
       form_sending: 'Đang gửi…',
       form_error: 'Đã xảy ra lỗi. Vui lòng thử lại hoặc gửi email trực tiếp đến contact@techpersonastudio.com.',
 
