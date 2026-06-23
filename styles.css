@@ -111,6 +111,21 @@ mark.ph{
 .nav-phone svg{width:18px;height:18px}
 .nav-phone:hover{background:var(--pine);color:var(--paper)}
 
+/* ---------- lang toggle ---------- */
+.lang-toggle{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:"Hanken Grotesk",sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;
+  color:var(--ink-soft);
+  background:transparent;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 10px;cursor:pointer;white-space:nowrap;flex:none;
+  transition:border-color .25s,background .25s;
+}
+.lang-toggle:hover{background:rgba(30,58,52,.06);border-color:rgba(30,58,52,.2)}
+.lang-sep{opacity:.35;font-weight:400}
+.lang-opt{transition:color .2s,opacity .2s;opacity:.45}
+.lang-opt.active{color:var(--pine);opacity:1;font-weight:800}
+.lang-toggle-mobile{margin-left:auto}
+
 /* ---------- hamburger ---------- */
 .nav-burger{
   display:none;flex-direction:column;justify-content:center;align-items:center;
@@ -826,6 +841,7 @@ section{position:relative}
   .nav-links{display:none}
   .nav-phone{display:inline-flex}
   .nav-cta{display:none}
+  .lang-toggle:not(.lang-toggle-mobile){display:none}
   .nav-burger{display:inline-flex}
   .nav{padding:8px 8px 8px 18px;gap:12px}
   .hero-grid{grid-template-columns:1fr;gap:clamp(36px,6vw,52px);justify-items:center}
