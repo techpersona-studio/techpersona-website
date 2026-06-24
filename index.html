@@ -8,6 +8,46 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .sms-consent { margin-top: 4px; }
+  .sms-consent .cbx-wrap {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .sms-consent input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    accent-color: var(--terra);
+    cursor: pointer;
+  }
+  .sms-consent .cbx-text {
+    font-size: .8rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+  .sms-consent .cbx-text a {
+    color: var(--terra);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .field-error-msg {
+    display: none;
+    margin-top: 5px;
+    font-size: .78rem;
+    color: var(--terra-deep);
+  }
+  .field.has-error input,
+  .field.has-error textarea {
+    border-color: var(--terra);
+    outline: none;
+  }
+</style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -470,23 +510,40 @@
           <h3 data-i18n="form_h3">Get your free website audit</h3>
           <p class="sub" data-i18n="form_sub">Just your website. No call required to get started.</p>
           <form id="reviewForm" novalidate>
-            <div class="field">
+            <div class="field" id="field-name">
               <label for="name" data-i18n="form_label_name">Your name</label>
               <input id="name" name="name" type="text" placeholder="Jordan Avery" required>
+              <span class="field-error-msg" id="err-name">Please enter your name.</span>
             </div>
-            <div class="field">
+            <div class="field" id="field-email">
               <label for="email" data-i18n="form_label_email">Email</label>
               <input id="email" name="email" type="email" placeholder="jordan@yourbusiness.com" required>
+              <span class="field-error-msg" id="err-email">Please enter a valid email address.</span>
             </div>
-            <div class="field">
+            <div class="field" id="field-site">
               <label for="site" data-i18n="form_label_site">Your website</label>
               <input id="site" name="site" type="url" placeholder="https://yourbusiness.com" required>
+              <span class="field-error-msg" id="err-site">Please enter a valid URL, e.g. https://yourbusiness.com</span>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number <span style="font-weight:400;color:var(--ink-faint)">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000">
             </div>
             <div class="field">
               <label for="problems" data-i18n="form_label_problems">Tell me about your problems</label>
               <textarea id="problems" name="problems" data-i18n-placeholder="form_placeholder_problems" placeholder="What&#x27;s not working? What are you trying to fix? Even a messy first thought is fine."></textarea>
             </div>
+            <div class="field sms-consent" id="smsConsentField">
+              <div class="cbx-wrap">
+                <input type="hidden" id="smsOptInValue" name="smsOptIn" value="no">
+                <input type="checkbox" id="smsOptIn" value="yes">
+                <label for="smsOptIn" class="cbx-text">I agree to receive text messages from TechPersona Studio about my inquiry, project updates, and scheduling. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. Not required to purchase. <a href="/privacy-policy.html">Privacy Policy</a> &amp; <a href="/terms.html">Terms</a>.</label>
+              </div>
+            </div>
             <button type="submit" class="btn" style="font-size:1rem" data-i18n-html="form_submit">Send my free audit <span class="ic" aria-hidden="true">&#x2192;</span></button>
+            <div id="formError" style="display:none;margin-top:12px;padding:12px 16px;border-radius:8px;background:rgba(192,106,69,.10);border:1px solid rgba(192,106,69,.25);font-size:.85rem;line-height:1.5;color:var(--terra-deep)">
+              Something went wrong. Please try again or email <a href="mailto:info@techpersonasolution.com" style="color:var(--terra-deep);text-decoration:underline">info@techpersonasolution.com</a> directly.
+            </div>
             <p class="form-fine" data-i18n="form_fine">No spam. No sales call unless you want one.</p>
           </form>
         </div>
@@ -602,5 +659,15 @@
 
 
 <script src="main.js"></script>
+<script>
+(function () {
+  var checkbox = document.getElementById('smsOptIn');
+  var hidden   = document.getElementById('smsOptInValue');
+  if (!checkbox || !hidden) return;
+  checkbox.addEventListener('change', function () {
+    hidden.value = checkbox.checked ? 'yes' : 'no';
+  });
+})();
+</script>
 </body>
 </html>

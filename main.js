@@ -819,13 +819,46 @@
   (function(){
     var form = document.getElementById('reviewForm');
     if (!form) return;
+    function showFieldError(fieldId, errId, show) {
+      var field = document.getElementById(fieldId);
+      var msg   = document.getElementById(errId);
+      if (!field || !msg) return;
+      if (show) {
+        field.classList.add('has-error');
+        msg.style.display = 'block';
+      } else {
+        field.classList.remove('has-error');
+        msg.style.display = 'none';
+      }
+    }
+
+    function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    function isValidUrl(v) {
+      try { var u = new URL(v); return u.protocol === 'http:' || u.protocol === 'https:'; }
+      catch(e) { return false; }
+    }
+
+    // Clear field errors on input
+    ['name','email','site'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', function() { showFieldError('field-'+id, 'err-'+id, false); });
+    });
+
     form.addEventListener('submit', function(e){
       e.preventDefault();
       var f = e.target;
-      if (!f.name.value || !f.email.value || !f.site.value){
-        if (f.reportValidity) f.reportValidity();
-        return;
-      }
+      var nameVal  = f.name.value.trim();
+      var emailVal = f.email.value.trim();
+      var siteVal  = f.site.value.trim();
+
+      var hasError = false;
+      showFieldError('field-name',  'err-name',  !nameVal);
+      showFieldError('field-email', 'err-email', !isValidEmail(emailVal));
+      showFieldError('field-site',  'err-site',  !isValidUrl(siteVal));
+      if (!nameVal || !isValidEmail(emailVal) || !isValidUrl(siteVal)) hasError = true;
+      if (hasError) return;
+
+      document.getElementById('formError').style.display = 'none';
       var btn = f.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = STRINGS[currentLang].form_sending || 'Sending…';
@@ -842,13 +875,13 @@
         } else {
           btn.disabled = false;
           btn.innerHTML = (STRINGS[currentLang].form_submit || 'Send my free audit') + ' <span class="ic" aria-hidden="true">→</span>';
-          alert(STRINGS[currentLang].form_error || 'Something went wrong. Please try again or email contact@techpersonastudio.com directly.');
+          document.getElementById('formError').style.display = 'block';
         }
       })
       .catch(function(){
         btn.disabled = false;
         btn.innerHTML = (STRINGS[currentLang].form_submit || 'Send my free audit') + ' <span class="ic" aria-hidden="true">→</span>';
-        alert(STRINGS[currentLang].form_error || 'Something went wrong. Please try again or email contact@techpersonastudio.com directly.');
+        document.getElementById('formError').style.display = 'block';
       });
     });
   })();
