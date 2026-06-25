@@ -162,7 +162,7 @@
       form_err_email: 'Please enter a valid email address.',
       form_err_site: 'Please enter a valid URL, like https://yourbusiness.com',
       form_err_phone: 'Add your phone number so I can text you, or uncheck the box below.',
-      form_consent: 'I agree to receive conversational text messages from TechPersona Studio related to my inquiry, project updates, scheduling, reminders, and follow-up. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.',
+      form_consent: 'I agree to receive conversational text messages from TechPersona Studio related to my inquiry, project updates, scheduling, reminders, and follow-up. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms">Terms</a>.',
       form_submit: 'Send my free audit <span class="ic" aria-hidden="true">&#8594;</span>',
       form_sending: 'Sending&hellip;',
       form_error: 'Something went wrong. Please try again or email <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a> directly.',
@@ -176,10 +176,10 @@
       footer_legal: 'Legal',
       footer_privacy: 'Privacy Policy',
       footer_terms: 'Terms of Service',
-      footer_built: '&#169; 2026 TechPersona Studio &middot; Built by Thao Phuong',
+      footer_built: '&#169; 2026 TechPersona Studio &middot; Built by Thao Phuong &middot; Updated June 2026',
 
       call_fab: 'Call',
-      cookie_text: 'This site uses cookies for basic analytics. No personal data is sold or shared. <a href="privacy-policy.html">Privacy Policy</a>',
+      cookie_text: 'This site uses cookies for basic analytics. No personal data is sold or shared. <a href="/privacy-policy">Privacy Policy</a>',
       cookie_ok: 'Got it'
     },
 
@@ -342,7 +342,7 @@
       form_err_email: 'Vui lòng nhập một địa chỉ email hợp lệ.',
       form_err_site: 'Vui lòng nhập một URL hợp lệ, ví dụ https://yourbusiness.com',
       form_err_phone: 'Thêm số điện thoại để tôi có thể nhắn tin cho bạn, hoặc bỏ chọn ô bên dưới.',
-      form_consent: 'Tôi đồng ý nhận tin nhắn từ TechPersona Studio liên quan đến yêu cầu của tôi, cập nhật dự án, đặt lịch, nhắc hẹn và chăm sóc sau đó. Tần suất tin nhắn có thể thay đổi. Có thể áp dụng cước tin nhắn và dữ liệu. Trả lời STOP để ngừng nhận hoặc HELP để được trợ giúp. Việc đồng ý không phải là điều kiện để mua hàng. <a href="privacy-policy.html">Chính sách bảo mật</a> và <a href="terms.html">Điều khoản</a>.',
+      form_consent: 'Tôi đồng ý nhận tin nhắn từ TechPersona Studio liên quan đến yêu cầu của tôi, cập nhật dự án, đặt lịch, nhắc hẹn và chăm sóc sau đó. Tần suất tin nhắn có thể thay đổi. Có thể áp dụng cước tin nhắn và dữ liệu. Trả lời STOP để ngừng nhận hoặc HELP để được trợ giúp. Việc đồng ý không phải là điều kiện để mua hàng. <a href="/privacy-policy">Chính sách bảo mật</a> và <a href="/terms">Điều khoản</a>.',
       form_submit: 'Nhận đánh giá miễn phí <span class="ic" aria-hidden="true">&#8594;</span>',
       form_sending: 'Đang gửi&hellip;',
       form_error: 'Đã xảy ra lỗi. Vui lòng thử lại hoặc gửi email trực tiếp đến <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a>.',
@@ -359,7 +359,7 @@
       footer_built: '&#169; 2026 TechPersona Studio &middot; Thiết kế và phát triển bởi Thảo Phương',
 
       call_fab: 'Gọi',
-      cookie_text: 'Website này sử dụng cookie cho phân tích cơ bản. Không có dữ liệu cá nhân nào được bán hoặc chia sẻ. <a href="privacy-policy.html">Chính sách bảo mật</a>',
+      cookie_text: 'Website này sử dụng cookie cho phân tích cơ bản. Không có dữ liệu cá nhân nào được bán hoặc chia sẻ. <a href="/privacy-policy">Chính sách bảo mật</a>',
       cookie_ok: 'Đã hiểu'
     }
   };
