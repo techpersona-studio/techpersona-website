@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms.html",
+      "permanent": true
+    }
+  ]
+}

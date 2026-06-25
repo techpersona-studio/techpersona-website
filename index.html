@@ -11,6 +11,13 @@
 <meta property="og:title" content="Website Redesign for Service Businesses in Worcester, MA | TechPersona Studio">
 <meta property="og:description" content="I redesign websites for service businesses so they get found and stop losing leads. One person on your project, start to finish. Free audit in 2 days.">
 <meta property="og:url" content="https://www.techpersonastudio.com/">
+<meta property="og:image" content="https://www.techpersonastudio.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Website Redesign for Service Businesses in Worcester, MA | TechPersona Studio">
+<meta name="twitter:description" content="I redesign websites for service businesses so they get found and stop losing leads. One person on your project, start to finish. Free audit in 2 days.">
+<meta name="twitter:image" content="https://www.techpersonastudio.com/assets/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,75 +26,123 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "TechPersona Studio",
-  "url": "https://www.techpersonastudio.com/",
-  "email": "info@techpersonastudio.com",
-  "telephone": "+1-857-800-2667",
-  "description": "Solo web design and automation studio for service businesses. Website redesign and lead-catching systems.",
-  "foundingDate": "2026-06",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Worcester",
-    "addressRegion": "MA",
-    "addressCountry": "US"
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Worcester" },
-    { "@type": "Country", "name": "United States" }
-  ],
-  "founder": {
-    "@type": "Person",
-    "name": "Thao Phuong"
-  },
-  "sameAs": []
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Thao Phuong",
-  "jobTitle": "Founder",
-  "worksFor": { "@type": "Organization", "name": "TechPersona Studio" },
-  "url": "https://www.techpersonastudio.com/#about",
-  "image": "https://www.techpersonastudio.com/assets/profile-pic.JPG"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What does the free audit include?",
-      "acceptedAnswer": { "@type": "Answer", "text": "I review your current website and send back a short walkthrough within about 2 days. It covers what's costing you leads, what needs to change, and exactly what I'd fix first. You keep it regardless of what you decide next." }
+      "@type": "ProfessionalService",
+      "@id": "https://www.techpersonastudio.com/#business",
+      "name": "TechPersona Studio",
+      "url": "https://www.techpersonastudio.com/",
+      "logo": "https://www.techpersonastudio.com/assets/logo.png",
+      "description": "Website redesign and lead automation for service businesses in Worcester, MA. Built to win the customer before they call the next name.",
+      "telephone": "+18578002667",
+      "email": "info@techpersonastudio.com",
+      "foundingDate": "2026",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Worcester",
+        "addressRegion": "MA",
+        "postalCode": "01601",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.26259,
+        "longitude": -71.80229
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Worcester", "containedInPlace": { "@type": "State", "name": "Massachusetts" } },
+        { "@type": "City", "name": "Boston", "containedInPlace": { "@type": "State", "name": "Massachusetts" } }
+      ],
+      "founder": { "@id": "https://www.techpersonastudio.com/#founder" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@id": "https://www.techpersonastudio.com/#service-redesign" } },
+          { "@type": "Offer", "itemOffered": { "@id": "https://www.techpersonastudio.com/#service-automation" } }
+        ]
+      },
+      "sameAs": []
     },
     {
-      "@type": "Question",
-      "name": "Can I trust a solo operator to actually deliver?",
-      "acceptedAnswer": { "@type": "Answer", "text": "You reach me directly, every time. But I'm not working alone. Behind me is a team of AI agents I built and trained myself, each one tested until it earned a place on your project. They handle the repetitive work around the clock, so you get the speed of a whole team with the accountability of one person whose name is on it. Six years of engineering sits behind every build." }
+      "@type": "Person",
+      "@id": "https://www.techpersonastudio.com/#founder",
+      "name": "Thao Phuong",
+      "jobTitle": "Founder & Web Designer",
+      "worksFor": { "@id": "https://www.techpersonastudio.com/#business" },
+      "url": "https://www.techpersonastudio.com/#about",
+      "image": "https://www.techpersonastudio.com/assets/profile-pic.JPG"
     },
     {
-      "@type": "Question",
-      "name": "What does it cost if I want you to build it?",
-      "acceptedAnswer": { "@type": "Answer", "text": "We scope it together after the audit, so you see the full price before you commit to anything. Most first projects are one-time, not a monthly retainer. You get a number on the call, no surprises." }
+      "@type": "Service",
+      "@id": "https://www.techpersonastudio.com/#service-redesign",
+      "name": "Website Redesign for Service Businesses",
+      "serviceType": "Website Redesign",
+      "description": "Full website redesign for service businesses that turns visitors into booked calls. Built for restaurants, nail salons, plumbers, and realtors in Worcester, MA.",
+      "provider": { "@id": "https://www.techpersonastudio.com/#business" },
+      "areaServed": { "@type": "City", "name": "Worcester" },
+      "url": "https://www.techpersonastudio.com/#services"
     },
     {
-      "@type": "Question",
-      "name": "Do I have to rebuild everything?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Most of the time the right move is fixing what you already have. If a piece works, we keep it. If it leaks, we replace it. You won't pay for a teardown you don't need." }
+      "@type": "Service",
+      "@id": "https://www.techpersonastudio.com/#service-automation",
+      "name": "Quiet Systems — Lead Automation",
+      "serviceType": "Lead Automation",
+      "description": "Automated follow-up and lead capture for service businesses. Converts missed calls and form fills into booked appointments without manual follow-up.",
+      "provider": { "@id": "https://www.techpersonastudio.com/#business" },
+      "areaServed": { "@type": "City", "name": "Worcester" },
+      "url": "https://www.techpersonastudio.com/#services"
     },
     {
-      "@type": "Question",
-      "name": "Can't I just use Squarespace or Wix myself?",
-      "acceptedAnswer": { "@type": "Answer", "text": "You can. But a template can't study your market for you. I research your business and your competitors so your site is built to put you ahead, not just match what everyone else in town already has. Template builders also rarely get you found in local search, and they don't catch leads that come in after hours. If you need a digital brochure, a template is fine. If you're losing leads because people can't find you or can't reach you fast enough, that's a different problem." }
+      "@type": "WebSite",
+      "@id": "https://www.techpersonastudio.com/#website",
+      "url": "https://www.techpersonastudio.com/",
+      "name": "TechPersona Studio",
+      "description": "Website redesign and lead automation for service businesses in Worcester, MA.",
+      "publisher": { "@id": "https://www.techpersonastudio.com/#business" }
     },
     {
-      "@type": "Question",
-      "name": "How long does it take?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A website audit comes back in about 2 business days. Most website builds run 2 to 4 weeks from scoping call to launch. A Quiet System adds 1 to 2 weeks. You get a specific timeline on the call, not a vague estimate." }
+      "@type": "QAPage",
+      "name": "Website Redesign FAQ — TechPersona Studio",
+      "url": "https://www.techpersonastudio.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the free audit include?",
+          "acceptedAnswer": { "@type": "Answer", "text": "I review your current website and send back a short walkthrough within about 2 days. It covers what's costing you leads, what needs to change, and exactly what I'd fix first. You keep it regardless of what you decide next." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I trust a solo operator to actually deliver?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You reach me directly, every time. But I'm not working alone. Behind me is a team of AI agents I built and trained myself, each one tested until it earned a place on your project. They handle the repetitive work around the clock, so you get the speed of a whole team with the accountability of one person whose name is on it. Six years of engineering sits behind every build." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost if I want you to build it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We scope it together after the audit, so you see the full price before you commit to anything. Most first projects are one-time, not a monthly retainer. You get a number on the call, no surprises." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to rebuild everything?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Most of the time the right move is fixing what you already have. If a piece works, we keep it. If it leaks, we replace it. You won't pay for a teardown you don't need." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can't I just use Squarespace or Wix myself?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You can. But a template can't study your market for you. I research your business and your competitors so your site is built to put you ahead, not just match what everyone else in town already has. Template builders also rarely get you found in local search, and they don't catch leads that come in after hours. If you need a digital brochure, a template is fine. If you're losing leads because people can't find you or can't reach you fast enough, that's a different problem." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A website audit comes back in about 2 business days. Most website builds run 2 to 4 weeks from scoping call to launch. A Quiet System adds 1 to 2 weeks. You get a specific timeline on the call, not a vague estimate." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with businesses outside Worcester, MA?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The process is fully remote, so location is not a barrier. Most clients are in the Greater Worcester and Boston area, but TechPersona Studio works with service businesses across the US." }
+        }
+      ]
     }
   ]
 }
@@ -141,6 +196,7 @@
     <div class="hero-copy">
       <span class="eyebrow hero-eyebrow" data-reveal><span class="dot"></span> <span data-i18n="hero_eyebrow_main">Website redesign</span><span class="eb-sep" aria-hidden="true"> &middot; </span><span class="eb-loc" data-i18n="hero_eyebrow_loc">Worcester, MA and beyond</span></span>
       <h1 data-reveal data-d="1" data-i18n-html="hero_h1">I build the website that wins the customer <span class="serif-i">before</span> they call the next name.</h1>
+      <p class="hero-location-line" data-reveal data-d="2" data-i18n="hero_location_line">Website redesigns for restaurants, nail salons, plumbers, and realtors in Worcester, MA.</p>
       <p class="sub" data-reveal data-d="2" data-i18n="hero_sub">Service businesses lose leads every day because their site can't be found and no one answers fast enough. I fix both, from Worcester, MA to wherever you run your business. One person on your project, start to finish.</p>
       <div class="hero-actions" data-reveal data-d="3">
         <a href="#audit" class="island lg" data-i18n-html="hero_cta_primary">Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span></a>
@@ -296,7 +352,7 @@
           <span class="ba-label" data-i18n="proof_label_before">Before</span>
           <div class="ba-media">
             <div class="scroll-shot" data-scroll>
-              <img src="assets/old-quanphoinsaugus.com_.png" alt="Qu&#225;n Ph&#7903; original website, before the redesign" loading="lazy">
+              <img src="assets/old-quanphoinsaugus.com_.png" alt="Qu&#225;n Ph&#7903; original website, before the redesign" width="2590" height="8970" loading="lazy">
             </div>
           </div>
           <ul class="ba-list">
@@ -334,7 +390,7 @@
     <div class="proof-lower" data-reveal data-d="2">
       <div class="founder-note">
         <div class="fn-top">
-          <img class="fn-thumb" src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio">
+          <img class="fn-thumb" src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio" width="677" height="687" loading="lazy">
           <div>
             <div class="fn-name">Thao Phuong</div>
             <div class="fn-role" data-i18n="proof_fn_role">Founder, TechPersona Studio</div>
@@ -345,7 +401,7 @@
       <div class="placeholder-card">
         <div class="pc-in">
           <span class="pc-tag" data-i18n="proof_reviews_tag">Reviews in progress</span>
-          <p data-i18n="proof_reviews_body">First client reviews are on the way. See the before and after above, and I'll add named reviews here the moment they land.</p>
+          <p data-i18n="proof_reviews_body">Client reviews are on the way. See the before and after above and reach out — I'll tell you about the Quán Phở project directly.</p>
         </div>
       </div>
     </div>
@@ -412,7 +468,7 @@
     <div class="about-photo" data-reveal>
       <div class="portrait-shell">
         <div class="portrait-inner">
-          <img src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio, Worcester MA" loading="lazy">
+          <img src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio, Worcester MA" width="677" height="687" loading="lazy">
         </div>
       </div>
       <div class="about-id">
@@ -502,6 +558,7 @@
         <div class="form-body">
           <h3 data-i18n="form_h3">Get your free website audit</h3>
           <p class="f-sub" data-i18n="form_sub">Just your website. No call required to get started.</p>
+          <p class="f-no-site" data-i18n-html="form_no_site">Don't have a site yet? <a href="mailto:info@techpersonastudio.com">Let's build your first one &rarr;</a></p>
           <form id="auditForm" novalidate>
             <div class="field" id="f-name">
               <label for="name" data-i18n="form_label_name">Your name</label>
@@ -554,6 +611,7 @@
       <div class="foot-brand">
         <a href="#top" class="logo">TechPersona <span class="mark">Studio</span></a>
         <p class="foot-tagline" data-i18n="footer_tagline">Websites and quiet systems for service businesses.</p>
+        <p class="foot-desc" data-i18n="about_intro">TechPersona Studio is a web design agency in Worcester, MA, founded by Thao Phuong. The studio rebuilds websites for local service businesses — restaurants, nail salons, plumbers, and realtors — with a focus on lead conversion and local search visibility. Every project includes a free website audit before work begins.</p>
         <p class="foot-meta" data-i18n="footer_meta">Worcester, MA &middot; serving clients online everywhere</p>
       </div>
       <div class="foot-links">
