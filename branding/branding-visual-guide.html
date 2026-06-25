@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Branding Visual Guide — TechPersona Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --paper:       #F6F3EE;
+  --paper-deep:  #EFEAE1;
+  --pine-wash:   #E8EFEC;
+  --core:        #FBFAF7;
+  --ink:         #171717;
+  --ink-soft:    #4E4E4E;
+  --ink-faint:   #857F75;
+  --pine:        #1E3A34;
+  --pine-soft:   #2E5148;
+  --terra:       #C06A45;
+  --terra-deep:  #9F4F33;
+  --terra-light: #E7A282;
+  --hair:        rgba(23,23,23,.10);
+
+  --lift:    0 1px 2px rgba(30,58,52,.04), 0 18px 40px -22px rgba(30,58,52,.30);
+  --lift-lg: 0 2px 4px rgba(30,58,52,.05), 0 44px 80px -36px rgba(30,58,52,.40);
+  --inner-hi: inset 0 1px 1px rgba(255,255,255,.70);
+
+  --r-card:    1.75rem;
+  --r-inner:   calc(1.75rem - 10px);
+  --r-pill:    999px;
+  --r-input:   0.625rem;
+
+  --ease:      cubic-bezier(.32,.72,0,1);
+  --ease-soft: cubic-bezier(.22,1,.36,1);
+
+  --font-sans:  'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+
+  --max-w:     1160px;
+  --text-col:  680px;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ── Layout ─────────────────────────────────────────────────────────── */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+.text-col  { max-width: var(--text-col); }
+
+section { padding: 96px 0; }
+section.bg-paper      { background: var(--paper); }
+section.bg-paper-deep { background: var(--paper-deep); }
+section.bg-pine-wash  { background: var(--pine-wash); }
+section.bg-pine       { background: var(--pine); color: var(--paper); }
+
+/* ── Typography ─────────────────────────────────────────────────────── */
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.kicker-pine { color: var(--pine); }
+.kicker-paper { color: rgba(246,243,238,.6); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: 1.08;
+  color: var(--ink);
+}
+h1 { font-size: clamp(2.25rem, 4vw, 3.25rem); }
+h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -.035em; margin-bottom: 1.25rem; }
+h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .75rem; }
+h4 { font-size: 1rem; font-weight: 600; letter-spacing: -.01em; margin-bottom: .5rem; }
+
+.bg-pine h1, .bg-pine h2, .bg-pine h3, .bg-pine h4 { color: var(--paper); }
+
+p { color: var(--ink-soft); line-height: 1.7; margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+.bg-pine p { color: rgba(246,243,238,.75); }
+
+.serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--terra);
+}
+.bg-pine .serif-accent { color: var(--terra-light); }
+
+small, .small { font-size: 0.8125rem; color: var(--ink-faint); }
+
+/* ── Cover ──────────────────────────────────────────────────────────── */
+.cover {
+  background: var(--pine);
+  color: var(--paper);
+  padding: 96px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  opacity: .04;
+  pointer-events: none;
+}
+.cover-inner { position: relative; z-index: 1; }
+.cover-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(246,243,238,.12);
+}
+.cover-logo {
+  font-weight: 700;
+  font-size: .875rem;
+  letter-spacing: -.01em;
+  color: var(--paper);
+  opacity: .9;
+}
+.cover-tag {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--terra-light);
+}
+.cover-date {
+  font-size: .8125rem;
+  color: rgba(246,243,238,.45);
+  margin-left: auto;
+}
+.cover-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -.05em;
+  line-height: 1.02;
+  color: var(--paper);
+  max-width: 820px;
+  margin-bottom: 2rem;
+}
+.cover-thesis {
+  font-size: 1.0625rem;
+  color: rgba(246,243,238,.7);
+  max-width: 560px;
+  line-height: 1.6;
+  border-left: 2px solid var(--terra-light);
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(192,106,69,.15);
+  border: 1px solid rgba(192,106,69,.25);
+  border-radius: var(--r-pill);
+  padding: .375rem .875rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--terra-light);
+}
+.status-dot {
+  width: 6px; height: 6px;
+  background: var(--terra-light);
+  border-radius: 50%;
+}
+
+/* ── Section header ─────────────────────────────────────────────────── */
+.section-header { margin-bottom: 3rem; }
+.section-header h2 { margin-bottom: .5rem; }
+.section-header p { max-width: 560px; }
+
+/* ── Cards ──────────────────────────────────────────────────────────── */
+.card-shell {
+  background: rgba(30,58,52,.04);
+  border: 1px solid rgba(30,58,52,.08);
+  border-radius: var(--r-card);
+  padding: 10px;
+  box-shadow: var(--lift);
+}
+.card-core {
+  background: var(--core);
+  border-radius: var(--r-inner);
+  box-shadow: var(--inner-hi);
+  padding: 1.75rem 2rem;
+}
+
+/* ── Grid helpers ───────────────────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+/* ── Palette swatches ───────────────────────────────────────────────── */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+.swatch {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--lift);
+}
+.swatch-color {
+  height: 80px;
+  border-radius: 1rem 1rem 0 0;
+}
+.swatch-info {
+  padding: .75rem 1rem;
+  background: var(--core);
+  border-radius: 0 0 1rem 1rem;
+}
+.swatch-name {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--ink);
+  display: block;
+  margin-bottom: .125rem;
+}
+.swatch-hex {
+  font-size: .6875rem;
+  color: var(--ink-faint);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+.swatch-role {
+  font-size: .6875rem;
+  color: var(--ink-faint);
+  margin-top: .25rem;
+  display: block;
+}
+
+/* ── Typography specimens ───────────────────────────────────────────── */
+.type-specimen {
+  padding: 2rem;
+  background: var(--core);
+  border-radius: 1rem;
+  border: 1px solid var(--hair);
+  margin-bottom: 1rem;
+}
+.type-label {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: .75rem;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .625rem;
+  font-family: var(--font-sans);
+  font-size: .9375rem;
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-island {
+  background: var(--pine);
+  color: var(--paper);
+  border-radius: var(--r-pill);
+  padding: .75rem 1rem .75rem 1.75rem;
+  box-shadow: var(--lift);
+}
+.btn-island:hover { background: var(--pine-soft); }
+
+.btn-island-terra {
+  background: var(--terra);
+  color: #fff;
+  border-radius: var(--r-pill);
+  padding: .75rem 1rem .75rem 1.75rem;
+  box-shadow: var(--lift);
+}
+.btn-island-terra:hover { background: var(--terra-deep); }
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  background: rgba(255,255,255,.15);
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: transform var(--dur-fast) var(--ease-soft);
+  flex-shrink: 0;
+}
+.btn:hover .btn-icon { transform: translate(2px,-2px); }
+
+.btn-ghost {
+  background: none;
+  color: var(--ink);
+  border-radius: 0;
+  padding: .5rem 0;
+  border-bottom: 2px solid var(--ink);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.btn-ghost:hover { border-color: var(--terra); transform: none; }
+
+/* ── Proof chips ────────────────────────────────────────────────────── */
+.proof-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--core);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-pill);
+  padding: .5rem 1rem .5rem .625rem;
+  box-shadow: var(--lift);
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.proof-dot {
+  width: 8px; height: 8px;
+  background: var(--terra);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Credential bar ─────────────────────────────────────────────────── */
+.cred-bar {
+  background: var(--pine-wash);
+  border-radius: var(--r-pill);
+  padding: .875rem 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.cred-item {
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--pine);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.cred-sep { color: var(--pine); opacity: .3; font-size: 1.25rem; }
+
+/* ── Code blocks ────────────────────────────────────────────────────── */
+pre {
+  background: var(--ink);
+  color: #E8EFEC;
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: .8125rem;
+  line-height: 1.65;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: .875em;
+  background: rgba(30,58,52,.07);
+  border-radius: .25rem;
+  padding: .125em .35em;
+  color: var(--pine);
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+th {
+  text-align: left;
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: .625rem 1rem .625rem 0;
+  border-bottom: 1px solid var(--hair);
+}
+td {
+  padding: .75rem 1rem .75rem 0;
+  border-bottom: 1px solid var(--hair);
+  color: var(--ink-soft);
+  vertical-align: top;
+}
+td:first-child { color: var(--ink); font-weight: 500; }
+
+/* ── North star ─────────────────────────────────────────────────────── */
+.north-star-statement {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  border-left: 3px solid var(--terra);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.adj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.adj-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+}
+.adj-card.positive {
+  background: var(--pine-wash);
+  border: 1px solid rgba(30,58,52,.12);
+}
+.adj-card.negative {
+  background: rgba(192,106,69,.06);
+  border: 1px solid rgba(192,106,69,.15);
+}
+.adj-card .adj-label {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.adj-card.positive .adj-label { color: var(--pine); }
+.adj-card.negative .adj-label { color: var(--terra); }
+.adj-item {
+  font-size: .9375rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: .375rem 0;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.adj-item::before {
+  content: '';
+  display: block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.adj-card.positive .adj-item::before { background: var(--pine); }
+.adj-card.negative .adj-item::before { background: var(--terra); }
+
+/* ── Direction mix ──────────────────────────────────────────────────── */
+.mix-bar {
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(to right, var(--pine) 65%, var(--pine-wash) 65%);
+  margin: 1.5rem 0 .5rem;
+}
+.mix-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8125rem;
+  color: var(--ink-faint);
+}
+.mix-labels strong { color: var(--ink); }
+
+/* ── Layout diagram ─────────────────────────────────────────────────── */
+.band-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin: 1.5rem 0;
+}
+.band-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.band-swatch {
+  width: 180px;
+  height: 36px;
+  border-radius: .5rem;
+  flex-shrink: 0;
+  border: 1px solid var(--hair);
+}
+.band-row .band-label {
+  font-size: .8125rem;
+  color: var(--ink-soft);
+}
+.band-row .band-name {
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  width: 120px;
+  flex-shrink: 0;
+}
+
+/* ── Mockup wires ───────────────────────────────────────────────────── */
+.mockup {
+  background: var(--core);
+  border: 1px solid var(--hair);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: var(--lift-lg);
+}
+.mockup-browser-bar {
+  background: var(--paper-deep);
+  padding: .625rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  border-bottom: 1px solid var(--hair);
+}
+.browser-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.mockup-hero-section {
+  background: var(--paper);
+  padding: 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.mockup-hero-left .mockup-kicker {
+  font-size: .5625rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pine);
+  background: var(--pine-wash);
+  display: inline-block;
+  padding: .25rem .625rem;
+  border-radius: var(--r-pill);
+  margin-bottom: .625rem;
+}
+.mockup-h1 {
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: .625rem;
+}
+.mockup-body {
+  font-size: .75rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.mockup-portrait-placeholder {
+  background: var(--paper-deep);
+  border-radius: 1rem;
+  height: 160px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+.mockup-portrait-label {
+  font-size: .6875rem;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+.mockup-chip {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  background: var(--core);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-pill);
+  padding: .375rem .75rem;
+  font-size: .5625rem;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+  box-shadow: var(--lift);
+  white-space: nowrap;
+}
+.mockup-chip .proof-dot { width: 6px; height: 6px; }
+
+.mockup-nav {
+  background: var(--paper);
+  padding: .75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--hair);
+}
+.mockup-nav-logo {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--pine);
+}
+.mockup-nav-links {
+  display: flex;
+  gap: 1rem;
+}
+.mockup-nav-link {
+  font-size: .625rem;
+  color: var(--ink-faint);
+}
+
+.mockup-cta-band {
+  background: var(--pine);
+  padding: 2rem;
+  text-align: center;
+}
+.mockup-cta-h {
+  font-size: .9375rem;
+  font-weight: 800;
+  color: var(--paper);
+  letter-spacing: -.03em;
+  margin-bottom: .875rem;
+}
+.mockup-proof-band {
+  background: var(--paper-deep);
+  padding: 2rem;
+}
+.mockup-before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.mockup-col-label {
+  font-size: .5625rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: .625rem;
+}
+.mockup-col-label.before { color: var(--ink-faint); }
+.mockup-col-label.after  { color: var(--pine); }
+.mockup-col-item {
+  font-size: .6875rem;
+  padding: .25rem 0;
+  border-bottom: 1px solid var(--hair);
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+}
+.mockup-col-item.before-item { color: var(--ink-faint); }
+.mockup-col-item.after-item  { color: var(--ink); font-weight: 600; }
+.mockup-col-item.after-item::before {
+  content: '✓';
+  font-size: .5625rem;
+  color: var(--pine);
+}
+
+/* ── Service card mockup ────────────────────────────────────────────── */
+.service-card-demo .card-core .kicker { margin-bottom: .75rem; }
+
+/* ── Do/Don't ───────────────────────────────────────────────────────── */
+.rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.rule-list { list-style: none; }
+.rule-list li {
+  font-size: .9375rem;
+  color: var(--ink-soft);
+  padding: .625rem 0;
+  border-bottom: 1px solid var(--hair);
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  line-height: 1.5;
+}
+.bg-pine .rule-list li {
+  color: var(--paper);
+  border-bottom-color: rgba(246,243,238,.15);
+}
+.rule-list li:last-child { border-bottom: none; }
+.rule-list li::before {
+  font-size: .875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: .125rem;
+}
+.do-list li::before   { content: '✓'; color: var(--pine); }
+.dont-list li::before { content: '✗'; color: var(--terra); }
+
+/* ── Tokens display ─────────────────────────────────────────────────── */
+.token-section { margin-bottom: 2.5rem; }
+.token-section h3 { margin-bottom: 1rem; }
+
+/* ── Implementation checklist ───────────────────────────────────────── */
+.impl-list { list-style: none; }
+.impl-list li {
+  font-size: .9375rem;
+  color: var(--ink-soft);
+  padding: .625rem 0;
+  border-bottom: 1px solid var(--hair);
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  line-height: 1.55;
+}
+.impl-list li:last-child { border-bottom: none; }
+.impl-list li::before {
+  content: '→';
+  color: var(--pine);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: .125rem;
+}
+
+/* ── Print ──────────────────────────────────────────────────────────── */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background: white; }
+  section { break-inside: avoid; }
+  .cover { break-after: page; }
+  pre { white-space: pre-wrap; }
+  @page { margin: 1.5cm; }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Mobile ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  section { padding: 56px 0; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .rule-grid { grid-template-columns: 1fr; }
+  .adj-grid { grid-template-columns: 1fr; }
+  .palette-grid { grid-template-columns: repeat(2, 1fr); }
+  .mockup-hero-section { grid-template-columns: 1fr; }
+  .mockup-before-after { grid-template-columns: 1fr; }
+  .cred-bar { flex-direction: column; align-items: flex-start; gap: .75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Cover ──────────────────────────────────────────────────────── -->
+<div class="cover">
+  <div class="container cover-inner">
+    <div class="cover-meta">
+      <span class="cover-logo">TechPersona Studio</span>
+      <span class="cover-tag">Branding Visual Guide</span>
+      <span class="cover-date">2026-06-24 · v1.0</span>
+    </div>
+    <h1 class="cover-title">Website-first<br>visual operating<br><span class="serif-accent">system.</span></h1>
+    <p class="cover-thesis">A solo craftsperson's studio — warm stone and pine, editorial presence, and the specific quiet confidence of someone who signs their own work.</p>
+    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+      <span class="status-chip"><span class="status-dot"></span>All decisions locked · Ready for website blueprint</span>
+      <span style="font-size:.8125rem;color:rgba(246,243,238,.4);">Prepared by Thao Phuong</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── 1. Visual north star ──────────────────────────────────────── -->
+<section class="bg-paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">01 — Visual north star</span>
+      <h2>What this brand must feel like</h2>
+    </div>
+
+    <div class="north-star-statement">
+      <strong style="color:var(--ink);">The brand should feel like:</strong> A skilled craftsperson you'd trust to build something important for your business — warm, direct, and present from first call to delivery.<br><br>
+      <strong style="color:var(--ink);">Not like:</strong> A faceless agency portal, an AI vendor pitch, or a "solutions" website.
+    </div>
+
+    <div class="type-specimen" style="margin:1.5rem 0;">
+      <span class="type-label">One-line visual thesis</span>
+      <p style="font-size:1.125rem;color:var(--ink);font-style:normal;font-weight:500;line-height:1.5;">A solo craftsperson's studio — warm stone and pine, editorial presence, and the specific quiet confidence of someone who signs their own work.</p>
+    </div>
+
+    <div class="adj-grid">
+      <div class="adj-card positive">
+        <div class="adj-label">Anchor adjectives</div>
+        <div class="adj-item">Grounded</div>
+        <div class="adj-item">Human-warm</div>
+        <div class="adj-item">Quietly credible</div>
+      </div>
+      <div class="adj-card negative">
+        <div class="adj-label">Anti-adjectives</div>
+        <div class="adj-item">Flashy</div>
+        <div class="adj-item">Corporate</div>
+        <div class="adj-item">Automated-feeling</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. Direction mix ────────────────────────────────────────── -->
+<section class="bg-paper-deep">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">02 — Direction mix</span>
+      <h2>Editorial / Human leads</h2>
+    </div>
+    <div class="grid-2" style="gap:2rem;align-items:start;">
+      <div>
+        <div class="mix-bar"></div>
+        <div class="mix-labels">
+          <span><strong>Editorial / Human</strong> — 65%</span>
+          <span>Enterprise / Stable — 35%</span>
+        </div>
+        <p style="margin-top:1.5rem;">The visual system leads with warmth and human presence: stone-paper backgrounds, editorial serif moments, founder portrait, first-person voice. The Enterprise/Stable layer provides structure: pine anchor, clean grid, proof modules that signal reliability without over-claiming.</p>
+      </div>
+      <div>
+        <div class="card-shell">
+          <div class="card-core">
+            <h3>What this mix prevents</h3>
+            <ul class="rule-list dont-list" style="margin-top:.75rem;">
+              <li>Any Cutting-edge / Innovative influence — creates distance from the target audience</li>
+              <li>50/50 balance — hedging produces visual blandness</li>
+              <li>Agency authority signals (awards, partner logos, team headshots)</li>
+              <li>SaaS product visual language (dashboards, feature grids, pricing tables)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. Color system ─────────────────────────────────────────── -->
+<section class="bg-paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">03 — Color system</span>
+      <h2>Four layers. One accent.</h2>
+      <p>Stone neutrals carry 60% of every view. Pine anchors trust. Ink handles text. Terracotta earns its punch by appearing rarely — never above 10%.</p>
+    </div>
+
+    <div class="palette-grid" style="margin-bottom:3rem;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F6F3EE;border:1px solid rgba(0,0,0,.08) inset;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--paper</span>
+          <span class="swatch-hex">#F6F3EE</span>
+          <span class="swatch-role">Default page background</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#EFEAE1;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--paper-deep</span>
+          <span class="swatch-hex">#EFEAE1</span>
+          <span class="swatch-role">Alternate section band</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E8EFEC;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--pine-wash</span>
+          <span class="swatch-hex">#E8EFEC</span>
+          <span class="swatch-role">Pine-tinted band, tags</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FBFAF7;border:1px solid rgba(0,0,0,.06) inset;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--core</span>
+          <span class="swatch-hex">#FBFAF7</span>
+          <span class="swatch-role">Card interior, inputs</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#171717;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--ink</span>
+          <span class="swatch-hex">#171717</span>
+          <span class="swatch-role">Primary text</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4E4E4E;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--ink-soft</span>
+          <span class="swatch-hex">#4E4E4E</span>
+          <span class="swatch-role">Body copy, secondary text</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#857F75;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--ink-faint</span>
+          <span class="swatch-hex">#857F75</span>
+          <span class="swatch-role">Labels, captions</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1E3A34;"></div>
+        <div class="swatch-info" style="background:#1E3A34;">
+          <span class="swatch-name" style="color:#E8EFEC;">--pine</span>
+          <span class="swatch-hex" style="color:rgba(232,239,236,.55);">#1E3A34</span>
+          <span class="swatch-role" style="color:rgba(232,239,236,.45);">Brand anchor, CTA, dark sections</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2E5148;"></div>
+        <div class="swatch-info" style="background:#2E5148;">
+          <span class="swatch-name" style="color:#E8EFEC;">--pine-soft</span>
+          <span class="swatch-hex" style="color:rgba(232,239,236,.55);">#2E5148</span>
+          <span class="swatch-role" style="color:rgba(232,239,236,.45);">Pine hover/pressed</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C06A45;"></div>
+        <div class="swatch-info" style="background:#C06A45;">
+          <span class="swatch-name" style="color:#fff;">--terra</span>
+          <span class="swatch-hex" style="color:rgba(255,255,255,.65);">#C06A45</span>
+          <span class="swatch-role" style="color:rgba(255,255,255,.55);">Single most important CTA + italic emphasis</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#9F4F33;"></div>
+        <div class="swatch-info" style="background:#9F4F33;">
+          <span class="swatch-name" style="color:#fff;">--terra-deep</span>
+          <span class="swatch-hex" style="color:rgba(255,255,255,.65);">#9F4F33</span>
+          <span class="swatch-role" style="color:rgba(255,255,255,.55);">Terracotta hover/pressed</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E7A282;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">--terra-light</span>
+          <span class="swatch-hex">#E7A282</span>
+          <span class="swatch-role">Terracotta on dark pine</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;">
+      <div>
+        <h3>Usage ratio</h3>
+        <p style="margin-bottom:1rem;">Every view should approximate this proportion. If terracotta is creeping above 10%, something is wrong.</p>
+        <div style="display:flex;gap:.5rem;align-items:stretch;height:48px;border-radius:.75rem;overflow:hidden;margin-bottom:.75rem;">
+          <div style="flex:6;background:var(--paper-deep);display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:600;color:var(--ink-faint);">Stone 60%</div>
+          <div style="flex:3;background:var(--pine);display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:600;color:var(--pine-wash);">Pine 30%</div>
+          <div style="flex:1;background:var(--terra);display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:600;color:#fff;">10%</div>
+        </div>
+        <small>Stone neutrals · Pine + ink · Terracotta</small>
+      </div>
+      <div>
+        <h3>Never do this</h3>
+        <ul class="rule-list dont-list">
+          <li>Pure <code>#FFF</code> as any background — cold and clinical</li>
+          <li>Purple, blue, or teal in any component</li>
+          <li>A second accent color alongside terracotta</li>
+          <li>Large fields of terracotta (it's a spice, not a base)</li>
+          <li>Tech gradients on any primary surface</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. Typography system ───────────────────────────────────── -->
+<section class="bg-paper-deep">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">04 — Typography system</span>
+      <h2>Hanken leads. Cormorant Garamond accents.</h2>
+      <p>Two typefaces. 90/10 split. Hanken Grotesk is the workhorse — operationally readable, never precious. Cormorant Garamond italic is the brand's editorial soul, used in one moment per section.</p>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;margin-bottom:2rem;">
+      <div class="type-specimen">
+        <span class="type-label">Hanken Grotesk — primary (90%)</span>
+        <div style="font-family:var(--font-sans);font-size:2rem;font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--ink);">Heading 800</div>
+        <div style="font-family:var(--font-sans);font-size:1.25rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--ink);margin-top:.5rem;">Subheading 700</div>
+        <div style="font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;color:var(--ink-soft);margin-top:.5rem;">Body copy, weight 400. Plain and direct. One idea per sentence.</div>
+        <div style="font-family:var(--font-sans);font-size:.6875rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-top:.75rem;">KICKER LABEL · TRACKED</div>
+      </div>
+      <div class="type-specimen">
+        <span class="type-label">Cormorant Garamond italic — accent (10%)</span>
+        <div style="font-family:var(--font-serif);font-style:italic;font-size:2.5rem;font-weight:500;color:var(--terra);letter-spacing:-.02em;line-height:1.1;">before</div>
+        <p style="margin-top:1rem;">Used once per section — a fragment or proper noun in terracotta at display size. Overuse destroys the effect. Never in body, UI, or nav.</p>
+        <div style="font-family:var(--font-sans);font-size:1.25rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1.15;margin-top:1rem;">
+          I build the website that wins the customer <span style="font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--terra);">before</span> they call the next name.
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:1rem;">Type scale</h3>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr><th>Level</th><th>Font</th><th>Weight</th><th>Size (desktop)</th><th>Tracking</th><th>Case</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Display / Hero</td><td>Cormorant Garamond italic + Hanken</td><td>800</td><td>4–6rem</td><td>−.045em</td><td>Sentence</td></tr>
+          <tr><td>H1</td><td>Hanken</td><td>800</td><td>3–3.5rem</td><td>−.04em</td><td>Sentence</td></tr>
+          <tr><td>H2</td><td>Hanken</td><td>700</td><td>2–2.5rem</td><td>−.03em</td><td>Sentence</td></tr>
+          <tr><td>H3</td><td>Hanken</td><td>600</td><td>1.25–1.5rem</td><td>−.015em</td><td>Sentence</td></tr>
+          <tr><td>Body</td><td>Hanken</td><td>400</td><td>1rem</td><td>0</td><td>Normal</td></tr>
+          <tr><td>Kicker</td><td>Hanken</td><td>600</td><td>0.6875rem</td><td>+.20em</td><td>ALL CAPS</td></tr>
+          <tr><td>Caption</td><td>Hanken</td><td>400</td><td>0.8125rem</td><td>0</td><td>Normal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. Layout rhythm ───────────────────────────────────────── -->
+<section class="bg-pine-wash">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker kicker-pine">05 — Layout rhythm</span>
+      <h2>Flow-based narrative scroll</h2>
+      <p>The page reads like an argument: problem → cost → solution → proof → invitation. Not a dashboard. Not a card grid.</p>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;margin-bottom:2.5rem;">
+      <div>
+        <h3>Section banding sequence</h3>
+        <p style="margin-bottom:1rem;">Alternate backgrounds so no two adjacent bands share a shade. One dark pine section in the upper half; one closing.</p>
+        <div class="band-diagram">
+          <div class="band-row"><div class="band-swatch" style="background:#F6F3EE;"></div><span class="band-name">Hero</span><span class="band-label">--paper</span></div>
+          <div class="band-row"><div class="band-swatch" style="background:#EFEAE1;"></div><span class="band-name">Problem</span><span class="band-label">--paper-deep</span></div>
+          <div class="band-row"><div class="band-swatch" style="background:#E8EFEC;"></div><span class="band-name">How it works</span><span class="band-label">--pine-wash</span></div>
+          <div class="band-row"><div class="band-swatch" style="background:#F6F3EE;"></div><span class="band-name">Services</span><span class="band-label">--paper</span></div>
+          <div class="band-row"><div class="band-swatch" style="background:#EFEAE1;"></div><span class="band-name">Proof</span><span class="band-label">--paper-deep</span></div>
+          <div class="band-row"><div class="band-swatch" style="background:#1E3A34;"></div><span class="band-name" style="color:var(--paper);">Process</span><span class="band-label" style="color:var(--paper);opacity:.6;">--pine (dark)</span></div>
+          <div class="band-row"><div class="band-swatch" style="background:#F6F3EE;"></div><span class="band-name">About</span><span class="band-label">--paper</span></div>
+          <div class="band-row"><div class="band-swatch" style="background:#1E3A34;"></div><span class="band-name" style="color:var(--paper);">CTA closing</span><span class="band-label" style="color:var(--paper);opacity:.6;">--pine (dark)</span></div>
+        </div>
+      </div>
+      <div>
+        <h3>Grid and spacing</h3>
+        <table style="margin-bottom:1.5rem;">
+          <tbody>
+            <tr><td>Max content width</td><td>1200px</td></tr>
+            <tr><td>Column grid</td><td>12-column, 24px gutters</td></tr>
+            <tr><td>Section padding</td><td>120px top/bottom (desktop)</td></tr>
+            <tr><td>Section padding</td><td>72px (tablet), 48px (mobile)</td></tr>
+            <tr><td>Text column max</td><td>680px (body-led sections)</td></tr>
+          </tbody>
+        </table>
+        <h3 style="margin-top:1.5rem;">Section patterns used</h3>
+        <ul class="rule-list do-list" style="margin-top:.5rem;">
+          <li>Full-width narrative — centered 680px text, no sidebar</li>
+          <li>2-column split — service pairs, 6+6 grid</li>
+          <li>Process steps — 3-step horizontal row</li>
+          <li>Proof band — testimonial + founder note</li>
+          <li>CTA band — pine dark, single heading, single button</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. Component language ─────────────────────────────────── -->
+<section class="bg-paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">06 — Component language</span>
+      <h2>Soft, rounded, and machined</h2>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;margin-bottom:3rem;">
+      <!-- Double-shell card demo -->
+      <div>
+        <h3 style="margin-bottom:1rem;">Double-shell card</h3>
+        <div class="card-shell service-card-demo">
+          <div class="card-core">
+            <span class="kicker kicker-pine">SERVICE 01</span>
+            <h3 style="margin-bottom:.375rem;">Websites</h3>
+            <p>A site that gets found and actually converts. One person builds it, start to finish.</p>
+            <div style="margin-top:1.25rem;">
+              <a class="btn btn-ghost" href="#">See what's included <span style="margin-left:.25rem;">↗</span></a>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:.75rem;font-size:.8125rem;color:var(--ink-faint);">Outer shell: pine-tinted background + hairline border. Inner core: --core + inset highlight. Result: machined hardware feel, not flat card.</p>
+      </div>
+
+      <!-- Buttons demo -->
+      <div>
+        <h3 style="margin-bottom:1rem;">Island button — the signature control</h3>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div>
+            <span class="type-label">Primary — pine (all CTAs)</span>
+            <a class="btn btn-island" href="#">Get my free website audit <span class="btn-icon">→</span></a>
+          </div>
+          <div>
+            <span class="type-label">Accent — terracotta (one per page only)</span>
+            <a class="btn btn-island-terra" href="#">Send me your URL <span class="btn-icon" style="background:rgba(255,255,255,.2);">→</span></a>
+          </div>
+          <div>
+            <span class="type-label">Ghost — secondary actions</span>
+            <a class="btn btn-ghost" href="#">See what the audit covers →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;margin-bottom:3rem;">
+      <!-- Proof chips -->
+      <div>
+        <h3 style="margin-bottom:1rem;">Proof chips</h3>
+        <div style="display:flex;flex-direction:column;gap:.625rem;">
+          <div><span class="proof-chip"><span class="proof-dot"></span>New inquiry · 9:48 pm</span></div>
+          <div><span class="proof-chip"><span class="proof-dot"></span>Replied in 2 min</span></div>
+          <div><span class="proof-chip"><span class="proof-dot"></span>New booking · Sat 10:12 am</span></div>
+        </div>
+        <p style="margin-top:.75rem;font-size:.8125rem;color:var(--ink-faint);">Clearly illustrative until real data is available. Pill shape, --core background, pine-tinted dot, soft shadow.</p>
+      </div>
+
+      <!-- Credential bar -->
+      <div>
+        <h3 style="margin-bottom:1rem;">Credential bar</h3>
+        <div class="cred-bar">
+          <div class="cred-item">6 years software engineering</div>
+          <div class="cred-sep">·</div>
+          <div class="cred-item">One person, start to finish</div>
+          <div class="cred-sep">·</div>
+          <div class="cred-item">Audit in 2 days</div>
+        </div>
+        <p style="margin-top:.75rem;font-size:.8125rem;color:var(--ink-faint);">--pine-wash background, pill shape. Specific and honest — no badge icons, no fake certifications.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:1rem;">Radius system</h3>
+    <div class="grid-4" style="margin-bottom:2rem;">
+      <div style="background:var(--paper-deep);border-radius:1.75rem;height:80px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--ink-faint);">Card outer<br style="display:block"><small>1.75rem</small></div>
+      <div style="background:var(--core);border:1px solid var(--hair);border-radius:calc(1.75rem - 10px);height:80px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--ink-faint);">Card inner<br><small>1.25rem</small></div>
+      <div style="background:var(--pine);border-radius:999px;height:48px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--paper);align-self:center;">Buttons · pill</div>
+      <div style="background:var(--core);border:1px solid var(--hair);border-radius:.625rem;height:48px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--ink-faint);align-self:center;">Input · 0.625rem</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. Proof presentation ─────────────────────────────────── -->
+<section class="bg-paper-deep">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">07 — Proof presentation</span>
+      <h2>Honest, specific, structured to grow</h2>
+      <p>High trust burden. Zero third-party reviews at launch. Every proof decision must be honest and build toward the moment real reviews arrive.</p>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;margin-bottom:2rem;">
+      <div class="card-shell">
+        <div class="card-core">
+          <h3>Phase 1 — now (zero reviews)</h3>
+          <ul class="impl-list" style="margin-top:.75rem;">
+            <li>Founder portrait + proof chips as illustrative outcomes</li>
+            <li>Credential bar: 6 years engineering, one-person promise, 2-day audit</li>
+            <li>Before/after: Quán Phở — named, specific, no fabricated metrics</li>
+            <li>Testimonial card structure with honest placeholder framing</li>
+            <li>Free audit offer as the proof-of-quality CTA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-shell">
+        <div class="card-core">
+          <h3>Phase 2 — first reviews arrive</h3>
+          <ul class="impl-list" style="margin-top:.75rem;">
+            <li>Replace placeholder with real testimonial: name + photo + verbatim quote</li>
+            <li>Remove "in progress" framing entirely</li>
+            <li>Add GBP / Google review link once live</li>
+            <li>Phase 3: Add outcome metrics to before/after when real and specific</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:.75rem;">What must never be fabricated</h3>
+    <ul class="rule-list dont-list">
+      <li>Review counts or star ratings without a verified platform source</li>
+      <li>Client revenue numbers or conversion rate improvements</li>
+      <li>Named client results without explicit written permission</li>
+      <li>"AI transformation" before/after metrics</li>
+      <li>Any testimonial without a real name and real photo</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 8. Imagery ─────────────────────────────────────────────── -->
+<section class="bg-pine-wash">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker kicker-pine">08 — Imagery and art direction</span>
+      <h2>Show the human. Show the outcome.</h2>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;margin-bottom:2rem;">
+      <div>
+        <h3 style="margin-bottom:1rem;">Photography direction</h3>
+        <table>
+          <tbody>
+            <tr><td>Direction</td><td>Founder-led</td></tr>
+            <tr><td>Subject priority</td><td>Thao first · Proof moments second</td></tr>
+            <tr><td>Mood</td><td>Warm · Intimate</td></tr>
+            <tr><td>Lighting</td><td>Natural or soft · Never cold studio</td></tr>
+            <tr><td>Composition</td><td>Close-medium · Polished-candid</td></tr>
+            <tr><td>Icons</td><td>Minimal outline · 1.5px stroke · --ink-soft</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem;">Never use these</h3>
+        <ul class="rule-list dont-list">
+          <li>Stock photography — laptops, handshakes, team at whiteboards</li>
+          <li>Phone mockup hero shots (this is not an app)</li>
+          <li>Workflow diagrams, node maps, automation flows</li>
+          <li>Dashboard UI screenshots anywhere on the site</li>
+          <li>Cold corporate headshots or smiling-at-screen stock</li>
+          <li>Fabricated before/after results</li>
+          <li>Cliché visuals: magnifying glass, lightbulb, gears</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 9. Motion ──────────────────────────────────────────────── -->
+<section class="bg-paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">09 — Motion and interaction</span>
+      <h2>Restrained. Purposeful. Never decorative.</h2>
+    </div>
+    <div class="grid-2" style="gap:2rem;">
+      <div>
+        <h3 style="margin-bottom:1rem;">Motion rules</h3>
+        <table>
+          <tbody>
+            <tr><td>Level</td><td>Restrained</td></tr>
+            <tr><td>Role</td><td>Scroll reveal + button hover only</td></tr>
+            <tr><td>Scroll behavior</td><td>Fade-up once on viewport enter</td></tr>
+            <tr><td>Button</td><td>Magnetic drift + diagonal icon translate</td></tr>
+            <tr><td>Properties</td><td>transform + opacity only</td></tr>
+            <tr><td>Reduced motion</td><td>Required guard on every animation</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem;">What must never animate</h3>
+        <ul class="rule-list dont-list">
+          <li>Background color transitions</li>
+          <li>Layout-triggering properties</li>
+          <li>Imagery on scroll (no parallax)</li>
+          <li>Looping or ambient animations</li>
+          <li>Animations firing on every scroll pass</li>
+          <li>Floating persistent widgets</li>
+        </ul>
+        <h3 style="margin-top:1.5rem;margin-bottom:.5rem;">Easing curves</h3>
+        <p style="font-size:.875rem;"><code>--ease: cubic-bezier(.32,.72,0,1)</code> — UI transitions</p>
+        <p style="font-size:.875rem;"><code>--ease-soft: cubic-bezier(.22,1,.36,1)</code> — scroll reveals</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 10. Homepage application ───────────────────────────────── -->
+<section class="bg-paper-deep">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">10 — Homepage application</span>
+      <h2>How the visual system behaves on the main page</h2>
+    </div>
+
+    <h3 style="margin-bottom:1.5rem;">Section sequence</h3>
+    <table style="margin-bottom:2.5rem;">
+      <thead>
+        <tr><th>#</th><th>Section</th><th>Background</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Nav</td><td>--paper + --hair border</td><td>Direct access, single CTA</td></tr>
+        <tr><td>2</td><td>Hero</td><td>--paper</td><td>Identity + problem + CTA. Founder portrait + proof chip.</td></tr>
+        <tr><td>3</td><td>Problem / cost</td><td>--paper-deep</td><td>Name the invisible cost. Copy-led, no imagery.</td></tr>
+        <tr><td>4</td><td>How it works</td><td>--pine-wash</td><td>Customer journey — 3 steps.</td></tr>
+        <tr><td>5</td><td>Services</td><td>--paper</td><td>Website / Quiet Systems — 2-column split.</td></tr>
+        <tr><td>6</td><td>Proof</td><td>--paper-deep</td><td>Before/after + founder note + credential bar + placeholder testimonial.</td></tr>
+        <tr><td>7</td><td>Process</td><td>--pine (dark)</td><td>Step 1: Free audit → Step 2: Scope → Step 3: Build.</td></tr>
+        <tr><td>8</td><td>About</td><td>--paper</td><td>Thao's bio. First-person, short, direct.</td></tr>
+        <tr><td>9</td><td>CTA closing</td><td>--pine (dark)</td><td>Single heading. Terracotta island button only.</td></tr>
+        <tr><td>10</td><td>Footer</td><td>--paper-deep</td><td>Email, phone, copyright. No noise.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-bottom:1.5rem;">Mockup wireframes</h3>
+
+    <!-- Hero mockup -->
+    <p style="margin-bottom:.75rem;font-size:.875rem;font-weight:600;color:var(--ink-faint);">Hero section</p>
+    <div class="mockup" style="margin-bottom:1.5rem;">
+      <div class="mockup-nav">
+        <div class="mockup-nav-logo">TechPersona Studio</div>
+        <div class="mockup-nav-links">
+          <span class="mockup-nav-link">What I build</span>
+          <span class="mockup-nav-link">The leak</span>
+          <span class="mockup-nav-link">About</span>
+        </div>
+        <a class="btn btn-island" href="#" style="font-size:.625rem;padding:.375rem .5rem .375rem .875rem;">Free audit <span class="btn-icon" style="width:22px;height:22px;font-size:.6875rem;">→</span></a>
+      </div>
+      <div class="mockup-hero-section">
+        <div class="mockup-hero-left">
+          <div class="mockup-kicker">Website design · Automation</div>
+          <div class="mockup-h1">I build the website that wins the customer <span class="serif-accent">before</span> they call the next name.</div>
+          <div class="mockup-body">Most service businesses lose leads before anyone ever talks to them. I fix that — website and lead-catching system, one project, one person.</div>
+          <a class="btn btn-island" href="#" style="font-size:.75rem;padding:.5rem .625rem .5rem 1.125rem;">Get my free website audit <span class="btn-icon" style="width:26px;height:26px;font-size:.75rem;">→</span></a>
+          <div style="margin-top:.625rem;font-size:.625rem;color:var(--ink-faint);">Free · No commitment · Yours to keep</div>
+        </div>
+        <div class="mockup-portrait-placeholder">
+          <span class="mockup-portrait-label" style="font-size:.6875rem;color:var(--ink-faint);">Thao — founder portrait</span>
+          <div class="mockup-chip"><span class="proof-dot"></span>New inquiry · 9:48 pm</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proof mockup -->
+    <p style="margin-bottom:.75rem;font-size:.875rem;font-weight:600;color:var(--ink-faint);">Proof section</p>
+    <div class="mockup" style="margin-bottom:1.5rem;">
+      <div class="mockup-proof-band">
+        <div style="text-align:center;margin-bottom:1.5rem;">
+          <span class="kicker">Real work · Named client</span>
+          <h3 style="margin-bottom:0;">Quán Phở, rebuilt</h3>
+        </div>
+        <div class="mockup-before-after">
+          <div>
+            <div class="mockup-col-label before">Before</div>
+            <div class="mockup-col-item before-item">No mobile site</div>
+            <div class="mockup-col-item before-item">No online booking</div>
+            <div class="mockup-col-item before-item">Inquiries unanswered after hours</div>
+            <div class="mockup-col-item before-item">Lost in search results</div>
+          </div>
+          <div>
+            <div class="mockup-col-label after">After</div>
+            <div class="mockup-col-item after-item">Fast on every device</div>
+            <div class="mockup-col-item after-item">Bookings while you cook</div>
+            <div class="mockup-col-item after-item">Auto-reply in 2 min</div>
+            <div class="mockup-col-item after-item">Found first on Google</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <div class="cred-bar" style="justify-content:center;">
+            <div class="cred-item">6 years software engineering</div>
+            <div class="cred-sep">·</div>
+            <div class="cred-item">One person, start to finish</div>
+            <div class="cred-sep">·</div>
+            <div class="cred-item">Audit delivered in 2 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA band mockup -->
+    <p style="margin-bottom:.75rem;font-size:.875rem;font-weight:600;color:var(--ink-faint);">CTA closing band</p>
+    <div class="mockup" style="margin-bottom:0;">
+      <div class="mockup-cta-band" style="padding:3rem 2rem;text-align:center;">
+        <div class="mockup-cta-h">Stop losing customers<br>you'll never know you lost.</div>
+        <a class="btn btn-island-terra" href="#" style="margin:0 auto 1rem;">Send me your URL <span class="btn-icon" style="background:rgba(255,255,255,.2);">→</span></a>
+        <div style="font-size:.75rem;color:var(--terra-light);">Free · No commitment · Audit in 2 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 11. Do / Don't ─────────────────────────────────────────── -->
+<section class="bg-pine">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker kicker-paper">11 — Do / Don't rules</span>
+      <h2>Blunt. Visual. Operational.</h2>
+    </div>
+    <div class="rule-grid">
+      <div>
+        <h3 style="margin-bottom:1rem;color:var(--terra-light);">Do</h3>
+        <ul class="rule-list do-list" style="color:var(--paper);">
+          <li style="border-color:rgba(246,243,238,.15);">Lead every section with the problem or cost of inaction — solution second</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use first-person singular in all copy — "I build," "I send back," "you reach me directly"</li>
+          <li style="border-color:rgba(246,243,238,.15);">Keep Thao's portrait visible in the hero above the fold on all viewports</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use pine as the trust anchor — never introduce a second color</li>
+          <li style="border-color:rgba(246,243,238,.15);">Alternate section backgrounds so no two adjacent bands share a shade</li>
+          <li style="border-color:rgba(246,243,238,.15);">Limit terracotta to the single most important CTA per page</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use sentence case for all headings without exception</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use the double-shell card treatment for all service and proof cards</li>
+          <li style="border-color:rgba(246,243,238,.15);">Keep the Cormorant Garamond italic to one fragment per section — rare by design</li>
+          <li style="border-color:rgba(246,243,238,.15);">Place the free audit CTA in the hero and the closing section at minimum</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem;color:var(--terra-light);">Don't</h3>
+        <ul class="rule-list dont-list" style="color:var(--paper);">
+          <li style="border-color:rgba(246,243,238,.15);">Use stock photography — laptops, handshakes, smiling-at-screen</li>
+          <li style="border-color:rgba(246,243,238,.15);">Introduce any second accent color for any reason</li>
+          <li style="border-color:rgba(246,243,238,.15);">Show workflow diagrams, node maps, automation flows, or dashboard screenshots</li>
+          <li style="border-color:rgba(246,243,238,.15);">Write in plural voice anywhere on the site</li>
+          <li style="border-color:rgba(246,243,238,.15);">Display a testimonial or star rating without a real name and real photo</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use pure #FFF as any background — warm stone only</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use Cormorant Garamond for body, UI, nav, or caption text</li>
+          <li style="border-color:rgba(246,243,238,.15);">Fabricate metrics, review counts, or "AI transformation" results</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use hard offset block shadows — soft pine-tinted depth only</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use any color outside the locked palette</li>
+          <li style="border-color:rgba(246,243,238,.15);">Use Title Case for any heading</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 12. Design tokens ──────────────────────────────────────── -->
+<section class="bg-paper-deep">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">12 — Design tokens</span>
+      <h2>Copy-paste ready</h2>
+      <p>Use these in every implementation. Token names are canonical — use them exactly as written across all files.</p>
+    </div>
+
+    <div class="token-section">
+      <h3>CSS custom properties</h3>
+      <pre>:root {
+  /* Color */
+  --paper:       #F6F3EE;
+  --paper-deep:  #EFEAE1;
+  --pine-wash:   #E8EFEC;
+  --core:        #FBFAF7;
+  --ink:         #171717;
+  --ink-soft:    #4E4E4E;
+  --ink-faint:   #857F75;
+  --pine:        #1E3A34;
+  --pine-soft:   #2E5148;
+  --terra:       #C06A45;
+  --terra-deep:  #9F4F33;
+  --terra-light: #E7A282;
+  --hair:        rgba(23,23,23,.10);
+
+  /* Shadows */
+  --lift:    0 1px 2px rgba(30,58,52,.04), 0 18px 40px -22px rgba(30,58,52,.30);
+  --lift-lg: 0 2px 4px rgba(30,58,52,.05), 0 44px 80px -36px rgba(30,58,52,.40);
+  --inner-hi: inset 0 1px 1px rgba(255,255,255,.70);
+
+  /* Radius */
+  --r-card:    1.75rem;
+  --r-inner:   calc(1.75rem - 10px);
+  --r-pill:    999px;
+  --r-input:   0.625rem;
+  --r-portrait: 1.25rem;
+
+  /* Motion */
+  --ease:      cubic-bezier(.32,.72,0,1);
+  --ease-soft: cubic-bezier(.22,1,.36,1);
+  --dur-fast:  150ms;
+  --dur-base:  300ms;
+  --dur-slow:  600ms;
+
+  /* Typography */
+  --font-sans:  'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+
+  /* Layout */
+  --max-w:      1200px;
+  --section-py: 120px;
+  --text-col:   680px;
+}</pre>
+    </div>
+
+    <div class="token-section">
+      <h3>Font import</h3>
+      <pre>&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet"&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ── 13. Implementation notes ──────────────────────────────── -->
+<section class="bg-paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">13 — Implementation notes</span>
+      <h2>What must be preserved. What can flex.</h2>
+    </div>
+
+    <div class="grid-2" style="gap:2rem;">
+      <div>
+        <h3 style="margin-bottom:1rem;">Must preserve exactly</h3>
+        <ul class="impl-list">
+          <li>Token names and hex values — reference via CSS custom property, never hardcoded hex</li>
+          <li>Double-shell card structure — outer shell + inner core + inset highlight, in that order</li>
+          <li>Island button — pill wrapper, inner icon wrapper, magnetic hover</li>
+          <li>Section background sequence — never two adjacent sections the same shade</li>
+          <li>Reduced-motion guard on every animation</li>
+          <li>Sentence case on all headings</li>
+          <li>Cormorant Garamond italic at display size only — one fragment per section</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem;">Accessibility</h3>
+        <ul class="impl-list">
+          <li>All interactive elements: <code>:focus-visible</code> ring using <code>--pine</code></li>
+          <li>Color never the only information carrier — pair with shape, weight, or label</li>
+          <li>All images: descriptive alt text. Portrait: "Thao Phuong, founder of TechPersona Studio"</li>
+          <li>Form labels: visible, never placeholder-only</li>
+          <li>Reduced motion: required on all animations</li>
+          <li>Minimum tap target: 44×44px on all buttons</li>
+          <li>Body contrast (--ink on --paper): ~14:1 — passes AAA</li>
+        </ul>
+        <h3 style="margin-top:1.5rem;margin-bottom:1rem;">Future agents must never improvise</h3>
+        <ul class="rule-list dont-list">
+          <li>A second accent color</li>
+          <li>A new typeface</li>
+          <li>Gradient or glassmorphism on any surface</li>
+          <li>Plural voice in copy</li>
+          <li>Hard offset block shadows</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────────────── -->
+<footer style="background:var(--paper-deep);padding:2.5rem 0;border-top:1px solid var(--hair);">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div style="font-weight:700;color:var(--ink);font-size:.9375rem;margin-bottom:.25rem;">TechPersona Studio</div>
+      <div style="font-size:.8125rem;color:var(--ink-faint);">Branding Visual Guide · v1.0 · 2026-06-24</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:.8125rem;color:var(--ink-faint);">Prepared by Thao Phuong</div>
+      <div style="font-size:.8125rem;color:var(--ink-faint);">info@techpersonastudio.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
