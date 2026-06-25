@@ -103,24 +103,34 @@
   <nav class="nav" aria-label="Main navigation">
     <a href="#top" class="logo">TechPersona <span class="mark">Studio</span></a>
     <div class="nav-links">
-      <a href="#services">What I build</a>
-      <a href="#work">Real work</a>
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
+      <a href="#services" data-i18n="nav_build">What I build</a>
+      <a href="#work" data-i18n="nav_proof">Real work</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </div>
-    <a href="#audit" class="island sm nav-cta">Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span></a>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+      <span class="lang-opt" id="langVI">VI</span>
+      <span class="lang-sep">|</span>
+      <span class="lang-opt" id="langEN">EN</span>
+    </button>
+    <a href="#audit" class="island sm nav-cta" data-i18n-html="nav_cta">Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span></a>
     <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
       <span class="bl"></span><span class="bl"></span>
     </button>
   </nav>
 </div>
 <div class="nav-overlay" id="navOverlay" aria-hidden="true">
-  <a href="#services" class="ov-link">What I build</a>
-  <a href="#work" class="ov-link">Real work</a>
-  <a href="#about" class="ov-link">About</a>
-  <a href="#faq" class="ov-link">FAQ</a>
+  <button class="lang-toggle lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">
+    <span class="lang-opt" id="langVI-m">VI</span>
+    <span class="lang-sep">|</span>
+    <span class="lang-opt" id="langEN-m">EN</span>
+  </button>
+  <a href="#services" class="ov-link" data-i18n="nav_build">What I build</a>
+  <a href="#work" class="ov-link" data-i18n="nav_proof">Real work</a>
+  <a href="#about" class="ov-link" data-i18n="nav_about">About</a>
+  <a href="#faq" class="ov-link" data-i18n="nav_faq">FAQ</a>
   <div class="ov-foot">
-    <a href="#audit" class="island">Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span></a>
+    <a href="#audit" class="island" data-i18n-html="nav_cta">Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span></a>
     <a href="tel:+18578002667" class="ov-tel">+1 857 800 2667</a>
   </div>
 </div>
@@ -129,14 +139,14 @@
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow" data-reveal><span class="dot"></span> Website redesign &middot; Worcester, MA and beyond</span>
-      <h1 data-reveal data-d="1">I build the website that wins the customer <span class="serif-i">before</span> they call the next name.</h1>
-      <p class="sub" data-reveal data-d="2">Service businesses lose leads every day because their site can't be found and no one answers fast enough. I fix both, from Worcester, MA to wherever you run your business. One person on your project, start to finish.</p>
+      <span class="eyebrow" data-reveal><span class="dot"></span> <span data-i18n="hero_eyebrow">Website redesign &middot; Worcester, MA and beyond</span></span>
+      <h1 data-reveal data-d="1" data-i18n-html="hero_h1">I build the website that wins the customer <span class="serif-i">before</span> they call the next name.</h1>
+      <p class="sub" data-reveal data-d="2" data-i18n="hero_sub">Service businesses lose leads every day because their site can't be found and no one answers fast enough. I fix both, from Worcester, MA to wherever you run your business. One person on your project, start to finish.</p>
       <div class="hero-actions" data-reveal data-d="3">
-        <a href="#audit" class="island lg">Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span></a>
-        <a href="#services" class="ghost">See what I build <span class="a" aria-hidden="true">&#8594;</span></a>
+        <a href="#audit" class="island lg" data-i18n-html="hero_cta_primary">Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span></a>
+        <a href="#services" class="ghost" data-i18n-html="hero_cta_secondary">See what I build <span class="a" aria-hidden="true">&#8594;</span></a>
       </div>
-      <div class="trust-line" data-reveal data-d="4"><span class="tick">&#10003;</span> Free &middot; no commitment &middot; yours to keep</div>
+      <div class="trust-line" data-reveal data-d="4"><span class="tick">&#10003;</span> <span data-i18n="hero_trust">Free &middot; no commitment &middot; yours to keep</span></div>
     </div>
     <div class="hero-visual" data-reveal data-d="2">
       <div class="portrait-shell">
@@ -145,9 +155,9 @@
         </div>
       </div>
       <div class="proof-chip" aria-hidden="true">
-        <div class="pc-row"><span class="pc-ico">&#9993;</span> New inquiry &middot; 9:48 pm</div>
-        <div class="pc-reply"><span>&#10003;</span> Replied in 2 min</div>
-        <div class="pc-label">Illustrative example</div>
+        <div class="pc-row"><span class="pc-ico">&#9993;</span> <span data-i18n="hero_chip_inquiry">New inquiry</span> &middot; 9:48 pm</div>
+        <div class="pc-reply"><span>&#10003;</span> <span data-i18n="hero_chip_replied">Replied in 2 min</span></div>
+        <div class="pc-label" data-i18n="hero_chip_label">Illustrative example</div>
       </div>
     </div>
   </div>
@@ -157,19 +167,19 @@
 <section class="sec band-deep problem" id="problem">
   <div class="wrap">
     <div class="text-col" data-reveal>
-      <h2>Most owners lose the customer before anyone ever talks to them.</h2>
-      <p class="p-body">The loss is invisible. There's no missed-call alert for a form that went unanswered. No notification for the person who found a competitor instead. You never even knew they were there.</p>
+      <h2 data-i18n="leak_h2">Most owners lose the customer before anyone ever talks to them.</h2>
+      <p class="p-body" data-i18n="leak_body">The loss is invisible. There's no missed-call alert for a form that went unanswered. No notification for the person who found a competitor instead. You never even knew they were there.</p>
       <ul class="scenarios">
-        <li><b>A call comes in while you're slammed.</b> Nobody picks up, so they call the next name on the list.</li>
-        <li><b>An inquiry lands after hours</b> and sits until morning. By then they've booked someone else.</li>
-        <li><b>Someone searches your service in your area</b> and finds a site that isn't yours.</li>
-        <li><b>Your site loads slow on a phone.</b> They leave in three seconds.</li>
+        <li data-i18n-html="leak_li1"><b>A call comes in while you're slammed.</b> Nobody picks up, so they call the next name on the list.</li>
+        <li data-i18n-html="leak_li2"><b>An inquiry lands after hours</b> and sits until morning. By then they've booked someone else.</li>
+        <li data-i18n-html="leak_li3"><b>Someone searches your service in your area</b> and finds a site that isn't yours.</li>
+        <li data-i18n-html="leak_li4"><b>Your site loads slow on a phone.</b> They leave in three seconds.</li>
       </ul>
       <div class="stat-call">
         <div class="big">21&#215;</div>
         <div class="copy">
-          <div class="txt">more likely to win a lead when you answer within 5 minutes instead of 30.</div>
-          <div class="src">Source: InsideSales Lead Response Management Study (15,000+ leads)</div>
+          <div class="txt" data-i18n="leak_stat_copy">more likely to win a lead when you answer within 5 minutes instead of 30.</div>
+          <div class="src" data-i18n="leak_stat_src">Source: InsideSales Lead Response Management Study (15,000+ leads)</div>
         </div>
       </div>
     </div>
@@ -180,41 +190,41 @@
 <section class="sec band-wash journey" id="how">
   <div class="wrap">
     <div class="jhead" data-reveal>
-      <h2>One stranger, carried all the way to a loyal customer.</h2>
-      <p class="lead" style="margin-top:1rem">Two things have to work together. The website gets you found. The system catches what the site can't.</p>
+      <h2 data-i18n="journey_h2">One stranger, carried all the way to a loyal customer.</h2>
+      <p class="lead" style="margin-top:1rem" data-i18n="journey_lead">Two things have to work together. The website gets you found. The system catches what the site can't.</p>
     </div>
     <div class="jflow" id="jflow" data-reveal>
       <div class="jline" aria-hidden="true"><div class="fill" id="jfill"></div></div>
       <div class="jnode" data-step="0.0">
         <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></div>
         <div class="jtext">
-          <span class="jstep">Step one</span>
-          <span class="jlbl">They find you</span>
-          <span class="jsub">A Google search or AI answer points to you, not a competitor.</span>
+          <span class="jstep" data-i18n="journey_step1">Step one</span>
+          <span class="jlbl" data-i18n="journey_lbl1">They find you</span>
+          <span class="jsub" data-i18n="journey_sub1">A Google search or AI answer points to you, not a competitor.</span>
         </div>
       </div>
       <div class="jnode" data-step="0.34">
         <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
         <div class="jtext">
-          <span class="jstep">Step two</span>
-          <span class="jlbl">They reach out</span>
-          <span class="jsub">At 8pm, on their phone, between two other tabs.</span>
+          <span class="jstep" data-i18n="journey_step2">Step two</span>
+          <span class="jlbl" data-i18n="journey_lbl2">They reach out</span>
+          <span class="jsub" data-i18n="journey_sub2">At 8pm, on their phone, between two other tabs.</span>
         </div>
       </div>
       <div class="jnode" data-step="0.67">
         <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H13l0-8z"/></svg></div>
         <div class="jtext">
-          <span class="jstep">Step three</span>
-          <span class="jlbl">They hear back fast</span>
-          <span class="jsub">An answer lands right away, day, night, or mid-rush.</span>
+          <span class="jstep" data-i18n="journey_step3">Step three</span>
+          <span class="jlbl" data-i18n="journey_lbl3">They hear back fast</span>
+          <span class="jsub" data-i18n="journey_sub3">An answer lands right away, day, night, or mid-rush.</span>
         </div>
       </div>
       <div class="jnode" data-step="1.0">
         <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4M8.5 14l2.5 2.5 4.5-5"/></svg></div>
         <div class="jtext">
-          <span class="jstep">The payoff</span>
-          <span class="jlbl">They book and show up</span>
-          <span class="jsub">Before they call the next name on the list.</span>
+          <span class="jstep" data-i18n="journey_step4">The payoff</span>
+          <span class="jlbl" data-i18n="journey_lbl4">They book and show up</span>
+          <span class="jsub" data-i18n="journey_sub4">Before they call the next name on the list.</span>
         </div>
       </div>
     </div>
@@ -225,39 +235,39 @@
 <section class="sec" id="services">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot"></span> What I build</span>
-      <h2>Two halves of one path. <span class="serif-i">Take the one you need.</span></h2>
-      <p class="lead">One gets you found and trusted. The other makes sure no one slips through once they reach out. Start with whichever your biggest leak calls for, or do both.</p>
+      <span class="eyebrow"><span class="dot"></span> <span data-i18n="build_eyebrow">What I build</span></span>
+      <h2 data-i18n-html="build_h2">Two halves of one path. <span class="serif-i">Take the one you need.</span></h2>
+      <p class="lead" data-i18n="build_lead">One gets you found and trusted. The other makes sure no one slips through once they reach out. Start with whichever your biggest leak calls for, or do both.</p>
     </div>
     <div class="bento">
       <article class="shell" data-reveal data-d="1">
         <div class="core-card">
-          <span class="num">Service 01</span>
-          <h3>Website redesign</h3>
-          <p>A site that gets found in search and turns visitors into customers. Built for service businesses that are behind on tech and losing leads because of it.</p>
-          <div class="scenario-box">You search your own business and find a site that's slow, buried on Google, and gives customers no way to book. <b>That's what I fix.</b></div>
+          <span class="num" data-i18n="build_01_num">Service 01</span>
+          <h3 data-i18n="build_01_h3">Website redesign</h3>
+          <p data-i18n="build_01_body">A site that gets found in search and turns visitors into customers. Built for service businesses that are behind on tech and losing leads because of it.</p>
+          <div class="scenario-box" data-i18n-html="build_01_scenario">You search your own business and find a site that's slow, buried on Google, and gives customers no way to book. <b>That's what I fix.</b></div>
           <ul class="flist">
-            <li><span class="ck">&#10003;</span> Looks like you, earns trust in the first five seconds</li>
-            <li><span class="ck">&#10003;</span> Ranks where people search now, including AI answers</li>
-            <li><span class="ck">&#10003;</span> Every page nudges toward one next step: book, call, or order</li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li1">Looks like you, earns trust in the first five seconds</span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li2">Ranks where people search now, including AI answers</span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li3">Every page nudges toward one next step: book, call, or order</span></li>
           </ul>
-          <span class="tag">One-time build, scoped before you commit</span>
-          <a href="#audit" class="ghost">See what's included <span class="a" aria-hidden="true">&#8594;</span></a>
+          <span class="tag" data-i18n="build_01_tag">One-time build, scoped before you commit</span>
+          <a href="#audit" class="ghost" data-i18n-html="build_included">See what's included <span class="a" aria-hidden="true">&#8594;</span></a>
         </div>
       </article>
       <article class="shell" data-reveal data-d="2">
         <div class="core-card">
-          <span class="num">Service 02</span>
-          <h3>Quiet systems</h3>
-          <p>The lead-catching that runs while you work. Missed calls and after-hours messages get an instant, friendly reply and reach the right person.</p>
-          <div class="scenario-box">A new inquiry comes in at 11pm. <b>Your system texts back in under 2 minutes</b> with a booking link. You wake up to a scheduled call.</div>
+          <span class="num" data-i18n="build_02_num">Service 02</span>
+          <h3 data-i18n="build_02_h3">Quiet systems</h3>
+          <p data-i18n="build_02_body">The lead-catching that runs while you work. Missed calls and after-hours messages get an instant, friendly reply and reach the right person.</p>
+          <div class="scenario-box" data-i18n-html="build_02_scenario">A new inquiry comes in at 11pm. <b>Your system texts back in under 2 minutes</b> with a booking link. You wake up to a scheduled call.</div>
           <ul class="flist">
-            <li><span class="ck">&#10003;</span> Nothing for you to learn or log into</li>
-            <li><span class="ck">&#10003;</span> Runs quietly in the background</li>
-            <li><span class="ck">&#10003;</span> Add it to any site, mine or yours</li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_02_li1">Nothing for you to learn or log into</span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_02_li2">Runs quietly in the background</span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_02_li3">Add it to any site, mine or yours</span></li>
           </ul>
-          <span class="tag">Add-on or standalone</span>
-          <a href="#audit" class="ghost">See what's included <span class="a" aria-hidden="true">&#8594;</span></a>
+          <span class="tag" data-i18n="build_02_tag">Add-on or standalone</span>
+          <a href="#audit" class="ghost" data-i18n-html="build_included">See what's included <span class="a" aria-hidden="true">&#8594;</span></a>
         </div>
       </article>
     </div>
@@ -268,53 +278,53 @@
 <section class="sec band-deep" id="work">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <h2>Qu&#225;n Ph&#7903;, rebuilt.</h2>
-      <p class="lead">A restaurant in Saugus, MA. Same business, completely different first impression. Here's what changed.</p>
+      <h2 data-i18n="proof_h2">Qu&#225;n Ph&#7903;, rebuilt.</h2>
+      <p class="lead" data-i18n="proof_lead">A restaurant in Saugus, MA. Same business, completely different first impression. Here's what changed.</p>
     </div>
 
     <div class="before-after" data-reveal data-d="1">
       <div class="ba-head">
-        <h3>Qu&#225;n Ph&#7903;, rebuilt</h3>
-        <p>Restaurant website redesign &middot; Saugus, MA</p>
+        <h3 data-i18n="proof_ba_head">Qu&#225;n Ph&#7903;, rebuilt</h3>
+        <p data-i18n="proof_ba_sub">Restaurant website redesign &middot; Saugus, MA</p>
       </div>
       <div class="ba-grid">
         <div class="ba-col before">
-          <span class="ba-label">Before</span>
+          <span class="ba-label" data-i18n="proof_label_before">Before</span>
           <div class="ba-media">
             <div class="scroll-shot" data-scroll>
               <img src="assets/old-quanphoinsaugus.com_.png" alt="Qu&#225;n Ph&#7903; original website, before the redesign" loading="lazy">
             </div>
           </div>
           <ul class="ba-list">
-            <li><span class="x">&#10005;</span> Generic template</li>
-            <li><span class="x">&#10005;</span> Walls of text</li>
-            <li><span class="x">&#10005;</span> Could be anyone's restaurant</li>
-            <li><span class="x">&#10005;</span> No clear next step</li>
-            <li><span class="x">&#10005;</span> Broken on mobile</li>
+            <li><span class="x">&#10005;</span> <span data-i18n="proof_before_li1">Generic template</span></li>
+            <li><span class="x">&#10005;</span> <span data-i18n="proof_before_li2">Walls of text</span></li>
+            <li><span class="x">&#10005;</span> <span data-i18n="proof_before_li3">Could be anyone's restaurant</span></li>
+            <li><span class="x">&#10005;</span> <span data-i18n="proof_before_li4">No clear next step</span></li>
+            <li><span class="x">&#10005;</span> <span data-i18n="proof_before_li5">Broken on mobile</span></li>
           </ul>
         </div>
         <div class="ba-col after">
-          <span class="ba-label">After</span>
+          <span class="ba-label" data-i18n="proof_label_after">After</span>
           <div class="ba-media">
             <video autoplay muted loop playsinline preload="metadata" aria-label="Qu&#225;n Ph&#7903; new website walkthrough">
               <source src="assets/new-quanpho.mp4" type="video/mp4">
             </video>
           </div>
           <ul class="ba-list">
-            <li><span class="ck">&#10003;</span> Walks a stranger straight to booking</li>
-            <li><span class="ck">&#10003;</span> Food and atmosphere speak for themselves</li>
-            <li><span class="ck">&#10003;</span> One obvious next step on every screen</li>
-            <li><span class="ck">&#10003;</span> Looks right on every device</li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="proof_after_li1">Walks a stranger straight to booking</span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="proof_after_li2">Food and atmosphere speak for themselves</span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="proof_after_li3">One obvious next step on every screen</span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="proof_after_li4">Looks right on every device</span></li>
           </ul>
-          <p class="honest-note">Rebuilt with permission. New site going live soon.</p>
+          <p class="honest-note" data-i18n="proof_honest_note">Rebuilt with permission. New site going live soon.</p>
         </div>
       </div>
     </div>
 
     <div class="cred-bar" data-reveal data-d="1">
-      <span>6 years of software engineering</span><span class="sep">&middot;</span>
-      <span>One person on your project</span><span class="sep">&middot;</span>
-      <span>Audit delivered in 2 days</span>
+      <span data-i18n="proof_cred1">6 years of software engineering</span><span class="sep">&middot;</span>
+      <span data-i18n="proof_cred2">One person on your project</span><span class="sep">&middot;</span>
+      <span data-i18n="proof_cred3">Audit delivered in 2 days</span>
     </div>
 
     <div class="proof-lower" data-reveal data-d="2">
@@ -323,37 +333,37 @@
           <img class="fn-thumb" src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio">
           <div>
             <div class="fn-name">Thao Phuong</div>
-            <div class="fn-role">Founder, TechPersona Studio</div>
+            <div class="fn-role" data-i18n="proof_fn_role">Founder, TechPersona Studio</div>
           </div>
         </div>
-        <p class="fn-quote">I rebuilt Qu&#225;n Ph&#7903; myself, from the first audit to launch. Every site I build is a system I'd stake my name on. You reach me directly, every time. No account managers, no handoffs, no guessing where your project stands.</p>
+        <p class="fn-quote" data-i18n="proof_fn_quote">I rebuilt Qu&#225;n Ph&#7903; myself, from the first audit to launch. Every site I build is a system I'd stake my name on. You reach me directly, every time. No account managers, no handoffs, no guessing where your project stands.</p>
       </div>
       <div class="placeholder-card">
         <div class="pc-in">
-          <span class="pc-tag">Reviews in progress</span>
-          <p>First client reviews are on the way. See the before and after above, and I'll add named reviews here the moment they land.</p>
+          <span class="pc-tag" data-i18n="proof_reviews_tag">Reviews in progress</span>
+          <p data-i18n="proof_reviews_body">First client reviews are on the way. See the before and after above, and I'll add named reviews here the moment they land.</p>
         </div>
       </div>
     </div>
 
-    <p class="samples-head" data-reveal>Sample builds</p>
+    <p class="samples-head" data-reveal data-i18n="proof_samples_head">Sample builds</p>
     <div class="sample-grid" data-reveal data-d="1">
       <div class="sample-frame">
         <video autoplay muted loop playsinline preload="metadata" aria-label="Real estate website sample build">
           <source src="assets/demo-realestate-wordpress.mp4" type="video/mp4">
         </video>
-        <span class="s-lbl">Real estate</span>
+        <span class="s-lbl" data-i18n="proof_sample1">Real estate</span>
       </div>
       <div class="sample-frame">
         <video autoplay muted loop playsinline preload="metadata" aria-label="E-commerce website sample build">
           <source src="assets/demo-ecommerce-wordpress.mp4" type="video/mp4">
         </video>
-        <span class="s-lbl">E-commerce</span>
+        <span class="s-lbl" data-i18n="proof_sample2">E-commerce</span>
       </div>
     </div>
 
     <div class="proof-cta" data-reveal>
-      <a href="#audit" class="ghost">Want this for your business? <span class="a" aria-hidden="true">&#8594;</span></a>
+      <a href="#audit" class="ghost" data-i18n-html="proof_cta">Want this for your business? <span class="a" aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -362,32 +372,32 @@
 <section class="sec band-pine" id="process">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <h2>You'll barely lift a finger.</h2>
-      <p class="lead">Most of the work is mine. Your part fits in a few short conversations, and the first two steps are free.</p>
+      <h2 data-i18n="process_h2">You'll barely lift a finger.</h2>
+      <p class="lead" data-i18n="process_lead">Most of the work is mine. Your part fits in a few short conversations, and the first two steps are free.</p>
     </div>
     <div class="proc-steps">
       <div class="proc" data-reveal data-d="1">
         <span class="n">1</span>
-        <h3>Free audit</h3>
-        <p>Send me your URL. I send back a short walkthrough and the top things costing you customers.</p>
-        <span class="free-tag">Free</span>
+        <h3 data-i18n="process_01_h3">Free audit</h3>
+        <p data-i18n="process_01_body">Send me your URL. I send back a short walkthrough and the top things costing you customers.</p>
+        <span class="free-tag" data-i18n="process_free_tag">Free</span>
       </div>
       <div class="proc" data-reveal data-d="2">
         <span class="n">2</span>
-        <h3>Scope and price</h3>
-        <p>On a short call we find your single biggest leak and the one fix that pays back fastest. You see the full scope and price before you commit.</p>
-        <span class="free-tag">Free</span>
+        <h3 data-i18n="process_02_h3">Scope and price</h3>
+        <p data-i18n="process_02_body">On a short call we find your single biggest leak and the one fix that pays back fastest. You see the full scope and price before you commit.</p>
+        <span class="free-tag" data-i18n="process_free_tag">Free</span>
       </div>
       <div class="proc" data-reveal data-d="3">
         <span class="n">3</span>
-        <h3>I build it</h3>
-        <p>Whichever piece your leak calls for, site, systems, or both, built to your brand. I prove every piece works, then refine it for 30 days.</p>
-        <span class="free-tag">Scoped, no surprises</span>
+        <h3 data-i18n="process_03_h3">I build it</h3>
+        <p data-i18n="process_03_body">Whichever piece your leak calls for, site, systems, or both, built to your brand. I prove every piece works, then refine it for 30 days.</p>
+        <span class="free-tag" data-i18n="process_03_tag">Scoped, no surprises</span>
       </div>
     </div>
     <div class="proc-foot">
-      <p class="proc-free"><b>Steps 1 and 2 are free, and the audit is yours to keep.</b> Nothing owed, nothing to cancel.</p>
-      <a href="#audit" class="ghost">See what the audit covers <span class="a" aria-hidden="true">&#8594;</span></a>
+      <p class="proc-free" data-i18n-html="process_foot"><b>Steps 1 and 2 are free, and the audit is yours to keep.</b> Nothing owed, nothing to cancel.</p>
+      <a href="#audit" class="ghost" data-i18n-html="process_foot_cta">See what the audit covers <span class="a" aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -403,16 +413,16 @@
       </div>
       <div class="about-id">
         <span class="fn">Thao Phuong</span>
-        <span class="fr">Founder, TechPersona Studio &middot; Worcester, MA</span>
+        <span class="fr" data-i18n="about_role">Founder, TechPersona Studio &middot; Worcester, MA</span>
       </div>
     </div>
     <div class="about-copy" data-reveal data-d="1">
-      <span class="eyebrow"><span class="dot"></span> Who's in your corner</span>
-      <h2>I'm Thao Phuong. One person on your project, start to finish.</h2>
-      <p class="a-quote">I don't just hand you a website. I learn your business, find what's costing you customers, and stay with you after launch.</p>
-      <p>I spent 6 years writing software for big tech companies in Boston, MA. I started TechPersona Studio to put that same engineering to work for small businesses, the ones that get overlooked and left to fall behind on tech. My mission is simple: give you the speed and tools the big players have, so you can catch up and win.</p>
-      <p>I work with service businesses that are losing leads because of it. Restaurants, nail salons, plumbers, realtors. If you're running a real business and your website isn't helping you win customers, I want to hear about it.</p>
-      <a href="#services" class="ghost">See what I build <span class="a" aria-hidden="true">&#8594;</span></a>
+      <span class="eyebrow"><span class="dot"></span> <span data-i18n="about_eyebrow">Who's in your corner</span></span>
+      <h2 data-i18n="about_h2">I'm Thao Phuong. One person on your project, start to finish.</h2>
+      <p class="a-quote" data-i18n="about_quote">I don't just hand you a website. I learn your business, find what's costing you customers, and stay with you after launch.</p>
+      <p data-i18n="about_p1">I spent 6 years writing software for big tech companies in Boston, MA. I started TechPersona Studio to put that same engineering to work for small businesses, the ones that get overlooked and left to fall behind on tech. My mission is simple: give you the speed and tools the big players have, so you can catch up and win.</p>
+      <p data-i18n="about_p2">I work with service businesses that are losing leads because of it. Restaurants, nail salons, plumbers, realtors. If you're running a real business and your website isn't helping you win customers, I want to hear about it.</p>
+      <a href="#services" class="ghost" data-i18n-html="hero_cta_secondary">See what I build <span class="a" aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -421,37 +431,37 @@
 <section class="sec band-deep" id="faq">
   <div class="wrap faq-wrap">
     <div class="sec-head" data-reveal style="margin-bottom:.5rem">
-      <h2>The questions you're already thinking.</h2>
+      <h2 data-i18n="faq_h2">The questions you're already thinking.</h2>
     </div>
     <div class="faq-list" data-reveal data-d="1">
       <div class="faq-item open">
-        <button class="faq-q" aria-expanded="true">What does the free audit include? <span class="pm" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>I review your current website and send back a short walkthrough within about 2 days. It covers what's costing you leads, what needs to change, and exactly what I'd fix first. You keep it regardless of what you decide next.</p></div>
+        <button class="faq-q" aria-expanded="true"><span data-i18n="faq_q1">What does the free audit include?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a1">I review your current website and send back a short walkthrough within about 2 days. It covers what's costing you leads, what needs to change, and exactly what I'd fix first. You keep it regardless of what you decide next.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Can I trust a solo operator to actually deliver? <span class="pm" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>You reach me directly, every time. But I'm not working alone. Behind me is a team of AI agents I built and trained myself, each one tested until it earned a place on your project. They handle the repetitive work around the clock, so you get the speed of a whole team with the accountability of one person whose name is on it. Six years of engineering sits behind every build.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q2">Can I trust a solo operator to actually deliver?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a2">You reach me directly, every time. But I'm not working alone. Behind me is a team of AI agents I built and trained myself, each one tested until it earned a place on your project. They handle the repetitive work around the clock, so you get the speed of a whole team with the accountability of one person whose name is on it. Six years of engineering sits behind every build.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">What does it cost if I want you to build it? <span class="pm" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>We scope it together after the audit, so you see the full price before you commit to anything. Most first projects are one-time, not a monthly retainer. You get a number on the call, no surprises.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q3">What does it cost if I want you to build it?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a3">We scope it together after the audit, so you see the full price before you commit to anything. Most first projects are one-time, not a monthly retainer. You get a number on the call, no surprises.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Do I have to rebuild everything? <span class="pm" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>No. Most of the time the right move is fixing what you already have. If a piece works, we keep it. If it leaks, we replace it. You won't pay for a teardown you don't need.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q4">Do I have to rebuild everything?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a4">No. Most of the time the right move is fixing what you already have. If a piece works, we keep it. If it leaks, we replace it. You won't pay for a teardown you don't need.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Can't I just use Squarespace or Wix myself? <span class="pm" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>You can. But a template can't study your market for you. I research your business and your competitors so your site is built to put you ahead, not just match what everyone else in town already has. Template builders also rarely get you found in local search, and they don't catch leads that come in after hours. If you need a digital brochure, a template is fine. If you're losing leads because people can't find you or can't reach you fast enough, that's a different problem.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q5">Can't I just use Squarespace or Wix myself?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a5">You can. But a template can't study your market for you. I research your business and your competitors so your site is built to put you ahead, not just match what everyone else in town already has. Template builders also rarely get you found in local search, and they don't catch leads that come in after hours. If you need a digital brochure, a template is fine. If you're losing leads because people can't find you or can't reach you fast enough, that's a different problem.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">How long does it take? <span class="pm" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>A website audit comes back in about 2 business days. Most website builds run 2 to 4 weeks from scoping call to launch. A Quiet System adds 1 to 2 weeks. You get a specific timeline on the call, not a vague estimate.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q6">How long does it take?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a6">A website audit comes back in about 2 business days. Most website builds run 2 to 4 weeks from scoping call to launch. A Quiet System adds 1 to 2 weeks. You get a specific timeline on the call, not a vague estimate.</p></div>
       </div>
     </div>
     <div class="faq-end" data-reveal data-d="1">
-      <p>Still unsure? Send me your URL. The audit is free and there's no commitment.</p>
-      <a href="#audit" class="ghost">Send me your URL <span class="a" aria-hidden="true">&#8594;</span></a>
+      <p data-i18n="faq_end">Still unsure? Send me your URL. The audit is free and there's no commitment.</p>
+      <a href="#audit" class="ghost" data-i18n-html="faq_end_cta">Send me your URL <span class="a" aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>
@@ -459,9 +469,9 @@
 <!-- 9. CLOSING CTA -->
 <section class="closing" id="cta">
   <div class="wrap" data-reveal>
-    <h2>Stop losing customers <span class="serif-i">you'll never know you lost.</span></h2>
-    <a href="#audit" class="island terra lg" id="closingCta">Send me your URL <span class="ic" aria-hidden="true">&#8594;</span></a>
-    <p class="micro">Free &middot; No commitment &middot; Audit in 2 days</p>
+    <h2 data-i18n-html="cta_h2">Stop losing customers <span class="serif-i">you'll never know you lost.</span></h2>
+    <a href="#audit" class="island terra lg" id="closingCta" data-i18n-html="cta_btn">Send me your URL <span class="ic" aria-hidden="true">&#8594;</span></a>
+    <p class="micro" data-i18n="cta_micro">Free &middot; No commitment &middot; Audit in 2 days</p>
   </div>
 </section>
 
@@ -469,64 +479,64 @@
 <section class="sec audit" id="audit">
   <div class="wrap offer-grid">
     <div class="offer-copy" data-reveal>
-      <span class="eyebrow"><span class="dot"></span> The free audit</span>
-      <h2>See exactly where you're losing customers.</h2>
-      <p class="o-sub">Send me your URL. I'll review your site and send back a short walkthrough within about 2 business days. No commitment, yours to keep.</p>
+      <span class="eyebrow"><span class="dot"></span> <span data-i18n="offer_eyebrow">The free audit</span></span>
+      <h2 data-i18n="offer_h2">See exactly where you're losing customers.</h2>
+      <p class="o-sub" data-i18n="offer_sub">Send me your URL. I'll review your site and send back a short walkthrough within about 2 business days. No commitment, yours to keep.</p>
       <ul class="offer-list">
-        <li><span class="ck">&#10003;</span> Why your site isn't ranking in local search</li>
-        <li><span class="ck">&#10003;</span> Where leads are dropping off before they reach you</li>
-        <li><span class="ck">&#10003;</span> How fast your site loads on a phone</li>
-        <li><span class="ck">&#10003;</span> What I'd fix first and roughly what it would cost</li>
-        <li><span class="ck">&#10003;</span> Whether a Quiet System would catch what you're missing</li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li1">Why your site isn't ranking in local search</span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li2">Where leads are dropping off before they reach you</span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li3">How fast your site loads on a phone</span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li4">What I'd fix first and roughly what it would cost</span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li5">Whether a Quiet System would catch what you're missing</span></li>
       </ul>
-      <p class="after-line"><b>What happens next:</b> your audit lands in your inbox within 2 days. If you want, a short discovery call finds your single biggest fix. No charge, no pressure.</p>
-      <p class="contact-inline">Prefer to reach out directly? <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a> or <a href="tel:+18578002667">+1 857 800 2667</a>.</p>
+      <p class="after-line" data-i18n-html="offer_after"><b>What happens next:</b> your audit lands in your inbox within 2 days. If you want, a short discovery call finds your single biggest fix. No charge, no pressure.</p>
+      <p class="contact-inline" data-i18n-html="offer_contact">Prefer to reach out directly? <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a> or <a href="tel:+18578002667">+1 857 800 2667</a>.</p>
     </div>
 
     <div class="form-shell" data-reveal data-d="1">
       <div class="form-card" id="formCard">
         <div class="form-body">
-          <h3>Get your free website audit</h3>
-          <p class="f-sub">Just your website. No call required to get started.</p>
+          <h3 data-i18n="form_h3">Get your free website audit</h3>
+          <p class="f-sub" data-i18n="form_sub">Just your website. No call required to get started.</p>
           <form id="auditForm" novalidate>
             <div class="field" id="f-name">
-              <label for="name">Your name</label>
+              <label for="name" data-i18n="form_label_name">Your name</label>
               <input id="name" name="name" type="text" placeholder="Jordan Avery" required>
-              <span class="err-msg">Please enter your name.</span>
+              <span class="err-msg" data-i18n="form_err_name">Please enter your name.</span>
             </div>
             <div class="field" id="f-email">
-              <label for="email">Email</label>
+              <label for="email" data-i18n="form_label_email">Email</label>
               <input id="email" name="email" type="email" placeholder="jordan@yourbusiness.com" required>
-              <span class="err-msg">Please enter a valid email address.</span>
+              <span class="err-msg" data-i18n="form_err_email">Please enter a valid email address.</span>
             </div>
             <div class="field" id="f-site">
-              <label for="site">Your website</label>
+              <label for="site" data-i18n="form_label_site">Your website</label>
               <input id="site" name="site" type="url" placeholder="https://yourbusiness.com" required>
-              <span class="err-msg">Please enter a valid URL, like https://yourbusiness.com</span>
+              <span class="err-msg" data-i18n="form_err_site">Please enter a valid URL, like https://yourbusiness.com</span>
             </div>
             <div class="field" id="f-phone">
-              <label for="phone">Phone number <span class="opt" id="phoneOpt">(optional)</span></label>
+              <label for="phone"><span data-i18n="form_label_phone">Phone number</span> <span class="opt" id="phoneOpt" data-i18n="form_opt">(optional)</span></label>
               <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000">
-              <span class="err-msg">Add your phone number so I can text you, or uncheck the box below.</span>
+              <span class="err-msg" data-i18n="form_err_phone">Add your phone number so I can text you, or uncheck the box below.</span>
             </div>
             <div class="field">
-              <label for="problems">Tell me about your problems <span class="opt">(optional)</span></label>
-              <textarea id="problems" name="problems" placeholder="What's not working? What are you trying to fix? Even a messy first thought is fine."></textarea>
+              <label for="problems"><span data-i18n="form_label_problems">Tell me about your problems</span> <span class="opt" data-i18n="form_opt">(optional)</span></label>
+              <textarea id="problems" name="problems" data-i18n-placeholder="form_placeholder_problems" placeholder="What's not working? What are you trying to fix? Even a messy first thought is fine."></textarea>
             </div>
             <div class="consent">
               <input type="hidden" id="smsOptInValue" name="smsOptIn" value="no">
               <input type="checkbox" id="smsOptIn" value="yes">
-              <label for="smsOptIn">I agree to receive conversational text messages from TechPersona Studio related to my inquiry, project updates, scheduling, reminders, and follow-up. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</label>
+              <label for="smsOptIn" data-i18n-html="form_consent">I agree to receive conversational text messages from TechPersona Studio related to my inquiry, project updates, scheduling, reminders, and follow-up. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</label>
             </div>
-            <button type="submit" class="island">Send my free audit <span class="ic" aria-hidden="true">&#8594;</span></button>
-            <div class="form-error" id="formError">Something went wrong. Please try again or email <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a> directly.</div>
-            <p class="form-fine">No spam. No sales call unless you want one.</p>
+            <button type="submit" class="island" data-i18n-html="form_submit">Send my free audit <span class="ic" aria-hidden="true">&#8594;</span></button>
+            <div class="form-error" id="formError" data-i18n-html="form_error">Something went wrong. Please try again or email <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a> directly.</div>
+            <p class="form-fine" data-i18n="form_fine">No spam. No sales call unless you want one.</p>
           </form>
         </div>
         <div class="form-success" id="formSuccess">
           <div class="success-ico" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <p class="big">Sent. I've got it.</p>
-          <p class="msg">Watch for an email from Thao with your audit: what's working and what's costing you new customers.</p>
+          <p class="big" data-i18n="form_success_big">Sent. I've got it.</p>
+          <p class="msg" data-i18n="form_success_msg">Watch for an email from Thao with your audit: what's working and what's costing you new customers.</p>
         </div>
       </div>
     </div>
@@ -539,36 +549,36 @@
     <div class="foot-main">
       <div class="foot-brand">
         <a href="#top" class="logo">TechPersona <span class="mark">Studio</span></a>
-        <p class="foot-tagline">Websites and quiet systems for service businesses.</p>
-        <p class="foot-meta">Worcester, MA &middot; serving clients online everywhere</p>
+        <p class="foot-tagline" data-i18n="footer_tagline">Websites and quiet systems for service businesses.</p>
+        <p class="foot-meta" data-i18n="footer_meta">Worcester, MA &middot; serving clients online everywhere</p>
       </div>
       <div class="foot-links">
         <div class="foot-col">
-          <span class="foot-label">Contact</span>
+          <span class="foot-label" data-i18n="footer_contact">Contact</span>
           <a href="tel:+18578002667">+1 857 800 2667</a>
           <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a>
         </div>
         <div class="foot-col">
-          <span class="foot-label">Legal</span>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
+          <span class="foot-label" data-i18n="footer_legal">Legal</span>
+          <a href="privacy-policy.html" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="terms.html" data-i18n="footer_terms">Terms of Service</a>
         </div>
       </div>
     </div>
-    <div class="foot-bottom">&#169; 2026 TechPersona Studio &middot; Built by Thao Phuong</div>
+    <div class="foot-bottom" data-i18n="footer_built">&#169; 2026 TechPersona Studio &middot; Built by Thao Phuong</div>
   </div>
 </footer>
 
 <!-- STICKY CALL (mobile only) -->
 <a href="tel:+18578002667" class="call-fab" id="callFab" aria-label="Call TechPersona Studio at +1 857 800 2667">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-  <span class="call-fab-label">Call</span>
+  <span class="call-fab-label" data-i18n="call_fab">Call</span>
 </a>
 
 <!-- COOKIE -->
 <div class="cookie" id="cookie" role="region" aria-label="Cookie notice">
-  <p>This site uses cookies for basic analytics. No personal data is sold or shared. <a href="privacy-policy.html">Privacy Policy</a></p>
-  <button id="cookieOk">Got it</button>
+  <p data-i18n-html="cookie_text">This site uses cookies for basic analytics. No personal data is sold or shared. <a href="privacy-policy.html">Privacy Policy</a></p>
+  <button id="cookieOk" data-i18n="cookie_ok">Got it</button>
 </div>
 
 <script src="index.js"></script>
