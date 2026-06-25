@@ -160,9 +160,11 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .proof-chip{
   position:absolute;left:-14px;bottom:34px;
   background:var(--core);border:1px solid var(--hair);border-radius:1.1rem;
-  padding:.8rem 1rem;box-shadow:var(--lift-lg);max-width:215px;
+  padding:.8rem 1rem;box-shadow:var(--lift-lg);width:max-content;max-width:260px;
 }
-.proof-chip .pc-row{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:.9rem}
+.proof-chip .pc-row{display:flex;align-items:center;gap:.5rem;font-weight:600;font-size:.9rem;white-space:nowrap}
+.proof-chip .pc-inquiry{color:var(--ink)}
+.proof-chip .pc-time{margin-left:auto;padding-left:.6rem;color:var(--ink-faint);font-weight:500;font-variant-numeric:tabular-nums}
 .proof-chip .pc-ico{width:1.7rem;height:1.7rem;border-radius:50%;background:var(--pine-wash);display:flex;align-items:center;justify-content:center;color:var(--pine);flex-shrink:0}
 .proof-chip .pc-reply{margin-top:.5rem;display:flex;align-items:center;gap:.4rem;color:var(--pine);font-weight:700;font-size:.92rem}
 .proof-chip .pc-label{margin-top:.45rem;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
@@ -402,6 +404,39 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .cookie p{font-size:.85rem;line-height:1.5;color:rgba(246,243,238,.88)}
 .cookie a{color:var(--terra-light);text-decoration:underline}
 .cookie button{flex-shrink:0;background:var(--paper);color:var(--pine);border:none;border-radius:var(--r-pill);padding:.55rem 1.1rem;font-weight:600;font-family:var(--font-sans);cursor:pointer;font-size:.85rem}
+
+/* ===========================================================
+   CUSTOM CURSOR (fine-pointer only)
+   =========================================================== */
+.cursor-dot,.cursor-ring{
+  position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
+  border-radius:50%;transform:translate(-50%,-50%);
+  opacity:0;will-change:transform,opacity;
+}
+.cursor-dot{
+  width:7px;height:7px;background:var(--terra);
+  transition:opacity var(--dur-base) var(--ease),background var(--dur-base) var(--ease);
+}
+.cursor-ring{
+  width:34px;height:34px;border:1.5px solid rgba(192,106,69,.55);
+  transition:width var(--dur-base) var(--ease-soft),height var(--dur-base) var(--ease-soft),
+             border-color var(--dur-base) var(--ease),background var(--dur-base) var(--ease),
+             opacity var(--dur-base) var(--ease);
+}
+.cursor-ready .cursor-dot,.cursor-ready .cursor-ring{opacity:1}
+/* grow + tint when hovering something clickable */
+.cursor-hot .cursor-ring{width:54px;height:54px;border-color:transparent;background:rgba(192,106,69,.12)}
+.cursor-hot .cursor-dot{background:var(--terra-deep)}
+/* press feedback */
+.cursor-press .cursor-ring{width:26px;height:26px;border-color:rgba(192,106,69,.8)}
+/* over dark pine bands, switch to warm light so the cursor stays visible */
+.cursor-on-dark .cursor-dot{background:var(--terra-light)}
+.cursor-on-dark .cursor-ring{border-color:rgba(231,162,130,.6)}
+.cursor-on-dark.cursor-hot .cursor-ring{background:rgba(231,162,130,.16);border-color:transparent}
+@media(hover:hover) and (pointer:fine){
+  .cursor-active,.cursor-active a,.cursor-active button,.cursor-active .island,
+  .cursor-active .ghost,.cursor-active input,.cursor-active textarea,.cursor-active .faq-q{cursor:none}
+}
 
 /* ===========================================================
    RESPONSIVE

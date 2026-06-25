@@ -658,4 +658,69 @@
       try{ localStorage.setItem('tp_cookie_ok','1'); }catch(e){}
     });
   }
+
+  /* Custom cursor: terra dot with a trailing ring. Fine-pointer + motion-OK only. */
+  (function(){
+    var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    if(reduce || !fine) return;
+
+    var dot = document.createElement('div'); dot.className = 'cursor-dot';
+    var ring = document.createElement('div'); ring.className = 'cursor-ring';
+    document.body.appendChild(dot); document.body.appendChild(ring);
+    document.documentElement.classList.add('cursor-active');
+
+    var mx = window.innerWidth/2, my = window.innerHeight/2;   // mouse target
+    var rx = mx, ry = my;                                       // ring (lagging)
+    var ready = false, rafId = null;
+
+    function loop(){
+      // dot tracks instantly; ring eases toward the dot for a soft trail
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      dot.style.transform  = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      rafId = requestAnimationFrame(loop);
+    }
+
+    document.addEventListener('mousemove', function(e){
+      mx = e.clientX; my = e.clientY;
+      if(!ready){
+        ready = true;
+        document.documentElement.classList.add('cursor-ready');
+        rx = mx; ry = my;
+        if(!rafId) rafId = requestAnimationFrame(loop);
+      }
+    }, {passive:true});
+
+    // hide when the pointer leaves the window, show again on return
+    document.addEventListener('mouseleave', function(){ document.documentElement.classList.remove('cursor-ready'); });
+    document.addEventListener('mouseenter', function(){ if(ready) document.documentElement.classList.add('cursor-ready'); });
+
+    // grow over interactive targets
+    var hot = 'a,button,input,textarea,label,.island,.ghost,.faq-q,.lang-toggle,[role="button"]';
+    document.addEventListener('mouseover', function(e){
+      if(e.target.closest && e.target.closest(hot)) document.documentElement.classList.add('cursor-hot');
+    });
+    document.addEventListener('mouseout', function(e){
+      if(e.target.closest && e.target.closest(hot)) document.documentElement.classList.remove('cursor-hot');
+    });
+
+    // press feedback
+    document.addEventListener('mousedown', function(){ document.documentElement.classList.add('cursor-press'); });
+    document.addEventListener('mouseup',   function(){ document.documentElement.classList.remove('cursor-press'); });
+
+    // switch palette over dark pine bands so the cursor stays visible
+    var darkZones = Array.prototype.slice.call(document.querySelectorAll('.band-pine,.closing'));
+    if(darkZones.length && 'IntersectionObserver' in window){
+      // rootMargin collapses the root to the viewport centerline, so a zone
+      // "intersects" exactly when it sits under the middle of the screen.
+      var litCount = 0;
+      var dObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ litCount += en.isIntersecting ? 1 : -1; });
+        if(litCount < 0) litCount = 0;
+        document.documentElement.classList.toggle('cursor-on-dark', litCount > 0);
+      }, {rootMargin:'-50% 0px -50% 0px'});
+      darkZones.forEach(function(z){ dObs.observe(z); });
+    }
+  })();
 })();
