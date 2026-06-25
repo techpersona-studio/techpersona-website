@@ -48,13 +48,13 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .text-col{max-width:var(--text-col)}
 
 .eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;
+  display:inline-flex;align-items:flex-start;gap:.5rem;
   font-size:.75rem;font-weight:600;letter-spacing:.20em;text-transform:uppercase;
   color:var(--pine);background:var(--pine-wash);
-  padding:.45rem .85rem;border-radius:var(--r-pill);
+  padding:.45rem .9rem;border-radius:.9rem;line-height:1.5;
 }
 .band-pine .eyebrow{color:var(--terra-light);background:rgba(246,243,238,.06);border:1px solid var(--hair-light)}
-.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--pine)}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--pine);flex-shrink:0;margin-top:.5em}
 .band-pine .eyebrow .dot{background:var(--terra-light)}
 
 .sec-head{max-width:780px}
@@ -472,6 +472,14 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
   .faq-end{flex-direction:column;align-items:flex-start}
   .proof-chip{left:8px}
   .cookie{flex-direction:column;align-items:flex-start}
+  /* center the hero CTAs on phones */
+  .hero-actions{flex-direction:column;align-items:center;gap:1rem}
+  .hero-actions .island.lg{width:100%;justify-content:center}
+  .trust-line{justify-content:center;text-align:center}
+  /* hero eyebrow: drop the dot + separator, push location to its own line */
+  .hero-eyebrow{display:block}
+  .hero-eyebrow .dot,.hero-eyebrow .eb-sep{display:none}
+  .hero-eyebrow .eb-loc{display:block}
 }
 
 @media(prefers-reduced-motion:reduce){

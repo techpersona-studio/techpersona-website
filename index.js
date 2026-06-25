@@ -10,7 +10,8 @@
       nav_faq: 'FAQ',
       nav_cta: 'Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span>',
 
-      hero_eyebrow: 'Website redesign &middot; Worcester, MA and beyond',
+      hero_eyebrow_main: 'Website redesign',
+      hero_eyebrow_loc: 'Worcester, MA and beyond',
       hero_h1: 'I build the website that wins the customer <span class="serif-i">before</span> they call the next name.',
       hero_sub: "Service businesses lose leads every day because their site can't be found and no one answers fast enough. I fix both, from Worcester, MA to wherever you run your business. One person on your project, start to finish.",
       hero_cta_primary: 'Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span>',
@@ -186,7 +187,8 @@
       nav_faq: 'Câu hỏi',
       nav_cta: 'Nhận đánh giá miễn phí <span class="ic" aria-hidden="true">&#8594;</span>',
 
-      hero_eyebrow: 'Thiết kế lại website &middot; Worcester, MA và các khu vực khác',
+      hero_eyebrow_main: 'Thiết kế lại website',
+      hero_eyebrow_loc: 'Worcester, MA và các khu vực khác',
       hero_h1: 'Tôi xây dựng website giúp khách hàng chọn bạn <span class="serif-i">trước khi</span> tìm đến đối thủ.',
       hero_sub: 'Mỗi ngày, nhiều doanh nghiệp dịch vụ đang mất khách vì website khó được tìm thấy và không ai phản hồi đủ nhanh. Tôi giúp bạn khắc phục cả hai, từ Worcester, MA đến bất cứ nơi nào bạn kinh doanh. Bạn làm việc trực tiếp với tôi từ đầu đến cuối dự án.',
       hero_cta_primary: 'Nhận đánh giá website miễn phí <span class="ic" aria-hidden="true">&#8594;</span>',
