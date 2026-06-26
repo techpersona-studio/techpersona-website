@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NDQ8ZJ9B');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Website Redesign for Service Businesses | TechPersona Studio</title>
@@ -30,11 +37,16 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": "https://www.techpersonastudio.com/#business",
       "name": "TechPersona Studio",
       "url": "https://www.techpersonastudio.com/",
-      "logo": "https://www.techpersonastudio.com/assets/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.techpersonastudio.com/assets/logo.png",
+        "width": 1022,
+        "height": 790
+      },
       "description": "Website redesign and lead automation for service businesses in Worcester, MA. Built to win the customer before they call the next name.",
       "telephone": "+18578002667",
       "email": "info@techpersonastudio.com",
@@ -54,7 +66,8 @@
       },
       "areaServed": [
         { "@type": "City", "name": "Worcester", "containedInPlace": { "@type": "State", "name": "Massachusetts" } },
-        { "@type": "City", "name": "Boston", "containedInPlace": { "@type": "State", "name": "Massachusetts" } }
+        { "@type": "City", "name": "Boston", "containedInPlace": { "@type": "State", "name": "Massachusetts" } },
+        { "@type": "Country", "name": "United States" }
       ],
       "founder": { "@id": "https://www.techpersonastudio.com/#founder" },
       "hasOfferCatalog": {
@@ -64,8 +77,7 @@
           { "@type": "Offer", "itemOffered": { "@id": "https://www.techpersonastudio.com/#service-redesign" } },
           { "@type": "Offer", "itemOffered": { "@id": "https://www.techpersonastudio.com/#service-automation" } }
         ]
-      },
-      "sameAs": []
+      }
     },
     {
       "@type": "Person",
@@ -81,9 +93,9 @@
       "@id": "https://www.techpersonastudio.com/#service-redesign",
       "name": "Website Redesign for Service Businesses",
       "serviceType": "Website Redesign",
-      "description": "Full website redesign for service businesses that turns visitors into booked calls. Built for restaurants, nail salons, plumbers, and realtors in Worcester, MA.",
+      "description": "Full website redesign for service businesses that turns visitors into booked calls. Built for restaurants, nail salons, plumbers, and realtors. Based in Worcester, MA — serving clients everywhere.",
       "provider": { "@id": "https://www.techpersonastudio.com/#business" },
-      "areaServed": { "@type": "City", "name": "Worcester" },
+      "areaServed": { "@type": "Country", "name": "United States" },
       "url": "https://www.techpersonastudio.com/#services"
     },
     {
@@ -91,10 +103,40 @@
       "@id": "https://www.techpersonastudio.com/#service-automation",
       "name": "Quiet Systems — Lead Automation",
       "serviceType": "Lead Automation",
-      "description": "Automated follow-up and lead capture for service businesses. Converts missed calls and form fills into booked appointments without manual follow-up.",
+      "description": "Automated follow-up and lead capture for service businesses. Converts missed calls and form fills into booked appointments without manual follow-up. Works with any website, anywhere.",
       "provider": { "@id": "https://www.techpersonastudio.com/#business" },
-      "areaServed": { "@type": "City", "name": "Worcester" },
+      "areaServed": { "@type": "Country", "name": "United States" },
       "url": "https://www.techpersonastudio.com/#services"
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.techpersonastudio.com/#video-quanpho",
+      "name": "Quán Phở website redesign — before and after walkthrough",
+      "description": "A walkthrough of the redesigned Quán Phở restaurant website built by TechPersona Studio. The original site was a generic template; the rebuild converts visitors to reservations.",
+      "thumbnailUrl": "https://www.techpersonastudio.com/assets/poster-quanpho.jpg",
+      "uploadDate": "2026-06-22",
+      "contentUrl": "https://www.techpersonastudio.com/assets/new-quanpho.mp4",
+      "publisher": { "@id": "https://www.techpersonastudio.com/#business" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.techpersonastudio.com/#video-realestate",
+      "name": "Real estate website sample build — TechPersona Studio",
+      "description": "A sample real estate website build by TechPersona Studio, demonstrating lead capture design for realtors and property businesses.",
+      "thumbnailUrl": "https://www.techpersonastudio.com/assets/poster-realestate.jpg",
+      "uploadDate": "2026-06-22",
+      "contentUrl": "https://www.techpersonastudio.com/assets/demo-realestate-wordpress.mp4",
+      "publisher": { "@id": "https://www.techpersonastudio.com/#business" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.techpersonastudio.com/#video-ecommerce",
+      "name": "E-commerce website sample build — TechPersona Studio",
+      "description": "A sample e-commerce website build by TechPersona Studio, demonstrating product-focused design for retail and online service businesses.",
+      "thumbnailUrl": "https://www.techpersonastudio.com/assets/poster-ecommerce.jpg",
+      "uploadDate": "2026-06-22",
+      "contentUrl": "https://www.techpersonastudio.com/assets/demo-ecommerce-wordpress.mp4",
+      "publisher": { "@id": "https://www.techpersonastudio.com/#business" }
     },
     {
       "@type": "WebSite",
@@ -143,6 +185,21 @@
           "@type": "Question",
           "name": "Do you work with businesses outside Worcester, MA?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes. The process is fully remote, so location is not a barrier. Most clients are in the Greater Worcester and Boston area, but TechPersona Studio works with service businesses across the US." }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of service businesses do you work with?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Restaurants, nail salons, hair salons, plumbers, electricians, HVAC companies, landscapers, realtors, and other local service businesses that rely on phone calls, bookings, or walk-ins to run. If a customer needs to find you online and reach you fast, that's the problem I solve." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a website redesign include?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A full rebuild of your website designed to rank in local search and convert visitors to calls or bookings. Includes a free website audit first, competitor research, mobile-first design, SEO setup, contact form or booking integration, and 30 days of post-launch refinement. You see the full scope and price before committing." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a Quiet System and how does it work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A Quiet System is automated lead follow-up that runs in the background while you work. When someone submits your contact form or calls after hours, the system sends an instant, friendly reply and a booking link. You wake up to a scheduled call instead of a cold lead. It connects to your existing phone number and works alongside any website — mine or yours. Nothing for you to log into or manage." }
         }
       ]
     }
@@ -150,9 +207,16 @@
 }
 </script>
 
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
+<link rel="preload" as="image" href="assets/profile-pic.webp" fetchpriority="high">
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDQ8ZJ9B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="grain" aria-hidden="true"></div>
 
 <!-- NAV -->
@@ -209,7 +273,10 @@
     <div class="hero-visual" data-reveal data-d="2">
       <div class="portrait-shell">
         <div class="portrait-inner">
-          <img src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio, Worcester MA" width="520" height="572" loading="eager" fetchpriority="high">
+          <picture>
+            <source srcset="assets/profile-pic.webp" type="image/webp">
+            <img src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio, Worcester MA" width="520" height="572" loading="eager" fetchpriority="high">
+          </picture>
         </div>
       </div>
       <div class="proof-chip" aria-hidden="true">
@@ -320,7 +387,7 @@
       <article class="shell" data-reveal data-d="2">
         <div class="core-card">
           <span class="num" data-i18n="build_02_num">Service 02</span>
-          <h3 data-i18n="build_02_h3">Quiet systems</h3>
+          <h3 data-i18n="build_02_h3">Quiet systems <span class="tag" style="font-size:.75em;font-weight:500;vertical-align:middle" data-i18n="build_02_tag_inline">Lead automation</span></h3>
           <p data-i18n="build_02_body">The lead-catching that runs while you work. Missed calls and after-hours messages get an instant, friendly reply and reach the right person.</p>
           <div class="scenario-box" data-i18n-html="build_02_scenario">A new inquiry comes in at 11pm. <b>Your system texts back in under 2 minutes</b> with a booking link. You wake up to a scheduled call.</div>
           <ul class="flist">
@@ -354,7 +421,10 @@
           <span class="ba-label" data-i18n="proof_label_before">Before</span>
           <div class="ba-media">
             <div class="scroll-shot" data-scroll>
-              <img src="assets/old-quanphoinsaugus.com_.png" alt="Qu&#225;n Ph&#7903; original website, before the redesign" width="2590" height="8970" loading="lazy">
+              <picture>
+                <source srcset="assets/old-quanphoinsaugus.com_.webp" type="image/webp">
+                <img src="assets/old-quanphoinsaugus.com_.png" alt="Quán Phở original website, before the redesign" width="1295" height="2000" loading="lazy">
+              </picture>
             </div>
           </div>
           <ul class="ba-list">
@@ -368,7 +438,7 @@
         <div class="ba-col after">
           <span class="ba-label" data-i18n="proof_label_after">After</span>
           <div class="ba-media">
-            <video autoplay muted loop playsinline preload="metadata" aria-label="Qu&#225;n Ph&#7903; new website walkthrough">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/poster-quanpho.jpg" aria-label="Quán Phở new website walkthrough">
               <source src="assets/new-quanpho.mp4" type="video/mp4">
             </video>
           </div>
@@ -392,7 +462,10 @@
     <div class="proof-lower" data-reveal data-d="2">
       <div class="founder-note">
         <div class="fn-top">
-          <img class="fn-thumb" src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio" width="677" height="687" loading="lazy">
+          <picture>
+            <source srcset="assets/profile-pic.webp" type="image/webp">
+            <img class="fn-thumb" src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio" width="677" height="687" loading="lazy">
+          </picture>
           <div>
             <div class="fn-name">Thao Phuong</div>
             <div class="fn-role" data-i18n="proof_fn_role">Founder, TechPersona Studio</div>
@@ -411,13 +484,13 @@
     <p class="samples-head" data-reveal data-i18n="proof_samples_head">Sample builds</p>
     <div class="sample-grid" data-reveal data-d="1">
       <div class="sample-frame">
-        <video autoplay muted loop playsinline preload="metadata" aria-label="Real estate website sample build">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/poster-realestate.jpg" aria-label="Real estate website sample build">
           <source src="assets/demo-realestate-wordpress.mp4" type="video/mp4">
         </video>
         <span class="s-lbl" data-i18n="proof_sample1">Real estate</span>
       </div>
       <div class="sample-frame">
-        <video autoplay muted loop playsinline preload="metadata" aria-label="E-commerce website sample build">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/poster-ecommerce.jpg" aria-label="E-commerce website sample build">
           <source src="assets/demo-ecommerce-wordpress.mp4" type="video/mp4">
         </video>
         <span class="s-lbl" data-i18n="proof_sample2">E-commerce</span>
@@ -470,7 +543,10 @@
     <div class="about-photo" data-reveal>
       <div class="portrait-shell">
         <div class="portrait-inner">
-          <img src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio, Worcester MA" width="677" height="687" loading="lazy">
+          <picture>
+            <source srcset="assets/profile-pic.webp" type="image/webp">
+            <img src="assets/profile-pic.JPG" alt="Thao Phuong, founder of TechPersona Studio, Worcester MA" width="677" height="687" loading="lazy">
+          </picture>
         </div>
       </div>
       <div class="about-id">
@@ -482,6 +558,7 @@
       <span class="eyebrow"><span class="dot"></span> <span data-i18n="about_eyebrow">Who's in your corner</span></span>
       <h2 data-i18n="about_h2">I'm Thao Phuong. One person on your project, start to finish.</h2>
       <p class="a-quote" data-i18n="about_quote">I don't just hand you a website. I learn your business, find what's costing you customers, and stay with you after launch.</p>
+      <p data-i18n="about_studio">TechPersona Studio is a one-person web design studio based in Worcester, MA. I redesign websites for local service businesses — restaurants, nail salons, plumbers, and realtors — so they show up in search and stop losing leads to competitors. Every project includes a free audit before any work begins.</p>
       <p data-i18n="about_p1">I spent 6 years writing software for big tech companies in Boston, MA. I started TechPersona Studio to put that same engineering to work for small businesses, the ones that get overlooked and left to fall behind on tech. My mission is simple: give you the speed and tools the big players have, so you can catch up and win.</p>
       <p data-i18n="about_p2">I work with service businesses that are losing leads because of it. Restaurants, nail salons, plumbers, realtors. If you're running a real business and your website isn't helping you win customers, I want to hear about it.</p>
       <a href="#services" class="ghost" data-i18n-html="hero_cta_secondary">See what I build <span class="a" aria-hidden="true">&#8594;</span></a>
@@ -519,6 +596,18 @@
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q6">How long does it take?</span> <span class="pm" aria-hidden="true">+</span></button>
         <div class="faq-a"><p data-i18n="faq_a6">A website audit comes back in about 2 business days. Most website builds run 2 to 4 weeks from scoping call to launch. A Quiet System adds 1 to 2 weeks. You get a specific timeline on the call, not a vague estimate.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q7">Do you work with businesses outside Worcester, MA?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a7">Yes. The process is fully remote, so location is not a barrier. Most clients are in the Greater Worcester and Boston area, but I work with service businesses across the US.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q8">What types of service businesses do you work with?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a8">Restaurants, nail salons, hair salons, plumbers, electricians, HVAC companies, landscapers, realtors, and other local service businesses that rely on calls, bookings, or walk-ins. If a customer needs to find you online and reach you fast, that's the problem I solve.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q9">What is a Quiet System and how does it work?</span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a9">Automated lead follow-up that runs in the background while you work. When someone submits your contact form or calls after hours, the system sends an instant, friendly reply and a booking link. You wake up to a scheduled call instead of a cold lead. Nothing for you to log into or manage — it works alongside any website, mine or yours.</p></div>
       </div>
     </div>
     <div class="faq-end" data-reveal data-d="1">

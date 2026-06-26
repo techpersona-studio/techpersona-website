@@ -113,6 +113,7 @@
       about_h2: "I'm Thao Phuong. One person on your project, start to finish.",
       about_intro: "TechPersona Studio is a web design agency in Worcester, MA, founded by Thao Phuong. The studio rebuilds websites for local service businesses — restaurants, nail salons, plumbers, and realtors — with a focus on lead conversion and local search visibility. Every project includes a free website audit before work begins.",
       about_quote: "I don't just hand you a website. I learn your business, find what's costing you customers, and stay with you after launch.",
+      about_studio: "TechPersona Studio is a one-person web design studio based in Worcester, MA. I redesign websites for local service businesses — restaurants, nail salons, plumbers, and realtors — so they show up in search and stop losing leads to competitors. Every project includes a free audit before any work begins.",
       about_p1: 'I spent 6 years writing software for big tech companies in Boston, MA. I started TechPersona Studio to put that same engineering to work for small businesses, the ones that get overlooked and left to fall behind on tech. My mission is simple: give you the speed and tools the big players have, so you can catch up and win.',
       about_p2: "I work with service businesses that are losing leads because of it. Restaurants, nail salons, plumbers, realtors. If you're running a real business and your website isn't helping you win customers, I want to hear about it.",
 
@@ -129,6 +130,13 @@
       faq_a5: "You can. But a template can't study your market for you. I research your business and your competitors so your site is built to put you ahead, not just match what everyone else in town already has. Template builders also rarely get you found in local search, and they don't catch leads that come in after hours. If you need a digital brochure, a template is fine. If you're losing leads because people can't find you or can't reach you fast enough, that's a different problem.",
       faq_q6: 'How long does it take?',
       faq_a6: 'A website audit comes back in about 2 business days. Most website builds run 2 to 4 weeks from scoping call to launch. A Quiet System adds 1 to 2 weeks. You get a specific timeline on the call, not a vague estimate.',
+      faq_q7: 'Do you work with businesses outside Worcester, MA?',
+      faq_a7: "Yes. The process is fully remote, so location is not a barrier. Most clients are in the Greater Worcester and Boston area, but I work with service businesses across the US.",
+      faq_q8: 'What types of service businesses do you work with?',
+      faq_a8: "Restaurants, nail salons, hair salons, plumbers, electricians, HVAC companies, landscapers, realtors, and other local service businesses that rely on calls, bookings, or walk-ins. If a customer needs to find you online and reach you fast, that's the problem I solve.",
+      faq_q9: 'What is a Quiet System and how does it work?',
+      faq_a9: "Automated lead follow-up that runs in the background while you work. When someone submits your contact form or calls after hours, the system sends an instant, friendly reply and a booking link. You wake up to a scheduled call instead of a cold lead. Nothing for you to log into or manage — it works alongside any website, mine or yours.",
+      build_02_tag_inline: 'Lead automation',
       faq_end: "Still unsure? Send me your URL. The audit is free and there's no commitment.",
       faq_end_cta: 'Send me your URL <span class="a" aria-hidden="true">&#8594;</span>',
 
