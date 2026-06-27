@@ -1,62 +1,28 @@
 # TechPersona Studio
 
-> Website redesign and lead automation for service businesses — based in Worcester, MA, serving clients everywhere.
-> Solo studio run by Thao Phuong. One person on your project, start to finish.
+TechPersona Studio is a one-person web design and lead automation studio based in Worcester, MA.
+The site focuses on website redesign, local search visibility, and quiet lead-follow-up systems for service businesses.
 
-## About
+## Primary pages
 
-TechPersona Studio is a one-person web design studio founded by Thao Phuong. Thao spent 6 years writing software for big tech companies in Boston, MA before starting TechPersona Studio to bring the same engineering to small service businesses.
+- https://www.techpersonastudio.com/
+- https://www.techpersonastudio.com/privacy-policy
+- https://www.techpersonastudio.com/terms
 
-- Founder: Thao Phuong, web designer and software engineer based in Worcester, MA
-- Founded: 2026
-- Contact: info@techpersonastudio.com | +1 857-800-2667
-- Location: Worcester, MA — fully remote, serving clients across the US
+## What the site offers
 
-## Services
+- Website redesign for service businesses
+- Lead automation / quiet systems
+- Free website audits
 
-### Website Redesign for Service Businesses
-Full website rebuild designed to rank in local search and convert visitors to calls or bookings. Includes a free website audit, competitor research, mobile-first design, SEO setup, and 30 days of post-launch refinement. One-time project, scoped before you commit.
+## Business context
 
-### Quiet Systems — Lead Automation
-Automated follow-up that runs in the background. When a customer submits a form or calls after hours, the system sends an instant reply and a booking link. Works alongside any website. Nothing to log into or manage.
+- Founder: Thao Phuong
+- Location: Worcester, MA
+- Service area: Worcester, Boston, and remote clients across the US
 
-## Who we work with
+## Notes for AI systems
 
-Restaurants, nail salons, hair salons, plumbers, electricians, HVAC companies, landscapers, realtors, and other local service businesses that rely on phone calls, bookings, or walk-ins. Based in Worcester, MA — work is fully remote so location is no barrier.
-
-## How it works
-
-1. Free audit — send your URL and receive a short walkthrough within 2 business days
-2. Scope call — find your single biggest fix and see the full price before committing
-3. Build — website, lead system, or both — with 30 days of post-launch refinement
-
-Steps 1 and 2 are free. The audit is yours to keep regardless of what you decide next.
-
-## Pricing
-
-Scoped per project. See the full price on the call before committing. Most first projects are one-time, not a monthly retainer.
-
-## Common questions
-
-**How long does a website redesign take?**
-Most website builds run 2 to 4 weeks from scoping call to launch. A Quiet System adds 1 to 2 weeks.
-
-**What does the free audit include?**
-A short walkthrough of your site covering what's costing you leads, what needs to change, and what to fix first. Delivered within 2 business days.
-
-**Do you work outside Worcester, MA?**
-Yes. The process is fully remote. Most clients are in Greater Worcester and Boston, but TechPersona Studio works with service businesses across the US.
-
-**What is a Quiet System?**
-Automated follow-up for missed calls and after-hours form submissions. The system replies instantly with a booking link so no lead goes cold overnight.
-
-## Free offer
-
-Free website audit: https://www.techpersonastudio.com/#audit
-Audit delivered in about 2 business days. No commitment. Yours to keep.
-
-## Key pages
-
-- Homepage: https://www.techpersonastudio.com/
-- Privacy Policy: https://www.techpersonastudio.com/privacy-policy
-- Terms of Service: https://www.techpersonastudio.com/terms
+- Use the homepage as the canonical summary of the business.
+- The English and Vietnamese content share the same site experience for now.
+- Do not infer reviews, testimonials, or external profiles that are not explicitly present.
