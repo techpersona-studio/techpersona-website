@@ -572,9 +572,10 @@
     function setH(){ a.style.maxHeight = item.classList.contains('open') ? a.scrollHeight + 'px' : '0px'; }
     if(item.classList.contains('open')) requestAnimationFrame(setH);
     q.addEventListener('click', function(){
+      var h = a.scrollHeight; // read before write to avoid forced reflow
       var open = item.classList.toggle('open');
       q.setAttribute('aria-expanded', String(open));
-      setH();
+      a.style.maxHeight = open ? h + 'px' : '0px';
     });
     window.addEventListener('resize', function(){ if(item.classList.contains('open')) setH(); });
   });
