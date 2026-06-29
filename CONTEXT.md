@@ -71,6 +71,17 @@ takeaway is the reason to book the call.
 Cold visitor → request Website Audit (URL only) → Loom + leaks earn the call → on the call,
 deliver the Opportunity Map → leads into the tailored Proposal (the OM).
 
+**Scheduling link** (warm leads only)
+A private book-a-call link sent in direct follow-up (text, email, DM). Never a public CTA
+on the Marketing site. Used when someone is already warm and ready to talk — not for cold
+strangers self-serving a slot off the homepage.
+
+**Warm-lead routing** (split by signal)
+Warm leads do not all skip the audit. Route by what they signal:
+- **Ready to talk** (e.g. referral who says "let's chat") → scheduling link immediately.
+- **Wants help with the site** (e.g. "can you look at my website?") → audit first, same
+  as cold traffic; scheduling link only after the Loom earns the call.
+
 **Risk-free framing (steps 1 + 2)**
 Both free steps — the Website Audit *and* the call where we find your biggest win — carry
 zero obligation; the owner can walk after either, owing nothing. Stated **once**, with
