@@ -480,11 +480,9 @@
       var end = vh * 0.35;     // fully filled by the time it reaches 35%
       var p = Math.max(0, Math.min(1, (start - r.top) / (start - end + r.height)));
       if(isVertical()){
-        fill.style.height = (p * 100) + '%';
-        fill.style.width = '100%';
+        fill.style.transform = 'scaleY(' + p + ')';
       } else {
-        fill.style.width = (p * 100) + '%';
-        fill.style.height = '100%';
+        fill.style.transform = 'scaleX(' + p + ')';
       }
       flow.classList.toggle('moving', p > 0.01 && p < 0.99);
       nodes.forEach(function(n){

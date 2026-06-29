@@ -5,9 +5,9 @@ The site focuses on website redesign, local search visibility, and quiet lead-fo
 
 ## Primary pages
 
-- https://www.techpersonastudio.com/
-- https://www.techpersonastudio.com/privacy-policy
-- https://www.techpersonastudio.com/terms
+- [Homepage](https://www.techpersonastudio.com/)
+- [Privacy Policy](https://www.techpersonastudio.com/privacy-policy)
+- [Terms](https://www.techpersonastudio.com/terms)
 
 ## What the site offers
 
