@@ -88,6 +88,13 @@ async function fetchFromWordPress<T>(endpoint: string): Promise<T> {
   return (await response.json()) as T;
 }
 
+// Posts held back from the public site until they're fixed at the source in
+// WordPress. Reversible — clear a slug here and it returns on the next build.
+// - the-2026-seo-playbook…: body says "2025" throughout; needs a rewrite.
+export const EXCLUDED_SLUGS = new Set<string>([
+  "the-2026-seo-playbook-what-actually-works-after-googles-latest-algorithm-shift",
+]);
+
 export async function getPosts(): Promise<WordPressPost[]> {
   const posts: WordPressPost[] = [];
   const perPage = 100;
@@ -110,11 +117,11 @@ export async function getPosts(): Promise<WordPressPost[]> {
       page += 1;
     }
 
-    return posts;
+    return posts.filter((p) => !EXCLUDED_SLUGS.has(p.slug));
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.warn(`[wordpress] getPosts failed: ${message}`);
-    return posts;
+    return posts.filter((p) => !EXCLUDED_SLUGS.has(p.slug));
   }
 }
 
@@ -151,7 +158,7 @@ export async function getPostsForNavigation(): Promise<WordPressPostNavigationIt
       page += 1;
     }
 
-    return posts;
+    return posts.filter((p) => !EXCLUDED_SLUGS.has(p.slug));
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.warn(`[wordpress] getPostsForNavigation failed: ${message}`);
