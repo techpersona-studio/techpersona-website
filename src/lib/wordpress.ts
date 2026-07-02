@@ -89,12 +89,32 @@ async function fetchFromWordPress<T>(endpoint: string): Promise<T> {
 }
 
 export async function getPosts(): Promise<WordPressPost[]> {
+  const posts: WordPressPost[] = [];
+  const perPage = 100;
+  let page = 1;
+
   try {
-    return await fetchFromWordPress<WordPressPost[]>("/posts?_embed");
+    // WordPress REST defaults to per_page=10; paginate so every published
+    // post gets a static route (otherwise older posts 404).
+    while (true) {
+      const batch = await fetchFromWordPress<WordPressPost[]>(
+        `/posts?status=publish&per_page=${perPage}&page=${page}&_embed`,
+      );
+
+      posts.push(...batch);
+
+      if (batch.length < perPage) {
+        break;
+      }
+
+      page += 1;
+    }
+
+    return posts;
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.warn(`[wordpress] getPosts failed: ${message}`);
-    return [];
+    return posts;
   }
 }
 
