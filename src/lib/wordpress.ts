@@ -198,6 +198,12 @@ export function stripHtml(html: string): string {
 // AI-draft scaffolding that leaked into published posts, e.g. "[insert image: ...]".
 const SCAFFOLD_INLINE = /\[insert[^\]]*\]/gi;
 
+// Leaked authoring labels that are never legitimate prose (safe to strip inline).
+// NB: bare "keyword(s):" is only stripped as a leading block (see stripScaffolding),
+// since it can appear mid-sentence legitimately ("add local keywords: ...").
+const LEAKED_LABEL_TEXT =
+  /(?:seo\s+keywords?|meta\s+description|focus\s+keyword|target\s+keyword|your\s+headline)\s*:[^\n<]*/gi;
+
 // Remove leftover authoring artifacts: "[insert ...]" prompt scaffolding and
 // WordPress block-editor demo content ("toggle me" details, corgi test image).
 export function stripScaffolding(html: string): string {
@@ -209,6 +215,14 @@ export function stripScaffolding(html: string): string {
     )
     // Any remaining inline scaffold text.
     .replace(SCAFFOLD_INLINE, "")
+    // A block that STARTS with an authoring label ("SEO Keywords: ...",
+    // "Keyword: ...", "Your headline: ...") → drop the whole block.
+    .replace(
+      /<(p|h[1-6]|li)\b[^>]*>\s*(?:<[^>]+>\s*)*(?:seo\s+keywords?|focus\s+keyword|target\s+keyword|meta\s+description|your\s+headline|keywords?|keyword)\s*:[\s\S]*?<\/\1>/gi,
+      "",
+    )
+    // Inline leftovers of the never-legit labels.
+    .replace(LEAKED_LABEL_TEXT, "")
     // Leftover WP demo blocks.
     .replace(/<details\b[^>]*>[\s\S]*?toggle me[\s\S]*?<\/details>/gi, "")
     .replace(/<figure\b[^>]*>\s*<img\b[^>]*corgi-test[^>]*>[\s\S]*?<\/figure>/gi, "")
@@ -232,12 +246,12 @@ export function cleanArticle(html: string): string {
 
 // Cleanup for inline HTML kept as-is (titles rendered via set:html — preserves entities).
 export function cleanInline(html: string): string {
-  return html.replace(SCAFFOLD_INLINE, "").trim();
+  return html.replace(SCAFFOLD_INLINE, "").replace(LEAKED_LABEL_TEXT, "").trim();
 }
 
 // Cleanup for plain-text output (meta title/description).
 export function cleanText(html: string): string {
-  return stripHtml(html.replace(SCAFFOLD_INLINE, "")).trim();
+  return stripHtml(html.replace(SCAFFOLD_INLINE, "").replace(LEAKED_LABEL_TEXT, "")).trim();
 }
 
 export function formatPostDate(date: string): string {
