@@ -1,6 +1,12 @@
 ---
+// Blog header mirrors the homepage nav. Section links point at the
+// homepage anchors so a reader on any /blog page can jump straight to
+// services, proof, about, FAQ, or the audit CTA.
 const navItems = [
-  { href: "/", label: "Home" },
+  { href: "/#services", label: "What I build" },
+  { href: "/#work", label: "Real work" },
+  { href: "/#about", label: "About" },
+  { href: "/#faq", label: "FAQ" },
   { href: "/blog", label: "Blog" },
 ];
 ---
@@ -10,7 +16,7 @@ const navItems = [
     <a href="/" class="text-xl font-bold tracking-[-0.04em] text-[var(--ink)] sm:text-2xl">
       TechPersona Studio
     </a>
-    <nav aria-label="Main navigation">
+    <nav aria-label="Main navigation" class="flex flex-wrap items-center gap-x-6 gap-y-3">
       <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-[var(--ink-soft)]">
         {navItems.map((item) => (
           <li>
@@ -20,6 +26,13 @@ const navItems = [
           </li>
         ))}
       </ul>
+      <a
+        href="/#audit"
+        class="inline-flex items-center gap-2 rounded-full bg-[var(--pine)] px-4 py-2.5 text-sm font-semibold text-[var(--paper)] transition hover:-translate-y-0.5 hover:bg-[var(--pine-soft)]"
+      >
+        Get my free website audit
+        <span aria-hidden="true">&#8594;</span>
+      </a>
     </nav>
   </div>
 </header>
