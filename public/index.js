@@ -8,6 +8,7 @@
       nav_proof: 'Real work',
       nav_about: 'About',
       nav_faq: 'FAQ',
+      nav_blog: 'Blog',
       nav_cta: 'Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span>',
 
       hero_eyebrow_main: 'Website redesign',
@@ -197,6 +198,7 @@
       nav_proof: 'Trước & Sau',
       nav_about: 'Về tôi',
       nav_faq: 'Câu hỏi',
+      nav_blog: 'Blog',
       nav_cta: 'Nhận đánh giá miễn phí <span class="ic" aria-hidden="true">&#8594;</span>',
 
       hero_eyebrow_main: 'Thiết kế lại website',

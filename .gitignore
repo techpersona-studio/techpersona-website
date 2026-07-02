@@ -1,3 +1,12 @@
 docs/superpowers/specs/
 archived/
-assets/*.mov
+public/assets/*.mov
+
+# Astro / Node
+node_modules/
+dist/
+.astro/
+
+# Env — WP API URL etc. Real values live in Vercel dashboard.
+.env
+.env.production

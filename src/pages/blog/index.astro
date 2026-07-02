@@ -1,0 +1,43 @@
+---
+import BlogCard from "../../components/BlogCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPosts } from "../../lib/wordpress";
+
+const posts = await getPosts();
+---
+
+<BaseLayout
+  title="Blog | TechPersona Studio"
+  description="Notes on website redesign, lead automation, and local search for service businesses in Worcester, MA."
+>
+  <section class="section-band bg-[var(--paper)]">
+    <div class="page-shell">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-faint)]">Journal</p>
+      <h1 class="mt-3 text-4xl font-extrabold tracking-[-0.045em] text-[var(--ink)] sm:text-5xl">
+        The blog
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--ink-soft)]">
+        A calm archive of craft notes pulled from WordPress and rendered by Astro.
+      </p>
+
+      {posts.length > 0 ? (
+        <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {posts.map((post) => (
+            <BlogCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <div class="double-shell mt-12">
+          <div class="double-shell__inner p-8 text-center sm:p-10">
+            <p class="text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
+              No posts to show yet
+            </p>
+            <p class="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+              Add your WordPress API URL to a .env file, publish a post, then rebuild the site.
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

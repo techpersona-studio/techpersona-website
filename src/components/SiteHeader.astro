@@ -1,0 +1,25 @@
+---
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/blog", label: "Blog" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-[var(--hair)] bg-[var(--paper)]">
+  <div class="page-shell flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+    <a href="/" class="text-xl font-bold tracking-[-0.04em] text-[var(--ink)] sm:text-2xl">
+      TechPersona Studio
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-[var(--ink-soft)]">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="transition-colors duration-150 hover:text-[var(--ink)]">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
