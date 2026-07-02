@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: "website" | "article";
+}
+
+const { title, description, image, canonical, type = "website" } = Astro.props;
+const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? Astro.site?.href ?? "";
+const pageDescription = description ?? "Notes on website redesign, lead automation, and local search from TechPersona Studio in Worcester, MA.";
+const ogImage = image ?? (siteUrl ? siteUrl + "/assets/images/og-image.jpg" : undefined);
+const canonicalUrl = canonical ?? (siteUrl ? new URL(Astro.url.pathname, siteUrl).href : undefined);
+const pageUrl = canonicalUrl ?? Astro.url.href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="theme-color" content="#f6f3ee" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="TechPersona Studio" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <SiteHeader />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
