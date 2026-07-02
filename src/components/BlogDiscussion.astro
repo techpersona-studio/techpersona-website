@@ -38,7 +38,7 @@ const {
         </h2>
       </div>
       <p class="max-w-[34ch] text-sm leading-relaxed text-[var(--ink-soft)]">
-        Native WordPress comments, rendered in Astro and submitted back to WordPress without leaving the page.
+        Join the conversation — share a thought or a question below.
       </p>
     </header>
 
@@ -68,28 +68,34 @@ const {
       </section>
 
       <section class="rounded-[1.75rem] border border-[var(--hair)] bg-[var(--core)] p-5 shadow-[0_14px_40px_-30px_rgba(30,58,52,0.35)] sm:p-6">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
-              Share this post
-            </p>
-            <p class="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-              Copy the link and send it anywhere.
-            </p>
-          </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+            Share this post
+          </p>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
+            Send it to someone who needs it.
+          </p>
         </div>
 
-        <div class="mt-5 flex flex-wrap items-center gap-3">
+        <div class="mt-5">
           <button
             type="button"
-            class="inline-flex items-center gap-2 rounded-full border border-[var(--hair)] bg-white px-4 py-2.5 text-sm font-semibold text-[var(--ink)] transition hover:-translate-y-0.5 hover:border-[rgba(30,58,52,0.2)] hover:text-[var(--pine)]"
+            class="group inline-flex items-center gap-2 rounded-full border border-[var(--hair)] bg-white px-4 py-2.5 text-sm font-semibold text-[var(--ink)] transition hover:-translate-y-0.5 hover:border-[rgba(30,58,52,0.2)] hover:text-[var(--pine)] data-[copied]:border-[var(--pine)] data-[copied]:text-[var(--pine)]"
             data-copy-link
+            aria-label="Copy link to this post"
           >
-            Copy link
+            <!-- link icon (default) -->
+            <svg data-copy-icon-link class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+            </svg>
+            <!-- check icon (copied) -->
+            <svg data-copy-icon-check class="hidden h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span data-copy-label>Copy link</span>
           </button>
-          <p class="text-sm text-[var(--ink-faint)]" data-copy-status aria-live="polite">
-            {pageUrl}
-          </p>
+          <span class="sr-only" data-copy-status aria-live="polite"></span>
         </div>
       </section>
     </div>
@@ -109,7 +115,7 @@ const {
 
         <div class="flex items-start gap-4">
           <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-[var(--core)] text-sm font-semibold tracking-[-0.03em] text-[var(--ink)] shadow-[0_10px_24px_-18px_rgba(30,58,52,0.4)]">
-            DC
+            You
           </div>
           <div class="min-w-0 flex-1">
             <label for="comment" class="text-sm font-semibold text-[var(--ink)]">
@@ -143,7 +149,7 @@ const {
 
             <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p class="text-sm leading-relaxed text-[var(--ink-faint)]" data-comment-status aria-live="polite">
-                Comments are stored in WordPress. The page will refresh the thread from the CMS after submission.
+                Your email won't be published.
               </p>
               <button
                 type="submit"
@@ -280,7 +286,7 @@ const {
     commentForm.addEventListener("submit", () => {
       hasSubmitted = true;
       if (commentStatus) {
-        commentStatus.textContent = "Sending your comment to WordPress...";
+        commentStatus.textContent = "Sending your comment…";
       }
       if (commentSubmit) {
         commentSubmit.disabled = true;
@@ -301,7 +307,7 @@ const {
 
       if (commentStatus) {
         commentStatus.textContent =
-          "Comment sent to WordPress. It may appear after moderation.";
+          "Thanks — your comment will appear after moderation.";
       }
       if (commentSubmit) {
         commentSubmit.disabled = false;
@@ -315,13 +321,58 @@ const {
     });
   }
 
-  if (copyLinkButton && copyLinkStatus) {
-    copyLinkButton.addEventListener("click", async () => {
+  if (copyLinkButton) {
+    const copyLabel = copyLinkButton.querySelector("[data-copy-label]");
+    const iconLink = copyLinkButton.querySelector("[data-copy-icon-link]");
+    const iconCheck = copyLinkButton.querySelector("[data-copy-icon-check]");
+    let copyResetTimer;
+
+    const copyText = async (text) => {
       try {
-        await navigator.clipboard.writeText(pageUrl);
-        copyLinkStatus.textContent = "Link copied.";
+        await navigator.clipboard.writeText(text);
+        return true;
       } catch {
-        copyLinkStatus.textContent = pageUrl;
+        // Fallback for browsers/contexts without the async clipboard API.
+        try {
+          const scratch = document.createElement("textarea");
+          scratch.value = text;
+          scratch.setAttribute("readonly", "");
+          scratch.style.position = "absolute";
+          scratch.style.left = "-9999px";
+          document.body.appendChild(scratch);
+          scratch.select();
+          const ok = document.execCommand("copy");
+          document.body.removeChild(scratch);
+          return ok;
+        } catch {
+          return false;
+        }
+      }
+    };
+
+    const showCopied = () => {
+      copyLinkButton.setAttribute("data-copied", "");
+      if (copyLabel) copyLabel.textContent = "Link copied";
+      if (iconLink) iconLink.classList.add("hidden");
+      if (iconCheck) iconCheck.classList.remove("hidden");
+      if (copyLinkStatus) copyLinkStatus.textContent = "Link copied to clipboard.";
+
+      window.clearTimeout(copyResetTimer);
+      copyResetTimer = window.setTimeout(() => {
+        copyLinkButton.removeAttribute("data-copied");
+        if (copyLabel) copyLabel.textContent = "Copy link";
+        if (iconCheck) iconCheck.classList.add("hidden");
+        if (iconLink) iconLink.classList.remove("hidden");
+        if (copyLinkStatus) copyLinkStatus.textContent = "";
+      }, 2000);
+    };
+
+    copyLinkButton.addEventListener("click", async () => {
+      const ok = await copyText(pageUrl);
+      if (ok) {
+        showCopied();
+      } else if (copyLabel) {
+        copyLabel.textContent = "Press Ctrl+C to copy";
       }
     });
   }
