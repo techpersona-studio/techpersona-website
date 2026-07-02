@@ -28,20 +28,6 @@ const {
 
 <section class="mt-16 border-t border-[var(--hair)] pt-12 sm:mt-20 sm:pt-16" aria-labelledby="discussion-heading">
   <div class="flex flex-col gap-8">
-    <header class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
-          Community
-        </p>
-        <h2 id="discussion-heading" class="mt-2 text-3xl font-bold tracking-[-0.04em] text-[var(--ink)] sm:text-4xl">
-          Comments
-        </h2>
-      </div>
-      <p class="max-w-[34ch] text-sm leading-relaxed text-[var(--ink-soft)]">
-        Join the conversation — share a thought or a question below.
-      </p>
-    </header>
-
     <div class="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
       <section class="rounded-[1.75rem] border border-[var(--hair)] bg-[var(--core)] p-5 shadow-[0_14px_40px_-30px_rgba(30,58,52,0.35)] sm:p-6">
         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
@@ -99,6 +85,20 @@ const {
         </div>
       </section>
     </div>
+
+    <header class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+          Community
+        </p>
+        <h2 id="discussion-heading" class="mt-2 text-3xl font-bold tracking-[-0.04em] text-[var(--ink)] sm:text-4xl">
+          Comments
+        </h2>
+      </div>
+      <p class="max-w-[34ch] text-sm leading-relaxed text-[var(--ink-soft)]">
+        Join the conversation — share a thought or a question below.
+      </p>
+    </header>
 
     <section class="rounded-[1.75rem] border border-[var(--hair)] bg-[var(--paper-deep)] p-5 sm:p-6">
       <form
