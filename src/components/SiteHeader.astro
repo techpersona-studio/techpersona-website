@@ -19,7 +19,7 @@ const navItems = [
     </a>
 
     <!-- Desktop nav -->
-    <nav aria-label="Main navigation" class="ml-auto hidden items-center gap-7 min-[860px]:flex">
+    <nav aria-label="Main navigation" class="nav-desktop">
       <ul class="flex items-center gap-7 text-sm font-medium text-[var(--ink-soft)]">
         {navItems.map((item) => (
           <li>
@@ -38,7 +38,7 @@ const navItems = [
     <!-- Mobile burger -->
     <button
       type="button"
-      class="nav-burger ml-auto min-[860px]:hidden"
+      class="nav-burger"
       aria-label="Open menu"
       aria-expanded="false"
       aria-controls="blogNavOverlay"
@@ -65,9 +65,18 @@ const navItems = [
 </div>
 
 <style>
-  /* Burger — mirrors the homepage bars→X animation */
-  .nav-burger {
+  /* Desktop nav — shown by default, hidden on mobile (matches landing) */
+  .nav-desktop {
+    margin-left: auto;
     display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  /* Burger — hidden on desktop, shown on mobile; bars→X animation */
+  .nav-burger {
+    display: none;
+    margin-left: auto;
     flex-direction: column;
     gap: 5px;
     background: none;
@@ -125,6 +134,10 @@ const navItems = [
   }
   @media (min-width: 860px) {
     .nav-overlay { display: none; }
+  }
+  @media (max-width: 860px) {
+    .nav-desktop { display: none; }
+    .nav-burger { display: flex; }
   }
 </style>
 
