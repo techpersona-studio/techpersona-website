@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.techpersonastudio.com/sitemap.xml
+Sitemap: https://www.techpersonastudio.com/sitemap-index.xml
