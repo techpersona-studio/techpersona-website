@@ -7,6 +7,9 @@ import {
   getAuthorName,
   getCommentsForPost,
   getPostsForNavigation,
+  cleanArticle,
+  cleanInline,
+  cleanText,
   getWordPressCommentActionUrl,
   getWordPressCommentsApiUrl,
   getFeaturedImageAlt,
@@ -31,8 +34,8 @@ const { post } = Astro.props;
 const imageUrl = getFeaturedImageUrl(post);
 const imageAlt = getFeaturedImageAlt(post);
 const author = getAuthorName(post);
-const description = stripHtml(post.excerpt.rendered);
-const title = stripHtml(post.title.rendered);
+const description = cleanText(post.excerpt.rendered);
+const title = cleanText(post.title.rendered);
 const comments = await getCommentsForPost(post.id);
 const navigationPosts = await getPostsForNavigation();
 const currentPostIndex = navigationPosts.findIndex((navigationPost) => navigationPost.id === post.id);
@@ -60,7 +63,7 @@ const commentActionUrl = getWordPressCommentActionUrl();
         </div>
         <h1
           class="mt-4 text-4xl font-extrabold leading-[1.02] tracking-[-0.045em] text-[var(--ink)] sm:text-5xl lg:text-6xl"
-          set:html={post.title.rendered}
+          set:html={cleanInline(post.title.rendered)}
         />
         <p class="mt-5 max-w-[60ch] text-lg leading-relaxed text-[var(--ink-soft)]">
           {description}
@@ -79,7 +82,7 @@ const commentActionUrl = getWordPressCommentActionUrl();
         </div>
       )}
 
-      <div class="article-content mt-10" set:html={post.content.rendered} />
+      <div class="article-content mt-10" set:html={cleanArticle(post.content.rendered)} />
 
       {(previousPost || nextPost) && (
         <nav
@@ -89,7 +92,7 @@ const commentActionUrl = getWordPressCommentActionUrl();
           <div class:list={["grid gap-4", previousPost && nextPost ? "md:grid-cols-2" : "md:grid-cols-1"]}>
             {previousPost && (
               <a
-                href={`/blog/${previousPost.slug}/`}
+                href={`/blog/${previousPost.slug}`}
                 class="block rounded-[1.5rem] border border-[var(--hair)] bg-[var(--core)] px-5 py-5 transition-colors hover:border-[rgba(30,58,52,0.2)] hover:bg-[var(--paper-deep)] sm:px-6"
               >
                 <p class="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--ink-faint)]">
@@ -97,14 +100,14 @@ const commentActionUrl = getWordPressCommentActionUrl();
                 </p>
                 <h2
                   class="mt-3 text-xl font-semibold leading-snug text-[var(--ink)] sm:text-2xl"
-                  set:html={previousPost.title.rendered}
+                  set:html={cleanInline(previousPost.title.rendered)}
                 />
               </a>
             )}
 
             {nextPost && (
               <a
-                href={`/blog/${nextPost.slug}/`}
+                href={`/blog/${nextPost.slug}`}
                 class:list={[
                   "block rounded-[1.5rem] border border-[var(--hair)] bg-[var(--core)] px-5 py-5 transition-colors hover:border-[rgba(30,58,52,0.2)] hover:bg-[var(--paper-deep)] sm:px-6",
                   previousPost ? "md:text-right" : "md:justify-self-end md:max-w-[22rem] md:text-right",
@@ -115,7 +118,7 @@ const commentActionUrl = getWordPressCommentActionUrl();
                 </p>
                 <h2
                   class="mt-3 text-xl font-semibold leading-snug text-[var(--ink)] sm:text-2xl"
-                  set:html={nextPost.title.rendered}
+                  set:html={cleanInline(nextPost.title.rendered)}
                 />
               </a>
             )}

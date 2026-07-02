@@ -195,6 +195,51 @@ export function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, "").trim();
 }
 
+// AI-draft scaffolding that leaked into published posts, e.g. "[insert image: ...]".
+const SCAFFOLD_INLINE = /\[insert[^\]]*\]/gi;
+
+// Remove leftover authoring artifacts: "[insert ...]" prompt scaffolding and
+// WordPress block-editor demo content ("toggle me" details, corgi test image).
+export function stripScaffolding(html: string): string {
+  return html
+    // A block whose entire content is a scaffold bracket → drop the block.
+    .replace(
+      /<(p|h[1-6]|figure|figcaption|li)\b[^>]*>\s*(?:<[^>]+>\s*)*\[insert[^\]]*\]\s*(?:<\/[^>]+>\s*)*<\/\1>/gi,
+      "",
+    )
+    // Any remaining inline scaffold text.
+    .replace(SCAFFOLD_INLINE, "")
+    // Leftover WP demo blocks.
+    .replace(/<details\b[^>]*>[\s\S]*?toggle me[\s\S]*?<\/details>/gi, "")
+    .replace(/<figure\b[^>]*>\s*<img\b[^>]*corgi-test[^>]*>[\s\S]*?<\/figure>/gi, "")
+    .replace(/<img\b[^>]*corgi-test[^>]*>/gi, "")
+    // Tidy up any now-empty paragraphs/headings.
+    .replace(/<(p|h[1-6])\b[^>]*>\s*<\/\1>/gi, "");
+}
+
+// The post title is the page's single <h1>. WP posts that used <h1> for their
+// own sections create multiple H1s — shift every content heading down one level
+// (only when an <h1> is present) so the title stays the sole H1.
+export function demoteHeadings(html: string): string {
+  if (!/<h1[\s>]/i.test(html)) return html;
+  return html.replace(/<(\/?)h([1-5])\b/gi, (_m, slash, n) => `<${slash}h${Number(n) + 1}`);
+}
+
+// Full cleanup for article body HTML rendered via set:html.
+export function cleanArticle(html: string): string {
+  return demoteHeadings(stripScaffolding(html));
+}
+
+// Cleanup for inline HTML kept as-is (titles rendered via set:html — preserves entities).
+export function cleanInline(html: string): string {
+  return html.replace(SCAFFOLD_INLINE, "").trim();
+}
+
+// Cleanup for plain-text output (meta title/description).
+export function cleanText(html: string): string {
+  return stripHtml(html.replace(SCAFFOLD_INLINE, "")).trim();
+}
+
 export function formatPostDate(date: string): string {
   const parsed = new Date(date);
 

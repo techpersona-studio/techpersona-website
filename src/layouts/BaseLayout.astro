@@ -15,7 +15,10 @@ const { title, description, image, canonical, type = "website" } = Astro.props;
 const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? Astro.site?.href ?? "";
 const pageDescription = description ?? "Notes on website redesign, lead automation, and local search from TechPersona Studio in Worcester, MA.";
 const ogImage = image ?? (siteUrl ? siteUrl + "/assets/images/og-image.jpg" : undefined);
-const canonicalUrl = canonical ?? (siteUrl ? new URL(Astro.url.pathname, siteUrl).href : undefined);
+// Strip the trailing slash (except root) so the canonical matches the URL the
+// site actually serves — vercel.json trailingSlash:false 308s /path/ → /path.
+const canonicalPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
+const canonicalUrl = canonical ?? (siteUrl ? new URL(canonicalPath, siteUrl).href : undefined);
 const pageUrl = canonicalUrl ?? Astro.url.href;
 ---
 

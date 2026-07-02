@@ -9,6 +9,10 @@ const SITE = process.env.PUBLIC_SITE_URL ?? "https://www.techpersonastudio.com";
 // Astro owns the /blog/* routes, which are built from headless WordPress at build time.
 export default defineConfig({
   site: SITE,
+  // vercel.json uses trailingSlash:false (strips the slash). Match it here so
+  // sitemap URLs and Astro-generated links use the non-slash canonical form
+  // and don't 308-redirect.
+  trailingSlash: "never",
   integrations: [
     sitemap({
       // The homepage is a static public/ file, not an Astro route, so the
