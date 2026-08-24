@@ -12,7 +12,9 @@ dist/
 .env.production
 
 # Internal — never publish. This repo is PUBLIC.
-# The rate card carries client names, what each actually paid vs list,
-# a named prospect's discount, and an invoice number.
-todo/services-and-pricing-draft.html
+# Pricing, client names, and anything showing what a client actually paid
+# live in Drive at 02-Business/TechPersonaStudio/pricing/, never here.
+# These patterns are a backstop in case one is ever dropped in by mistake.
+todo/*pricing*
+todo/*rate-card*
 .claude/
