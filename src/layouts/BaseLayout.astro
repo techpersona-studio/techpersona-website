@@ -30,12 +30,10 @@ const pageUrl = canonicalUrl ?? Astro.url.href;
     <title>{title}</title>
     <meta name="description" content={pageDescription} />
     <meta name="theme-color" content="#f6f3ee" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- fonts self-hosted (see @font-face in styles/global.css). Only the sans is
+         preloaded — nothing in the blog templates uses --font-serif yet, so
+         preloading Cormorant would fetch 39KB nothing renders. -->
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/HankenGrotesk-normal-latin.woff2" crossorigin="anonymous" />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={pageDescription} />
