@@ -5,22 +5,22 @@ Check off as done.
 
 ## Now — code, ~30 min total (do these today)
 
-- [ ] **Remove legal pages from `sitemap.xml`.** Delete the `/privacy-policy` and
+- [x] **Remove legal pages from `sitemap.xml`.** Delete the `/privacy-policy` and
   `/terms` `<url>` blocks — they're `noindex`, so they must not be in the sitemap.
   Leave only the homepage entry. *(File: `sitemap.xml`)*
-- [ ] **Add geo to the `<title>`.** Change to
+- [x] **Add geo to the `<title>`.** Change to
   `Website Redesign in Worcester, MA | TechPersona Studio` (or similar). Keep under
   ~60 chars. *(File: `index.html` line 13)*
-- [ ] **Bump sitemap `<lastmod>`** for the homepage to today's publish date.
+- [x] ~~**Bump sitemap `<lastmod>`**~~ — N/A, @astrojs/sitemap generates it now.
   *(File: `sitemap.xml`)*
-- [ ] **Add intrinsic `width`/`height` to the 3 `<video>` elements** (or confirm CSS
+- [x] **Add intrinsic `width`/`height` to the 3 `<video>` elements** (or confirm CSS
   reserves aspect-ratio) to lock CLS. *(File: `index.html`)*
-- [ ] **Add "Saugus, MA" to the Quán Phở before-image alt** for extra geo signal.
+- [x] **Add "Saugus, MA" to the Quán Phở before-image alt** for extra geo signal.
   *(File: `index.html` line 427)*
 
 ## Soon — content, this week
 
-- [ ] **Add a soft pricing anchor.** One line ("Most first projects start at $X,
+- [x] **Add a soft pricing anchor.** One line ("Most first projects start at $X,
   one-time") in the audit section or a new FAQ entry. Reduces abandonment + answers
   a top AI/search query.
 - [ ] **Add a timeline FAQ passage** surfaced in the FAQ list (currently only in the
@@ -32,9 +32,9 @@ Check off as done.
 
 ## When GBP goes public — unblocks the biggest gap
 
-- [ ] **Populate `sameAs`** in the schema with the GBP maps URL + any LinkedIn /
+- [x] **Populate `sameAs`** in the schema with the GBP maps URL + any LinkedIn /
   other real profile. *(File: `index.html`, `#business` node)*
-- [ ] **Link GBP / profile in the footer** for a human-visible trust signal.
+- [x] **Link GBP / profile in the footer** for a human-visible trust signal.
 - [ ] **Add `aggregateRating`** to schema ONLY once real reviews exist (never fake it).
 
 ## Next phase — architecture (expands ranking surface)
