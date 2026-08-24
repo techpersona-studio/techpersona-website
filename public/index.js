@@ -742,4 +742,28 @@
       darkZones.forEach(function(z){ dObs.observe(z); });
     }
   })();
+
+  /* ── lazy videos ──────────────────────────────────
+     autoplay overrides preload="metadata", so the old markup pulled all
+     three files (15.5MB) on load. Fetch + play only once in view. */
+  (function(){
+    var vids = Array.prototype.slice.call(document.querySelectorAll('video[data-lazy-video]'));
+    if(!vids.length) return;
+    if(!('IntersectionObserver' in window)){
+      vids.forEach(function(v){ v.preload = 'auto'; v.play().catch(function(){}); });
+      return;
+    }
+    var vObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var v = en.target;
+        if(en.isIntersecting){
+          if(v.preload === 'none') v.preload = 'auto';
+          v.play().catch(function(){});   // refused autoplay just leaves the poster up
+        } else if(!v.paused){
+          v.pause();                      // stop decoding offscreen
+        }
+      });
+    }, {rootMargin:'200px 0px'});
+    vids.forEach(function(v){ vObs.observe(v); });
+  })();
 })();

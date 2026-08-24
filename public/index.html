@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+<!-- Google Tag Manager (deferred: loads on first interaction, idle fallback) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];var done=false;
+function load(){if(done)return;done=true;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}
+['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+w.addEventListener(e,load,{passive:true,once:true});});
+// fallback so visitors who never interact still get counted
+if('requestIdleCallback' in w){w.requestIdleCallback(load,{timeout:10000});}else{setTimeout(load,10000);}
 })(window,document,'script','dataLayer','GTM-NDQ8ZJ9B');</script>
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
@@ -28,10 +32,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="Service businesses in Worcester, MA lose leads when their site can't be found. I fix that. Free website audit in 2 days.">
 <meta name="twitter:image" content="https://www.techpersonastudio.com/assets/images/og-image.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap"></noscript>
+<!-- fonts are self-hosted (see @font-face in index.css); preload the two latin
+     faces the hero needs so text paints without a swap reflow -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/HankenGrotesk-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/CormorantGaramond-italic-latin.woff2" crossorigin>
+<link rel="stylesheet" href="index.css">
+<link rel="preload" as="image" href="assets/images/profile-pic.webp" fetchpriority="high">
+
 
 <script type="application/ld+json">
 {
@@ -216,8 +223,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
-<link rel="preload" as="image" href="assets/images/profile-pic.webp" fetchpriority="high">
-<link rel="stylesheet" href="index.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -446,7 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="ba-col after">
           <span class="ba-label" data-i18n="proof_label_after">After</span>
           <div class="ba-media">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/poster-quanpho.webp" aria-label="Quán Phở new website walkthrough">
+            <video muted loop playsinline preload="none" data-lazy-video poster="assets/images/poster-quanpho.webp" aria-label="Quán Phở new website walkthrough">
               <source src="assets/videos/new-quanpho.mp4" type="video/mp4">
             </video>
           </div>
@@ -492,13 +497,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="samples-head" data-reveal data-i18n="proof_samples_head">Sample builds</p>
     <div class="sample-grid" data-reveal data-d="1">
       <div class="sample-frame">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/poster-realestate.webp" aria-label="Real estate website sample build">
+        <video muted loop playsinline preload="none" data-lazy-video poster="assets/images/poster-realestate.webp" aria-label="Real estate website sample build">
           <source src="assets/videos/demo-realestate-wordpress.mp4" type="video/mp4">
         </video>
         <span class="s-lbl" data-i18n="proof_sample1">Real estate</span>
       </div>
       <div class="sample-frame">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/poster-ecommerce.webp" aria-label="E-commerce website sample build">
+        <video muted loop playsinline preload="none" data-lazy-video poster="assets/images/poster-ecommerce.webp" aria-label="E-commerce website sample build">
           <source src="assets/videos/demo-ecommerce-wordpress.mp4" type="video/mp4">
         </video>
         <span class="s-lbl" data-i18n="proof_sample2">E-commerce</span>
