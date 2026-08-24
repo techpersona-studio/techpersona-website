@@ -10,3 +10,9 @@ dist/
 # Env — WP API URL etc. Real values live in Vercel dashboard.
 .env
 .env.production
+
+# Internal — never publish. This repo is PUBLIC.
+# The rate card carries client names, what each actually paid vs list,
+# a named prospect's discount, and an invoice number.
+todo/services-and-pricing-draft.html
+.claude/

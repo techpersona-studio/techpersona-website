@@ -219,7 +219,21 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 /* ===========================================================
    SERVICES (2-col double-shell)
    =========================================================== */
-.bento{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:clamp(2.5rem,5vw,3.5rem)}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:clamp(2.5rem,5vw,3.5rem)}
+.tiers{list-style:none;margin:0 0 1.25rem;padding:0}
+.tiers li{display:flex;justify-content:space-between;align-items:baseline;gap:.9rem;padding:.6rem 0;border-bottom:1px solid rgba(30,58,52,.09)}
+.tiers li:last-child{border-bottom:none}
+.t-name{font-size:.94rem;font-weight:600;color:var(--ink-soft);line-height:1.3}
+.t-name em{display:block;font-style:normal;font-weight:400;font-size:.79rem;color:var(--ink-faint);margin-top:.12rem}
+.t-price{font-size:1.02rem;font-weight:700;color:var(--pine);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tiers li:first-child .t-price{font-size:1.25rem}
+.promise{margin:1.1rem 0 0;font-size:1rem;color:var(--pine);font-weight:600;display:flex;gap:.55rem;align-items:flex-start}
+.promise::before{content:"\2713";flex-shrink:0;font-weight:800}
+.anchor-note{margin:0 0 1.1rem;padding:.75rem .95rem;background:rgba(192,106,69,.08);border-left:3px solid var(--terra);border-radius:0 .6rem .6rem 0;font-size:.9rem;line-height:1.5;color:var(--ink-soft)}
+.anchor-note b{color:var(--terra-deep);font-weight:700}
+.upsell-line{margin:1.2rem 0 0;padding:.85rem 1.05rem;background:rgba(192,106,69,.08);border-left:3px solid var(--terra);border-radius:0 .6rem .6rem 0;font-size:.94rem;line-height:1.55;color:var(--ink-soft)}
+.upsell-line b{color:var(--terra-deep);font-weight:700}
+.not-for{margin:2.2rem auto 0;max-width:60ch;text-align:center;font-size:.95rem;line-height:1.6;color:var(--ink-faint)}
 .shell{background:rgba(30,58,52,.04);border:1px solid rgba(30,58,52,.08);border-radius:var(--r-card);padding:10px;box-shadow:var(--lift)}
 .core-card{background:var(--core);border-radius:var(--r-inner);box-shadow:var(--inner-hi);padding:clamp(1.6rem,3vw,2.4rem);height:100%;display:flex;flex-direction:column}
 .core-card .num{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pine);font-weight:600}
@@ -271,6 +285,32 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .founder-note .fn-quote{font-size:1.05rem;color:var(--ink);line-height:1.6}
 .samples-head{margin:clamp(2.5rem,5vw,3.5rem) 0 1.2rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
 .sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+/* /work teasers on the homepage — poster stills, not autoplay video, so the
+   proof section costs no LCP. Full before/after lives on /work. */
+/* measured speed, sitting as the first row of each before/after list */
+.ba-stat{align-items:baseline}
+.ba-stat .bp-v{flex:0 0 auto;font-weight:700;font-size:1.15rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;min-width:3.4rem}
+.ba-col.before .ba-stat .bp-v{color:var(--ink-faint)}
+.ba-col.after  .ba-stat .bp-v{color:var(--pine)}
+.perf-src{margin:1.1rem auto 0;max-width:60ch;font-size:.8rem;line-height:1.5;color:var(--ink-faint);text-align:center}
+
+.work-teasers{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:clamp(2.2rem,4vw,3.2rem)}
+.wt-card{display:flex;flex-direction:column;background:var(--core);border:1px solid var(--hair);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--lift);text-decoration:none;color:inherit;transition:transform .28s ease,box-shadow .28s ease}
+.wt-card:hover,.wt-card:focus-visible{transform:translateY(-3px);box-shadow:0 2px 4px rgba(30,58,52,.05),0 26px 52px -24px rgba(30,58,52,.38)}
+.wt-media{display:block;aspect-ratio:128/110;overflow:hidden;background:var(--pine-wash)}
+.wt-media img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.wt-body{display:flex;flex-direction:column;gap:.3rem;padding:1.15rem 1.4rem 1.35rem}
+.wt-name{font-weight:700;font-size:1.12rem;color:var(--ink);letter-spacing:-.01em}
+.wt-kind{font-size:.9rem;color:var(--ink-faint)}
+.wt-go{margin-top:.55rem;font-weight:600;color:var(--pine)}
+.wt-card:hover .wt-go .a{transform:translateX(3px)}
+.wt-go .a{display:inline-block;transition:transform .2s ease}
+@media(max-width:760px){.work-teasers{grid-template-columns:1fr}}
+
+/* first real client quote — markup is commented out in index.html until one exists */
+.client-quote{margin:clamp(2rem,4vw,2.8rem) auto 0;max-width:62ch;text-align:center;border:0;padding:0}
+.client-quote .cq-text{font-family:var(--font-serif);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.55;color:var(--ink)}
+.client-quote .cq-by{margin-top:.9rem;font-size:.92rem;color:var(--ink-faint)}
 .sample-frame{position:relative;border-radius:var(--r-card);overflow:hidden;border:1px solid var(--hair);box-shadow:var(--lift)}
 .sample-frame video{width:100%;height:240px;object-fit:cover}
 .sample-frame .s-lbl{position:absolute;bottom:12px;left:12px;font-size:.78rem;font-weight:600;color:var(--paper);background:rgba(23,23,23,.55);padding:.35rem .75rem;border-radius:var(--r-pill);backdrop-filter:blur(4px)}
@@ -455,6 +495,7 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
    RESPONSIVE
    =========================================================== */
 @media(max-width:980px){
+  .bento{grid-template-columns:1fr}
   .hero-grid{grid-template-columns:1fr;gap:2.5rem}
   .hero-visual{max-width:440px;margin:0 auto;width:100%}
   .about-grid{grid-template-columns:1fr;gap:2.5rem}
