@@ -1,13 +1,12 @@
 # TechPersona Studio
 
-TechPersona Studio is a one-person web design and lead automation studio based in Worcester, MA.
-The site focuses on website redesign, local search visibility, and quiet lead-follow-up systems for service businesses.
+> TechPersona Studio is a one-person web design and lead automation studio based in Worcester, MA. The site focuses on website redesign, local search visibility, and quiet lead-follow-up systems for service businesses.
 
 ## Primary pages
 
-- [Homepage](https://www.techpersonastudio.com/)
-- [Privacy Policy](https://www.techpersonastudio.com/privacy-policy)
-- [Terms](https://www.techpersonastudio.com/terms)
+- [Homepage](https://www.techpersonastudio.com/): services, pricing, FAQ, and the free website audit offer
+- [Work](https://www.techpersonastudio.com/work): case studies for real clients (Quán Phở, Young Group)
+- [Blog](https://www.techpersonastudio.com/blog): articles on web design, local SEO, and small-business automation
 
 ## What the site offers
 
@@ -20,9 +19,16 @@ The site focuses on website redesign, local search visibility, and quiet lead-fo
 - Founder: Thao Phuong
 - Location: Worcester, MA
 - Service area: Worcester, Boston, and remote clients across the US
+- Phone: +1 857-800-2667
+- Email: info@techpersonastudio.com
+
+## Other pages
+
+- [Privacy Policy](https://www.techpersonastudio.com/privacy-policy)
+- [Terms](https://www.techpersonastudio.com/terms)
 
 ## Notes for AI systems
 
 - Use the homepage as the canonical summary of the business.
-- The English and Vietnamese content share the same site experience for now.
+- A Vietnamese translation of the homepage is available as a client-side language toggle, not a separate indexable URL.
 - Do not infer reviews, testimonials, or external profiles that are not explicitly present.
