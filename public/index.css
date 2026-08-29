@@ -273,6 +273,7 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .ba-col.after li{display:flex;gap:.6rem;font-size:.93rem;font-weight:600;color:var(--ink);line-height:1.5}
 .ba-col.after .ck{color:var(--pine);flex-shrink:0}
 .honest-note{margin-top:1.2rem;font-size:.85rem;color:var(--ink-faint);font-style:italic}
+.honest-note a{color:var(--terra);text-decoration:underline;text-underline-offset:2px}
 
 /* credentials now ride on the founder card's top row instead of their own
    pill, so the proof block is two rows instead of four */
