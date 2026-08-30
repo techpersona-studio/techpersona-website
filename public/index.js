@@ -56,8 +56,8 @@
       perfk_yg_after: 'faster to load',
 
       // ---- /work measured before/after ----
-      qp_perf_src: 'Google PageSpeed Insights, 14 July 2026. Both measured back to back on the same phone.',
-      yg_perf_src: 'GTmetrix, 4 August 2026. Both run from the same test server, a minute apart.',
+      qp_perf_src: 'Measured with Google PageSpeed Insights.',
+      yg_perf_src: 'Measured with GTmetrix.',
 
 
 
@@ -337,8 +337,8 @@
       perfk_yg_after: 'tải nhanh hơn',
 
       // ---- /work measured before/after ----
-      qp_perf_src: 'Google PageSpeed Insights, 14/7/2026. Cả hai đo liên tiếp trên cùng một điện thoại.',
-      yg_perf_src: 'GTmetrix, 4/8/2026. Cả hai chạy từ cùng một máy chủ kiểm tra, cách nhau một phút.',
+      qp_perf_src: 'Đo bằng Google PageSpeed Insights.',
+      yg_perf_src: 'Đo bằng GTmetrix.',
 
 
 

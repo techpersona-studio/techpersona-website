@@ -297,7 +297,7 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .ba-stat .bp-v{flex:0 0 auto;font-weight:700;font-size:1.15rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;min-width:3.4rem}
 .ba-col.before .ba-stat .bp-v{color:var(--ink-faint)}
 .ba-col.after  .ba-stat .bp-v{color:var(--pine)}
-.perf-src{margin:1.1rem auto 0;max-width:60ch;font-size:.8rem;line-height:1.5;color:var(--ink-faint);text-align:center}
+.perf-src{margin:1.1rem auto 1.1rem;max-width:60ch;font-size:.8rem;line-height:1.5;color:var(--ink-faint);text-align:center;white-space:nowrap}
 
 .work-teasers{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:clamp(2.2rem,4vw,3.2rem)}
 .wt-card{display:flex;flex-direction:column;background:var(--core);border:1px solid var(--hair);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--lift);text-decoration:none;color:inherit;transition:transform .28s ease,box-shadow .28s ease}
