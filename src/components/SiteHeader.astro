@@ -3,31 +3,48 @@
 // same mobile pattern: links collapse into a burger that opens a slide-in
 // overlay at <=860px. Section links point at the homepage anchors so a
 // reader on any /blog page can jump back into the funnel.
+import { home } from "../i18n/home";
+
+interface Props {
+  lang?: "en" | "vi";
+  // EN/VI twin paths; the language switch shows only when a twin exists.
+  alternates?: { en: string; vi: string };
+}
+const { lang = "en", alternates } = Astro.props;
+const vi = lang === "vi";
+const t = home[lang];
+const dec = (s: string) => s.replace(/<[^>]+>/g, "").replace(/&#8594;/g, "").trim();
+const base = vi ? "/vi" : "";
 const navItems = [
-  { href: "/#services", label: "What I build" },
-  { href: "/work", label: "Work" },
-  { href: "/#about", label: "About" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/blog", label: "Blog" },
+  { href: `${base}/#services`.replace("/vi/#", "/vi#"), label: t.nav_build },
+  { href: `${base}/work`, label: t.nav_proof },
+  { href: `${base}/#about`.replace("/vi/#", "/vi#"), label: t.nav_about },
+  { href: `${base}/#faq`.replace("/vi/#", "/vi#"), label: t.nav_faq },
+  // blog is English only; there is no /vi/blog
+  { href: "/blog", label: t.nav_blog },
 ];
+const homeHref = vi ? "/vi" : "/";
+const auditHref = vi ? "/vi#audit" : "/#audit";
+const cta = dec(t.nav_cta);
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => (href === "/blog" || href === "/work") && (path === href || path.startsWith(href + "/"));
+const isCurrent = (href: string) => (href === "/blog" || href === `${base}/work`) && (path === href || path.startsWith(href + "/"));
 ---
 
 <header class="site-head">
   <div class="page-shell flex h-[60px] items-center gap-6 sm:h-[68px]">
-    <a href="/" class="text-lg font-extrabold tracking-[-0.04em] text-[var(--ink)] sm:text-xl">
+    <a href={homeHref} class="text-lg font-extrabold tracking-[-0.04em] text-[var(--ink)] sm:text-xl">
       TechPersona <span class="text-[var(--pine)]">Studio</span>
     </a>
 
     <!-- Desktop nav -->
-    <nav aria-label="Main navigation" class="nav-desktop">
+    <nav aria-label={vi ? "Điều hướng chính" : "Main navigation"} class="nav-desktop">
       <ul class="flex items-center gap-7 text-sm font-medium text-[var(--ink-soft)]">
         {navItems.map((item) => (
           <li>
             <a
               href={item.href}
               aria-current={isCurrent(item.href) ? "page" : undefined}
+              hreflang={item.href === "/blog" && vi ? "en" : undefined}
               class="nav-link transition-colors duration-150 hover:text-[var(--ink)]"
             >
               {item.label}
@@ -35,8 +52,15 @@ const isCurrent = (href: string) => (href === "/blog" || href === "/work") && (p
           </li>
         ))}
       </ul>
-      <a href="/#audit" class="island-btn island-btn--pine">
-        Get my free website audit
+      {alternates && (
+        <div class="lang-sw" role="group" aria-label={vi ? "Ngôn ngữ" : "Language"}>
+          <a href={alternates.vi} lang="vi" hreflang="vi" class:list={{ on: vi }} aria-current={vi ? "page" : undefined}>VI</a>
+          <span aria-hidden="true">|</span>
+          <a href={alternates.en} lang="en" hreflang="en" class:list={{ on: !vi }} aria-current={!vi ? "page" : undefined}>EN</a>
+        </div>
+      )}
+      <a href={auditHref} class="island-btn island-btn--pine">
+        {cta}
         <span class="island-btn__icon" aria-hidden="true">&#8594;</span>
       </a>
     </nav>
@@ -45,7 +69,7 @@ const isCurrent = (href: string) => (href === "/blog" || href === "/work") && (p
     <button
       type="button"
       class="nav-burger"
-      aria-label="Open menu"
+      aria-label={vi ? "Mở menu" : "Open menu"}
       aria-expanded="false"
       aria-controls="blogNavOverlay"
       data-nav-burger
@@ -58,12 +82,19 @@ const isCurrent = (href: string) => (href === "/blog" || href === "/work") && (p
 
 <!-- Mobile slide-in overlay -->
 <div class="nav-overlay" id="blogNavOverlay" aria-hidden="true" data-nav-overlay>
+  {alternates && (
+    <div class="lang-sw lang-sw--ov" role="group" aria-label={vi ? "Ngôn ngữ" : "Language"}>
+      <a href={alternates.vi} lang="vi" hreflang="vi" class:list={{ on: vi }} aria-current={vi ? "page" : undefined}>VI</a>
+      <span aria-hidden="true">|</span>
+      <a href={alternates.en} lang="en" hreflang="en" class:list={{ on: !vi }} aria-current={!vi ? "page" : undefined}>EN</a>
+    </div>
+  )}
   {navItems.map((item) => (
-    <a href={item.href} class="ov-link">{item.label}</a>
+    <a href={item.href} hreflang={item.href === "/blog" && vi ? "en" : undefined} class="ov-link">{item.label}</a>
   ))}
   <div class="ov-foot">
-    <a href="/#audit" class="island-btn island-btn--pine">
-      Get my free website audit
+    <a href={auditHref} class="island-btn island-btn--pine">
+      {cta}
       <span class="island-btn__icon" aria-hidden="true">&#8594;</span>
     </a>
     <a href="tel:+18578002667" class="ov-tel">+1 857 800 2667</a>
@@ -91,6 +122,12 @@ const isCurrent = (href: string) => (href === "/blog" || href === "/work") && (p
     align-items: center;
     gap: 1.75rem;
   }
+  /* VI | EN switch, same look as the homepage toggle */
+  .lang-sw { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; color: var(--hair); }
+  .lang-sw a { color: var(--ink-faint); transition: color 150ms ease; }
+  .lang-sw a:hover { color: var(--ink-soft); }
+  .lang-sw a.on { color: var(--pine); }
+  .lang-sw--ov { align-self: flex-start; font-size: 1rem; margin-bottom: -0.5rem; }
   /* Desktop CTA matches the landing nav's compact .island.sm sizing */
   .nav-desktop .island-btn {
     font-size: 0.9rem;

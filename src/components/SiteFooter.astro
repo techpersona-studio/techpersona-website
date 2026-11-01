@@ -1,4 +1,10 @@
 ---
+import { home } from "../i18n/home";
+
+interface Props { lang?: "en" | "vi" }
+const { lang = "en" } = Astro.props;
+const vi = lang === "vi";
+const t = home[lang];
 const year = new Date().getFullYear();
 ---
 
@@ -6,14 +12,32 @@ const year = new Date().getFullYear();
   <div class="page-shell site-foot__in">
     <div>
       <p class="site-foot__brand">TechPersona <span>Studio</span></p>
-      <p class="site-foot__line">Web design, SEO and AI ads for small businesses. Worcester, MA.</p>
+      <p class="site-foot__line">{vi ? "Thiết kế web, SEO và quảng cáo AI cho doanh nghiệp nhỏ. Worcester, MA." : "Web design, SEO and AI ads for small businesses. Worcester, MA."}</p>
     </div>
-    <nav aria-label="Footer" class="site-foot__nav">
-      <a href="/">Home</a>
-      <a href="/work">Work</a>
-      <a href="/blog">Blog</a>
-      <a href="/#audit">Free audit</a>
-    </nav>
+    <div class="site-foot__navs">
+      {!vi && (
+      <nav aria-label="Services" class="site-foot__nav">
+        <span class="site-foot__k">Services</span>
+        <a href="/seo">SEO &amp; AI search</a>
+        <a href="/ai-video-ads">AI video ads</a>
+        <a href="/web-design-worcester-ma">Web design Worcester</a>
+        <a href="/web-design-boston">Web design Boston</a>
+      </nav>
+      )}
+      <nav aria-label="Footer" class="site-foot__nav">
+        <span class="site-foot__k">Studio</span>
+        <a href={vi ? "/vi" : "/"}>{vi ? "Trang chủ" : "Home"}</a>
+        <a href={vi ? "/vi/work" : "/work"}>{t.nav_proof}</a>
+        <a href="/blog" hreflang={vi ? "en" : undefined}>{t.nav_blog}</a>
+        <a href={vi ? "/vi#audit" : "/#audit"}>{vi ? "Đánh giá miễn phí" : "Free audit"}</a>
+      </nav>
+    </div>
     <p class="site-foot__copy">&copy; {year} TechPersona Studio</p>
   </div>
 </footer>
+
+<style>
+  .site-foot__navs { display: grid; gap: 0.9rem; }
+  .site-foot__k { width: 100%; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); }
+  @media (min-width: 640px) { .site-foot__k { width: 5.5rem; } }
+</style>

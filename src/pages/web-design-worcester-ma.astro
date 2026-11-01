@@ -1,0 +1,184 @@
+---
+import ServicePage from "../components/services/ServicePage.astro";
+import Faq from "../components/services/Faq.astro";
+import ClosingCta from "../components/services/ClosingCta.astro";
+import { crumbs, faqPage, service, offer, SITE, type Faq as FaqT } from "../components/services/schema";
+
+const path = "/web-design-worcester-ma";
+const title = "Web Design Worcester, MA for Small Business | TechPersona";
+const description = "Web design in Worcester, MA from a local one-person studio. Phone-first sites with SEO built in. Launch $950, Growth $1,850, Custom from $2,500.";
+
+const faqs: FaqT[] = [
+  {
+    q: "How much does a website cost in Worcester, MA?",
+    a: "With TechPersona Studio: $950 for a one-page Launch site, $1,850 for a Growth website of up to 5 pages, and from $2,500 for Custom builds with 6 or more pages, a second language or integrations. Domain, hosting and paid software are billed to you directly.",
+  },
+  {
+    q: "How long does a website take?",
+    a: "Most builds take 2 to 4 weeks from the scoping call to launch. You get a specific timeline on the call, not a vague estimate.",
+  },
+  {
+    q: "Will my new site show up on Google?",
+    a: "Every build ships with basic SEO and AI search setup: clean titles and headings, structured data for your hours and services, and pages AI answers can read. Ongoing ranking work is a separate service.",
+    html: "Every build ships with basic SEO and AI search setup: clean titles and headings, structured data for your hours and services, and pages AI answers can read. Ongoing ranking work is a separate service, see <a href=\"/seo\">SEO services for small business</a>.",
+  },
+  {
+    q: "Do I have to rebuild everything?",
+    a: "No. Often the right move is fixing what you already have. If a piece works, we keep it. The free audit tells you which parts are costing you customers.",
+  },
+  {
+    q: "Do you work with businesses outside Worcester?",
+    a: "Yes. The whole process works remotely, over video calls and shared links. Quán Phở is in Saugus, and I work with small businesses across Greater Boston and the US.",
+    html: "Yes. The whole process works remotely, over video calls and shared links. Quán Phở is in Saugus, and I work with small businesses across Greater Boston and the US. See <a href=\"/web-design-boston\">web design for Boston small businesses</a>.",
+  },
+];
+
+const jsonLd = [
+  service({
+    path,
+    name: "Web design in Worcester, MA",
+    serviceType: "Web design",
+    description: "Phone-first website design and build for small businesses in Worcester, MA, with SEO and AI search basic setup included.",
+    areaServed: [
+      { "@type": "City", name: "Worcester", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+      { "@type": "AdministrativeArea", name: "Worcester County, MA" },
+    ],
+    offers: [
+      offer("Launch Page", 950, { description: "One page, one action. Up to 7 sections." }),
+      offer("Growth Website", 1850, { description: "Up to 5 pages: Home, About, Services, Gallery, Contact." }),
+      offer("Custom + Systems", 2500, { description: "6+ pages, multi-language, owner-editable content, custom forms, integrations. Starting price.", priceSpecification: { "@type": "PriceSpecification", minPrice: "2500", priceCurrency: "USD" } }),
+    ],
+  }),
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": `${SITE}/#business`,
+    name: "TechPersona Studio",
+    url: `${SITE}/`,
+    telephone: "+18578002667",
+    email: "info@techpersonastudio.com",
+    priceRange: "$$",
+    address: { "@type": "PostalAddress", addressLocality: "Worcester", addressRegion: "MA", postalCode: "01601", addressCountry: "US" },
+    geo: { "@type": "GeoCoordinates", latitude: 42.26259, longitude: -71.80229 },
+    areaServed: { "@type": "City", name: "Worcester" },
+  },
+  crumbs("Web design Worcester, MA", path),
+  faqPage(faqs),
+];
+---
+
+<ServicePage title={title} description={description} path={path} jsonLd={jsonLd} image="/assets/services/qp-cover.webp" imageAlt="Quán Phở dining room, a TechPersona website project" ogTitle="Web design in Worcester, MA, for businesses that want the phone to ring">
+  <section class="sv-hero">
+    <div class="sv-wrap sv-hero__grid">
+      <div>
+        <nav class="sv-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>Web design Worcester, MA</nav>
+        <span class="sv-trk">Worcester, MA</span>
+        <h1 class="sv-h1">Web design in Worcester, MA. <span class="serif-i">For businesses that want the phone to ring.</span></h1>
+        <p class="sv-lead">I'm Thao Phuong, and I do web design in Worcester, MA for local small businesses. Sites built for the phone in your customer's hand, with Google setup included and prices written right on this page.</p>
+        <div class="sv-acts">
+          <a href="/#audit" class="island-btn island-btn--pine">Get my free website audit <span class="island-btn__icon" aria-hidden="true">&#8594;</span></a>
+          <a href="#prices" class="sv-ghost">See prices</a>
+        </div>
+      </div>
+      <div class="sv-stamp" aria-hidden="true">
+        <svg viewBox="0 0 200 200"><defs><path id="sv-c" d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0" /></defs><text font-size="10.5" font-weight="700" letter-spacing="4.2" fill="currentColor"><textPath href="#sv-c">MADE IN WORCESTER &#183; 42.2626&#176; N &#183; 71.8023&#176; W &#183; </textPath></text></svg>
+        <div class="sv-stamp__in"><b>Worcester</b><span>Massachusetts</span><small>Local studio</small></div>
+      </div>
+    </div>
+    <span class="sv-side" aria-hidden="true">Local &middot; phone-first</span>
+  </section>
+
+  <section class="sv-sec sv-sec--tight" aria-labelledby="who-h">
+    <div class="sv-wrap">
+      <div class="sv-head">
+        <span class="sv-trk">Who I build for</span>
+        <h2 id="who-h" class="sv-h2">The businesses <span class="serif-i">Worcester runs on.</span></h2>
+      </div>
+      <ul class="sv-who">
+        <li class="sv-rv"><b>Restaurants</b><span>Orders and party bookings, not just phone calls.</span></li>
+        <li class="sv-rv"><b>Salons and spas</b><span>Booked chairs instead of back-and-forth DMs.</span></li>
+        <li class="sv-rv"><b>Contractors</b><span>Quote requests that come in while you're on the job.</span></li>
+        <li class="sv-rv"><b>Clinics and coaches</b><span>Trust before the first appointment.</span></li>
+        <li class="sv-rv"><b>Offices and shops</b><span>Found first when someone nearby searches.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sv-sec" aria-labelledby="work-h">
+    <div class="sv-wrap">
+      <div class="sv-head sv-head--split">
+        <div>
+          <span class="sv-trk">Real work</span>
+          <h2 id="work-h" class="sv-h2">Proof, <span class="serif-i">not promises.</span></h2>
+        </div>
+        <p class="sv-p">Two real projects. Open either one to scroll the site and see what changed. <a href="/work">All work</a>.</p>
+      </div>
+      <div class="sv-cases">
+        <a class="sv-matlink sv-rv" href="/work/quan-pho">
+          <div class="sv-mat"><div class="sv-mat__img sv-case__img"><img src="/assets/services/qp-cover.webp" width="900" height="675" loading="lazy" decoding="async" alt="The dining room at Quán Phở under red lanterns" /></div></div>
+          <div class="sv-case__meta"><h3>Quán Phở</h3><p>Vietnamese restaurant &middot; Saugus, MA</p><p class="sv-case__res">Rebuilt so hungry visitors order in 2 taps.</p><span class="sv-case__go">See the project &#8594;</span></div>
+        </a>
+        <a class="sv-matlink sv-rv" href="/work/young-group">
+          <div class="sv-mat sv-mat--gold"><div class="sv-mat__img sv-case__img"><img src="/assets/services/yg-cover.webp" width="1000" height="644" loading="lazy" decoding="async" alt="Founder of Young Group, a weight-loss coaching business" style="object-position:50% 30%" /></div></div>
+          <div class="sv-case__meta"><h3>Young Group</h3><p>Weight-loss coaching &middot; bilingual site</p><p class="sv-case__res">#1 on Google in the US, 8 weeks after launch.</p><span class="sv-case__go">See the project &#8594;</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-sec sv-sec--tight" id="prices" aria-labelledby="prices-h">
+    <div class="sv-wrap">
+      <div class="sv-head sv-head--split">
+        <div>
+          <span class="sv-trk">Prices</span>
+          <h2 id="prices-h" class="sv-h2">What a website costs <span class="serif-i">in Worcester.</span></h2>
+        </div>
+        <p class="sv-p">Fixed prices, on the page. Custom builds get a full number after the free audit, before you commit.</p>
+      </div>
+      <table class="sv-table sv-rv">
+        <caption>Domain, hosting and paid software are billed to you directly. Care plans after launch from $39/mo.</caption>
+        <thead><tr><th scope="col">Package</th><th scope="col">What you get</th><th scope="col">Price</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Launch Page</th><td>One page, one action. Up to 7 sections.</td><td class="sv-price">$950</td></tr>
+          <tr><th scope="row">Growth Website</th><td>Up to 5 pages: Home, About, Services, Gallery, Contact.</td><td class="sv-price">$1,850</td></tr>
+          <tr><th scope="row">Custom + Systems</th><td>6+ pages, a second language, content you edit yourself, custom forms, integrations.</td><td class="sv-price">from $2,500</td></tr>
+        </tbody>
+      </table>
+      <details class="sv-fold" open style="margin-top:2rem">
+        <summary>What every build includes</summary>
+        <ul class="sv-list sv-list--2">
+          <li><b>Free audit and strategy call</b><span>Before anything is scoped.</span></li>
+          <li><b>Your own design</b><span>A look that feels like you, not a template.</span></li>
+          <li><b>Phone-first and fast</b><span>Made for the phone, so nobody gives up waiting.</span></li>
+          <li><b>Google and AI search setup</b><span>So you show up for "near me" searches and AI answers.</span></li>
+          <li><b>Secure from day one</b><span>Padlock, spam-protected forms.</span></li>
+          <li><b>Tracking and support</b><span>See what people click. Help after launch.</span></li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <section class="sv-sec" id="remote" aria-labelledby="remote-h">
+    <div class="sv-wrap sv-remote">
+      <figure class="sv-remote__img sv-mat sv-mat--pine sv-rv">
+        <img src="/assets/services/qp-phone.webp" width="480" height="1038" loading="lazy" decoding="async" alt="The rebuilt Quán Phở website on a phone" />
+        <figcaption><b>Quán Phở, Saugus.</b>Built for a phone like this one.</figcaption>
+      </figure>
+      <div>
+        <span class="sv-trk">Outside Worcester?</span>
+        <h2 id="remote-h" class="sv-h2">Working with you <span class="serif-i">remotely.</span></h2>
+        <p class="sv-p">Most of the work happens on screens anyway. Quán Phở is in Saugus. Young Group's clients are in four countries. Neither needed me in the room.</p>
+        <div class="sv-steps" style="--n:3;margin-top:2rem">
+          <div class="sv-step"><b>A video call</b><span>We talk through your business and the free audit.</span></div>
+          <div class="sv-step"><b>A live link</b><span>Watch your site take shape and comment as it goes.</span></div>
+          <div class="sv-step"><b>One person</b><span>You reach me directly, every time. <span style="white-space:nowrap">+1 857 800 2667</span>.</span></div>
+        </div>
+        <p class="sv-note">Near Boston? See <a href="/web-design-boston">web design for Boston small businesses</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq faqs={faqs} />
+
+  <ClosingCta slot="cta" heading="Your Worcester business," accent="found first." button="Get my free website audit" />
+</ServicePage>

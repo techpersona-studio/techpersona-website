@@ -1,0 +1,11 @@
+---
+import WorkCasePage from "../../../components/work/WorkCasePage.astro";
+import { listCases } from "../../../data/cases";
+
+export function getStaticPaths() {
+  return listCases().map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props;
+---
+
+<WorkCasePage c={c} lang="vi" />

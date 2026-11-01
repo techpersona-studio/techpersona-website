@@ -1,0 +1,255 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/work.css";
+import { nextCase, rgb, thumbOf, type Case, type Pin, type SpecimenLine } from "../../data/cases";
+import { localizeCase } from "../../data/cases.vi";
+import { workUi, type WorkLang } from "../../i18n/work";
+import { SITE_NAME, absUrl } from "../../lib/blog";
+
+// /work/<slug> (en) and /vi/work/<slug> (vi): same page, copy from
+// src/i18n/work.ts + src/data/cases.vi.ts
+interface Props { c: Case; lang?: WorkLang }
+const { c: enCase, lang = "en" } = Astro.props;
+const u = workUi[lang];
+const vi = lang === "vi";
+const base = vi ? "/vi" : "";
+const c = localizeCase(enCase, lang);
+const isAd = c.type === "ad-video";
+const nextEn = nextCase(c.slug);
+const next = nextEn && localizeCase(nextEn, lang);
+const pageUrl = absUrl(`${base}/work/${c.slug}`);
+const alternates = { en: `/work/${c.slug}`, vi: `/vi/work/${c.slug}` };
+const statusShort = (x: Case) => u.status[x.status];
+const TYPE_LABEL = u.typeLabel;
+const ogImage = c.media.og ? absUrl(c.media.og) : undefined;
+const eyebrow = isAd ? `${TYPE_LABEL[c.type]} · ${c.kind}` : c.kind;
+const a = c.media.after;
+const b = c.media.before;
+
+// Google Fonts only for specimen faces the site does not self-host
+const gf: Record<string, number> = {};
+c.board.forEach((p) => { if (p.kind === "type") p.specimen.lines.forEach((l) => { if (/Jakarta|Fraunces/.test(l.font)) gf[l.font] = l.weight ?? 400; }); });
+const gfHref = Object.keys(gf).length
+  ? "https://fonts.googleapis.com/css2?" + Object.entries(gf).map(([f, w]) => `family=${f.replace(/ /g, "+")}:wght@${w}`).join("&") + "&display=swap"
+  : undefined;
+
+const lineStyle = (l: SpecimenLine, accent: string) =>
+  `font-family:'${l.font}',serif;font-weight:${l.weight ?? 400};font-style:${l.italic ? "italic" : "normal"};` +
+  `font-size:clamp(${(l.size * 0.78).toFixed(2)}rem,${(l.size * 1.5).toFixed(2)}vw,${l.size}rem)` +
+  (l.accent ? `;color:${accent}` : "") + (l.muted ? ";opacity:.75" : "");
+const tall = (p: Pin) => p.kind === "image" && (p.span ?? 1) > 1 && p.h / p.w > 1.2;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": pageUrl + "#work",
+    name: c.name,
+    headline: c.hook || c.name,
+    description: c.seo.description,
+    url: pageUrl,
+    ...(ogImage ? { image: ogImage } : {}),
+    ...(c.dateCreated ? { dateCreated: c.dateCreated } : {}),
+    genre: isAd ? u.genreAd : u.genreSite,
+    inLanguage: vi ? "vi-VN" : "en-US",
+    keywords: c.services.join(", "),
+    creator: { "@type": "Organization", name: SITE_NAME, url: absUrl("/") },
+    ...(c.url ? { sameAs: c.url } : {}),
+    isPartOf: { "@type": "CollectionPage", "@id": absUrl(`${base}/work`) + "#page", url: absUrl(`${base}/work`) },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: u.home, item: absUrl(vi ? "/vi" : "/") },
+      { "@type": "ListItem", position: 2, name: u.work, item: absUrl(`${base}/work`) },
+      { "@type": "ListItem", position: 3, name: c.name, item: pageUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout title={c.seo.title} description={c.seo.description} image={ogImage} imageAlt={`${c.name} ${u.byline} ${SITE_NAME}`} jsonLd={jsonLd} lang={lang} alternates={alternates}>
+  <Fragment slot="head">
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    {gfHref && <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />}
+    {gfHref && <link rel="stylesheet" href={gfHref} />}
+  </Fragment>
+
+  <div class:list={["wk", { "is-story": isAd }]} style={`--acc-rgb:${rgb(c.accent)}`} data-slug={c.slug}>
+    <!-- intro: summary first, before/after (or the ad) in a colored mat -->
+    <section class:list={["sp", { story: isAd }]}>
+      <div class="sp-head">
+        <a class="back" href={`${base}/work`}>&#8592; {u.allWork}</a>
+        <div class="eyr">
+          <span class="trk">{eyebrow}</span>
+          <span class={`pill ${c.status}`}><i></i>{statusShort(c)}</span>
+        </div>
+        <h1 class:list={{ one: c.name.length <= 16 }}>{c.name}</h1>
+        {c.hook && <p class="hk">{c.hook}</p>}
+      </div>
+
+      {isAd ? (
+        <div class="mat">
+          <div class="stbox stp" data-stp>
+            <video controls playsinline preload="none" poster={c.media.poster} aria-label={`${c.name}, ${u.video}`}>
+              <source src={c.media.video} type="video/mp4" />
+            </video>
+            <button type="button" class="stp-snd" aria-pressed="false"><span aria-hidden="true">&#128263;</span> <b>{vi ? "Chạm để bật tiếng" : "Tap for sound"}</b></button>
+            <span class="stp-st" aria-hidden="true">&#9654;</span>
+          </div>
+        </div>
+      ) : (
+        a && b && (
+          <div class="mat">
+            <div class="shot">
+              <div class="cmp" data-cmp>
+                <img class="cmp-a" src={a.desktop} alt={u.alt.newSite(c.name)} draggable="false" decoding="async" fetchpriority="high" />
+                <div class="cmp-b"><img src={b.desktop} alt={u.alt.oldSite(c.name)} draggable="false" decoding="async" /></div>
+                <span class="cmp-l b">{u.before}</span><span class="cmp-l a">{u.after}</span>
+                <div class="cmp-h" role="slider" tabindex="0" aria-label={u.cmpAria} aria-valuemin="0" aria-valuemax="100" aria-valuenow="6"><span>&#8249;&#8250;</span></div>
+              </div>
+            </div>
+            <span class="dtc no-js-hide"><i aria-hidden="true">&#8596;</i>{u.cmpHint}</span>
+          </div>
+        )
+      )}
+
+      <div class="sp-body">
+        {c.services.length > 0 && (
+          <div class="svc">
+            <span class="lbl">{u.services}</span>
+            <ul>{c.services.map((s) => <li>{s}</li>)}</ul>
+          </div>
+        )}
+        <div class="btns">
+          {c.url && (
+            <a class="island-btn island-btn--pine" href={c.url} target="_blank" rel="noopener">
+              {u.visit} {c.urlLabel ?? u.siteWord} <span class="island-btn__icon" aria-hidden="true">&#8599;</span>
+            </a>
+          )}
+          <a class="ghost" href={`${base}/work`}>{u.allWork}</a>
+        </div>
+      </div>
+    </section>
+
+    {c.proof.length > 0 && (
+      <section class="res" aria-label={u.results}>
+        <div class="res-in">
+          <span class="trk">{u.results}</span>
+          <div class="res-g">
+            {c.proof.map((p) => (
+              <div><b>{p.value}</b><span>{p.label}</span>{p.when && <em>{p.when}</em>}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {!isAd && a && b && (
+      <section class="sec" aria-label={u.theSite}>
+        <div class="wrap">
+          <div class="st-top">
+            <span class="trk">{u.theSite}</span>
+            <div class="sws no-js-hide">
+              <div class="sw" id="swView" role="group" aria-label={u.viewGroup}><i aria-hidden="true"></i><button type="button" data-v="new" aria-pressed="true">{u.sNew}</button><button type="button" data-v="old" aria-pressed="false">{u.sOld}</button></div>
+              <div class="sw dev" id="swDev" role="group" aria-label={u.devGroup}><i aria-hidden="true"></i><button type="button" data-d="phone" aria-pressed="true">{u.phone}</button><button type="button" data-d="desk" aria-pressed="false">{u.desktop}</button></div>
+            </div>
+          </div>
+          <div class="stage rv" id="stage">
+            <div class="lap"><div class="lid">
+              <div class="scr">
+                <div class="sb new" tabindex="0" aria-label={u.alt.newLaptop(c.name)}><img src={a.fullDesktop ?? a.desktop} alt={u.alt.newFull(c.name)} loading="lazy" decoding="async" /></div>
+                <div class="sb old" aria-hidden="true" tabindex="-1" aria-label={u.alt.oldLaptop(c.name)}><img data-old={b.fullDesktop ?? b.desktop} alt={u.alt.oldFull(c.name)} decoding="async" /></div>
+              </div>
+            </div><div class="base"></div></div>
+            <div class="pho"><div class="bd"><span class="isl"></span>
+              <div class="scr">
+                <div class="sb new" tabindex="0" aria-label={u.alt.newPhone(c.name)}><img src={a.fullMobile ?? a.mobile} alt={u.alt.newFullPhone(c.name)} loading="lazy" decoding="async" /></div>
+                <div class="sb old" aria-hidden="true" tabindex="-1" aria-label={u.alt.oldPhone(c.name)}><img data-old={b.fullMobile ?? b.mobile} alt={u.alt.oldFullPhone(c.name)} decoding="async" /></div>
+              </div>
+            </div></div>
+            <div class="hint" aria-hidden="true"><i></i><span>{u.scrollExplore}</span></div>
+          </div>
+          <p class="st-note"><span data-note>{u.note}</span></p>
+        </div>
+      </section>
+    )}
+
+    {c.board.length > 0 && (
+      <div class:list={{ dark: isAd }}>
+        <section class="sec board" aria-labelledby="buildH">
+          <div class="wrap">
+            <div class="bh"><span class="trk">{u.theBuild}</span><h2 id="buildH">{isAd ? u.buildAd : u.buildSite}</h2></div>
+            <div class="mason" id="mason">
+              {c.board.map((p, i) => (
+                <button type="button" class={`bp k-${p.kind} s${p.span ?? 1}`} data-i={i} aria-label={`${u.openPin}: ${p.caption}`}>
+                  {p.kind === "palette" && (
+                    <div class="tile">{p.swatches.map((w) => <div class="chip"><i style={`background:${w.hex}`}></i><b>{w.name}</b><code>{w.hex}</code></div>)}</div>
+                  )}
+                  {p.kind === "stat" && <div class="tile"><b>{p.value}</b>{p.note && <em>{p.note}</em>}</div>}
+                  {p.kind === "note" && <div class="tile"><p>{p.text}</p></div>}
+                  {p.kind === "type" && (
+                    <div class="tile spc" style={`background:${p.specimen.bg};color:${p.specimen.ink}`}>
+                      <div>{p.specimen.lines.map((l) => <span class="ln" style={lineStyle(l, p.specimen.accent)}>{l.text}</span>)}</div>
+                      <span class="nm">{p.specimen.names}</span>
+                    </div>
+                  )}
+                  {p.kind === "image" && (
+                    <div class="tile">
+                      <div class:list={["frm", { tall: tall(p) }]} style={tall(p) ? `--ar:${p.w}/${p.h}` : undefined}>
+                        <img src={p.src} alt={p.alt} loading="lazy" decoding="async" draggable="false" data-full={p.src} />
+                      </div>
+                    </div>
+                  )}
+                  <div class="bc"><span class="bl">{p.label}</span><p>{p.caption}</p></div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+        <dialog class="lb" id="lb" aria-label={u.lbAria}>
+          <div class="lb-in">
+            <div class="lb-media" id="lbMedia"></div>
+            <div class="lb-cap" id="lbCap"></div>
+            <button type="button" class="lb-x" id="lbX" aria-label={u.close}>&#10005;</button>
+            <button type="button" class="lb-nav lb-p" id="lbP" aria-label={u.prev}>&#8592;</button>
+            <button type="button" class="lb-nav lb-n" id="lbN" aria-label={u.next}>&#8594;</button>
+          </div>
+        </dialog>
+      </div>
+    )}
+
+    {!isAd && c.proof.length > 0 && (
+      <section class="sec stats" aria-label={u.resultsNum}>
+        <div class="wrap">
+          {c.proof.map((p, i) => (
+            <div class="stat" style={`--i:${i}`}><b>{p.value}</b><span>{p.label}</span>{p.when && <em>{p.when}</em>}</div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {next && (
+      <a class="next" href={`${base}/work/${next.slug}`}>
+        <div class="wrap row">
+          <div><span class="trk">{u.nextProject}</span><h2>{next.name} <span class="ar">&#8594;</span></h2></div>
+          <div class="th"><img src={thumbOf(next)} alt="" loading="lazy" decoding="async" /></div>
+        </div>
+      </a>
+    )}
+
+    <section class="xcta">
+      <div class="wrap">
+        <h2>{u.xctaA}<span class="serif-i">{u.xctaB}</span></h2>
+        <a href={vi ? "/vi#audit" : "/#audit"} class="island-btn island-btn--terra">{u.xctaBtn} <span class="island-btn__icon" aria-hidden="true">&#8594;</span></a>
+        <p class="trust">{u.xctaTrust}</p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  import { initProject } from "../../scripts/work-project";
+  initProject();
+</script>

@@ -1,0 +1,661 @@
+---
+// Homepage for both languages: / (en) and /vi (vi). One template, copy from
+// src/i18n/home.ts, markup/classes/CSS/JS identical to the old public/index.html.
+import { home, type HomeLang } from "../i18n/home";
+import { homeMeta } from "../i18n/home-meta";
+import ldEn from "../i18n/home-ld.json";
+
+interface Props { lang: HomeLang }
+const { lang } = Astro.props;
+const t = home[lang];
+const meta = homeMeta[lang];
+
+const SITE = (import.meta.env.PUBLIC_SITE_URL ?? Astro.site?.href ?? "https://www.techpersonastudio.com").replace(/\/$/, "");
+const links = { en: "/", vi: "/vi" };
+const canonical = SITE + (lang === "vi" ? "/vi" : "/");
+const p = (path: string) => (lang === "vi" ? "/vi" + path : path);
+const OG_IMAGE = SITE + "/assets/images/og-image.jpg";
+
+const ENT: Record<string, string> = { "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#39;": "'", "&middot;": "·", "&rsquo;": "’", "&nbsp;": " " };
+const dec = (s: string) => s.replace(/&#(\d+);|&#x([\da-f]+);|&[a-z]+;/gi, (m, d, h) => (d ? String.fromCharCode(+d) : h ? String.fromCharCode(parseInt(h, 16)) : ENT[m] ?? m));
+const plain = (s: string) => dec(s.replace(/<[^>]+>/g, ""));
+
+// JSON-LD: EN is the original block. VI reuses the same graph (entities keep
+// their @id) with the FAQ taken from the Vietnamese strings.
+const ld: any = JSON.parse(JSON.stringify(ldEn));
+for (const node of ld["@graph"]) {
+  if (lang === "vi" && node["@type"] === "FAQPage") {
+    node.name = "Câu hỏi thường gặp, TechPersona Studio";
+    node.url = canonical + "#faq";
+    node.inLanguage = "vi";
+    node.mainEntity = node.mainEntity.map((_: unknown, i: number) => ({
+      "@type": "Question",
+      name: plain((t as any)[`faq_q${i + 1}`]),
+      acceptedAnswer: { "@type": "Answer", text: plain((t as any)[`faq_a${i + 1}`]) },
+    }));
+  }
+  if (lang === "vi" && node["@type"] === "WebSite") node.inLanguage = ["en-US", "vi-VN"];
+}
+const ldJson = JSON.stringify(ld).replace(/</g, "\\u003c");
+
+// Strings the page script needs at runtime (form button states, phone label).
+const runtime = JSON.stringify({
+  form_opt: t.form_opt,
+  form_opt_required: t.form_opt_required,
+  form_sending: t.form_sending,
+  form_submit: t.form_submit,
+}).replace(/</g, "\\u003c");
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+<!-- Google Tag Manager (deferred: loads on first interaction, idle fallback) -->
+<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];var done=false;
+function load(){if(done)return;done=true;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}
+['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+w.addEventListener(e,load,{passive:true,once:true});});
+// fallback so visitors who never interact still get counted
+if('requestIdleCallback' in w){w.requestIdleCallback(load,{timeout:10000});}else{setTimeout(load,10000);}
+})(window,document,'script','dataLayer','GTM-NDQ8ZJ9B');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{meta.title}</title>
+<meta name="description" content={meta.description}>
+<link rel="canonical" href={canonical}>
+<link rel="alternate" hreflang="en" href={SITE + "/"}>
+<link rel="alternate" hreflang="vi" href={SITE + "/vi"}>
+<link rel="alternate" hreflang="x-default" href={SITE + "/"}>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TechPersona Studio">
+<meta property="og:title" content={meta.ogTitle}>
+<meta property="og:description" content={meta.description}>
+<meta property="og:url" content={canonical}>
+<meta property="og:locale" content={lang === "vi" ? "vi_VN" : "en_US"}>
+<meta property="og:locale:alternate" content={lang === "vi" ? "en_US" : "vi_VN"}>
+<meta property="og:image" content={OG_IMAGE}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@techpersonastudio">
+<meta name="twitter:title" content={meta.ogTitle}>
+<meta name="twitter:description" content={meta.description}>
+<meta name="twitter:image" content={OG_IMAGE}>
+
+<!-- fonts are self-hosted (see @font-face in index.css); preload the two latin
+     faces the hero needs so text paints without a swap reflow -->
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/HankenGrotesk-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/CormorantGaramond-italic-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/index.css">
+<link rel="preload" as="image" href="/assets/images/profile-pic.webp" fetchpriority="high">
+
+<script is:inline type="application/ld+json" set:html={ldJson}></script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDQ8ZJ9B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- NAV -->
+<div class="nav-shell" id="navShell">
+  <nav class="nav" aria-label={t.aria_nav}>
+    <a href="#top" class="logo">TechPersona <span class="mark">Studio</span></a>
+    <div class="nav-links">
+      <a href="#services" data-i18n="nav_build" set:html={t.nav_build}></a>
+      <a href={p("/work")} data-i18n="nav_proof" set:html={t.nav_proof}></a>
+      <a href="#about" data-i18n="nav_about" set:html={t.nav_about}></a>
+      <a href="#faq" data-i18n="nav_faq" set:html={t.nav_faq}></a>
+      <a href="/blog" data-i18n="nav_blog" set:html={t.nav_blog}></a>
+    </div>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label={t.aria_lang}>
+    <a class={`lang-opt${lang === "vi" ? " active" : ""}`} id="langVI" href={links.vi} lang="vi" hreflang="vi" aria-current={lang === "vi" ? "page" : undefined}>VI</a>
+    <span class="lang-sep">|</span>
+    <a class={`lang-opt${lang === "en" ? " active" : ""}`} id="langEN" href={links.en} lang="en" hreflang="en" aria-current={lang === "en" ? "page" : undefined}>EN</a>
+  </div>
+    <a href="#audit" class="island sm nav-cta" data-i18n-html="nav_cta" set:html={t.nav_cta}></a>
+    <button class="nav-burger" id="burger" aria-label={t.aria_menu} aria-expanded="false" aria-controls="navOverlay">
+      <span class="bl"></span><span class="bl"></span>
+    </button>
+  </nav>
+</div>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <div class="lang-toggle lang-toggle-mobile" id="langToggleMobile" role="group" aria-label={t.aria_lang}>
+    <a class={`lang-opt${lang === "vi" ? " active" : ""}`} id="langVI-m" href={links.vi} lang="vi" hreflang="vi" aria-current={lang === "vi" ? "page" : undefined}>VI</a>
+    <span class="lang-sep">|</span>
+    <a class={`lang-opt${lang === "en" ? " active" : ""}`} id="langEN-m" href={links.en} lang="en" hreflang="en" aria-current={lang === "en" ? "page" : undefined}>EN</a>
+  </div>
+  <a href="#services" class="ov-link" data-i18n="nav_build" set:html={t.nav_build}></a>
+  <a href={p("/work")} class="ov-link" data-i18n="nav_proof" set:html={t.nav_proof}></a>
+  <a href="#about" class="ov-link" data-i18n="nav_about" set:html={t.nav_about}></a>
+  <a href="#faq" class="ov-link" data-i18n="nav_faq" set:html={t.nav_faq}></a>
+  <a href="/blog" class="ov-link" data-i18n="nav_blog" set:html={t.nav_blog}></a>
+  <div class="ov-foot">
+    <a href="#audit" class="island" data-i18n-html="nav_cta" set:html={t.nav_cta}></a>
+    <a href="tel:+18578002667" class="ov-tel">+1 857 800 2667</a>
+  </div>
+</div>
+
+<main>
+<!-- 1. HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow hero-eyebrow" data-reveal><span class="dot"></span> <span data-i18n="hero_eyebrow_main" set:html={t.hero_eyebrow_main}></span><span class="eb-sep" aria-hidden="true"> &middot; </span><span class="eb-loc" data-i18n="hero_eyebrow_loc" set:html={t.hero_eyebrow_loc}></span></span>
+      <h1 data-reveal data-d="1" data-i18n-html="hero_h1" set:html={t.hero_h1}></h1>
+      <p class="hero-location-line" data-reveal data-d="2" data-i18n="hero_location_line" set:html={t.hero_location_line}></p>
+      <p class="sub" data-reveal data-d="2" data-i18n="hero_sub" set:html={t.hero_sub}></p>
+      <div class="hero-actions" data-reveal data-d="3">
+        <a href="#audit" class="island lg" data-i18n-html="hero_cta_primary" set:html={t.hero_cta_primary}></a>
+        <a href="#services" class="ghost" data-i18n-html="hero_cta_secondary" set:html={t.hero_cta_secondary}></a>
+      </div>
+      <div class="trust-line" data-reveal data-d="4"><span class="tick">&#10003;</span> <span data-i18n="hero_trust" set:html={t.hero_trust}></span></div>
+    </div>
+    <div class="hero-visual" data-reveal data-d="2">
+      <div class="portrait-shell">
+        <div class="portrait-inner">
+          <picture>
+            <source srcset="/assets/images/profile-pic.webp" type="image/webp">
+            <img src="/assets/images/profile-pic.JPG" alt={t.alt_hero} width="677" height="687" loading="eager" fetchpriority="high">
+          </picture>
+        </div>
+      </div>
+      <div class="proof-chip" aria-hidden="true">
+        <div class="pc-row">
+          <span class="pc-ico">&#9993;</span>
+          <span class="pc-inquiry" data-i18n="hero_chip_inquiry" set:html={t.hero_chip_inquiry}></span>
+          <span class="pc-time">9:48 pm</span>
+        </div>
+        <div class="pc-reply"><span>&#10003;</span> <span data-i18n="hero_chip_replied" set:html={t.hero_chip_replied}></span></div>
+        <div class="pc-label" data-i18n="hero_chip_label" set:html={t.hero_chip_label}></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM / THE LEAK -->
+<section class="sec band-deep problem" id="problem">
+  <div class="wrap">
+    <div class="text-col" data-reveal>
+      <h2 data-i18n="leak_h2" set:html={t.leak_h2}></h2>
+      <p class="p-body" data-i18n="leak_body" set:html={t.leak_body}></p>
+      <ul class="scenarios">
+        <li data-i18n-html="leak_li1" set:html={t.leak_li1}></li>
+        <li data-i18n-html="leak_li2" set:html={t.leak_li2}></li>
+        <li data-i18n-html="leak_li3" set:html={t.leak_li3}></li>
+        <li data-i18n-html="leak_li4" set:html={t.leak_li4}></li>
+      </ul>
+      <div class="stat-call">
+        <div class="big">21&#215;</div>
+        <div class="copy">
+          <div class="txt" data-i18n="leak_stat_copy" set:html={t.leak_stat_copy}></div>
+          <div class="src" data-i18n="leak_stat_src" set:html={t.leak_stat_src}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. HOW IT WORKS / JOURNEY -->
+<section class="sec band-wash journey" id="how">
+  <div class="wrap">
+    <div class="jhead" data-reveal>
+      <h2 data-i18n="journey_h2" set:html={t.journey_h2}></h2>
+      <p class="lead" style="margin-top:1rem" data-i18n="journey_lead" set:html={t.journey_lead}></p>
+    </div>
+    <div class="jflow" id="jflow" data-reveal>
+      <div class="jline" aria-hidden="true"><div class="fill" id="jfill"></div></div>
+      <div class="jnode" data-step="0.0">
+        <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="jtext">
+          <span class="jstep" data-i18n="journey_step1" set:html={t.journey_step1}></span>
+          <span class="jlbl" data-i18n="journey_lbl1" set:html={t.journey_lbl1}></span>
+          <span class="jsub" data-i18n="journey_sub1" set:html={t.journey_sub1}></span>
+        </div>
+      </div>
+      <div class="jnode" data-step="0.34">
+        <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <div class="jtext">
+          <span class="jstep" data-i18n="journey_step2" set:html={t.journey_step2}></span>
+          <span class="jlbl" data-i18n="journey_lbl2" set:html={t.journey_lbl2}></span>
+          <span class="jsub" data-i18n="journey_sub2" set:html={t.journey_sub2}></span>
+        </div>
+      </div>
+      <div class="jnode" data-step="0.67">
+        <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H13l0-8z"/></svg></div>
+        <div class="jtext">
+          <span class="jstep" data-i18n="journey_step3" set:html={t.journey_step3}></span>
+          <span class="jlbl" data-i18n="journey_lbl3" set:html={t.journey_lbl3}></span>
+          <span class="jsub" data-i18n="journey_sub3" set:html={t.journey_sub3}></span>
+        </div>
+      </div>
+      <div class="jnode" data-step="1.0">
+        <div class="jdot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4M8.5 14l2.5 2.5 4.5-5"/></svg></div>
+        <div class="jtext">
+          <span class="jstep" data-i18n="journey_step4" set:html={t.journey_step4}></span>
+          <span class="jlbl" data-i18n="journey_lbl4" set:html={t.journey_lbl4}></span>
+          <span class="jsub" data-i18n="journey_sub4" set:html={t.journey_sub4}></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> <span data-i18n="build_eyebrow" set:html={t.build_eyebrow}></span></span>
+      <h2 data-i18n-html="build_h2" set:html={t.build_h2}></h2>
+      <p class="lead" data-i18n="build_lead" set:html={t.build_lead}></p>
+      <p class="promise" data-i18n="build_promise" set:html={t.build_promise}></p>
+    </div>
+    <div class="bento">
+      <article class="shell" data-reveal data-d="1">
+        <div class="core-card">
+          <span class="num" data-i18n="build_01_num" set:html={t.build_01_num}></span>
+          <h3 data-i18n="build_01_h3" set:html={t.build_01_h3}></h3>
+          <ul class="tiers">
+            <li><span class="t-name" data-i18n-html="build_01_t1" set:html={t.build_01_t1}></span><span class="t-price" data-i18n="build_01_t1_p" set:html={t.build_01_t1_p}></span></li>
+            <li><span class="t-name" data-i18n-html="build_01_t2" set:html={t.build_01_t2}></span><span class="t-price" data-i18n="build_01_t2_p" set:html={t.build_01_t2_p}></span></li>
+            <li><span class="t-name" data-i18n-html="build_01_t3" set:html={t.build_01_t3}></span><span class="t-price" data-i18n="build_01_t3_p" set:html={t.build_01_t3_p}></span></li>
+          </ul>
+          <p data-i18n="build_01_body" set:html={t.build_01_body}></p>
+          <div class="scenario-box" data-i18n-html="build_01_scenario" set:html={t.build_01_scenario}></div>
+          <button type="button" class="card-more" aria-expanded="false" data-i18n="build_more" set:html={t.build_more}></button>
+          <ul class="flist">
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li1" set:html={t.build_01_li1}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li2" set:html={t.build_01_li2}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li3" set:html={t.build_01_li3}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li4" set:html={t.build_01_li4}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_01_li5" set:html={t.build_01_li5}></span></li>
+          </ul>
+          <span class="tag" data-i18n="build_01_tag" set:html={t.build_01_tag}></span>
+          <a href="#audit" class="ghost" data-i18n-html="build_included" set:html={t.build_included}></a>
+        </div>
+      </article>
+      <article class="shell" data-reveal data-d="2">
+        <div class="core-card">
+          <span class="num" data-i18n="build_02_num" set:html={t.build_02_num}></span>
+          <h3 data-i18n="build_02_h3" set:html={t.build_02_h3}></h3>
+          <ul class="tiers">
+            <li><span class="t-name" data-i18n-html="build_02_t2" set:html={t.build_02_t2}></span><span class="t-price" data-i18n="build_02_t2_p" set:html={t.build_02_t2_p}></span></li>
+            <li><span class="t-name" data-i18n-html="build_02_t3" set:html={t.build_02_t3}></span><span class="t-price" data-i18n="build_02_t3_p" set:html={t.build_02_t3_p}></span></li>
+          </ul>
+          <p data-i18n="build_02_body" set:html={t.build_02_body}></p>
+          <div class="scenario-box" data-i18n-html="build_02_scenario" set:html={t.build_02_scenario}></div>
+          <button type="button" class="card-more" aria-expanded="false" data-i18n="build_more" set:html={t.build_more}></button>
+          <ul class="flist">
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_02_li1" set:html={t.build_02_li1}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_02_li2" set:html={t.build_02_li2}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_02_li3" set:html={t.build_02_li3}></span></li>
+          </ul>
+          <span class="tag" data-i18n="build_02_tag" set:html={t.build_02_tag}></span>
+          <a href="#audit" class="ghost" data-i18n-html="build_included" set:html={t.build_included}></a>
+        </div>
+      </article>
+      <article class="shell" data-reveal data-d="3">
+        <div class="core-card">
+          <span class="num" data-i18n="build_04_num" set:html={t.build_04_num}></span>
+          <h3 data-i18n="build_04_h3" set:html={t.build_04_h3}></h3>
+          <ul class="tiers">
+            <li><span class="t-name" data-i18n-html="build_04_t1" set:html={t.build_04_t1}></span><span class="t-price" data-i18n="build_04_t1_p" set:html={t.build_04_t1_p}></span></li>
+          </ul>
+          <p data-i18n="build_04_body" set:html={t.build_04_body}></p>
+          <div class="scenario-box" data-i18n-html="build_04_scenario" set:html={t.build_04_scenario}></div>
+          <button type="button" class="card-more" aria-expanded="false" data-i18n="build_more" set:html={t.build_more}></button>
+          <ul class="flist">
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_04_li1" set:html={t.build_04_li1}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_04_li2" set:html={t.build_04_li2}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_04_li3" set:html={t.build_04_li3}></span></li>
+          </ul>
+          <span class="tag" data-i18n="build_04_tag" set:html={t.build_04_tag}></span>
+          <a href={p("/work")} class="ghost" data-i18n-html="build_04_cta" set:html={t.build_04_cta}></a>
+        </div>
+      </article>
+      <article class="shell" data-reveal data-d="3">
+        <div class="core-card">
+          <span class="num" data-i18n="build_03_num" set:html={t.build_03_num}></span>
+          <h3 data-i18n="build_03_h3" set:html={t.build_03_h3}></h3>
+          <ul class="tiers">
+            <li><span class="t-name" data-i18n-html="build_03_t1" set:html={t.build_03_t1}></span><span class="t-price" data-i18n="build_03_t1_p" set:html={t.build_03_t1_p}></span></li>
+            <li><span class="t-name" data-i18n-html="build_03_t2" set:html={t.build_03_t2}></span><span class="t-price" data-i18n="build_03_t2_p" set:html={t.build_03_t2_p}></span></li>
+            <li><span class="t-name" data-i18n-html="build_03_t3" set:html={t.build_03_t3}></span><span class="t-price" data-i18n="build_03_t3_p" set:html={t.build_03_t3_p}></span></li>
+          </ul>
+          <p data-i18n="build_03_body" set:html={t.build_03_body}></p>
+          <div class="scenario-box" data-i18n-html="build_03_scenario" set:html={t.build_03_scenario}></div>
+          <button type="button" class="card-more" aria-expanded="false" data-i18n="build_more" set:html={t.build_more}></button>
+          <ul class="flist">
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_03_li1" set:html={t.build_03_li1}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_03_li2" set:html={t.build_03_li2}></span></li>
+            <li><span class="ck">&#10003;</span> <span data-i18n="build_03_li3" set:html={t.build_03_li3}></span></li>
+          </ul>
+          <span class="tag" data-i18n="build_03_tag" set:html={t.build_03_tag}></span>
+          <a href="#audit" class="ghost" data-i18n-html="build_included_03" set:html={t.build_included_03}></a>
+        </div>
+      </article>
+    </div>
+    <p class="not-for" data-reveal data-i18n="build_not_for" set:html={t.build_not_for}></p>
+  </div>
+</section>
+
+<!-- 5. PROOF -->
+<section class="sec band-deep" id="work">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <h2 data-i18n="proof_h2" set:html={t.proof_h2}></h2>
+      <p class="lead" data-i18n="proof_lead" set:html={t.proof_lead}></p>
+    </div>
+
+    <div class="work-teasers" data-reveal data-d="1">
+      <a class="wt-card" href={p("/work/quan-pho")}>
+        <span class="wt-media">
+          <img src="/assets/images/teaser-quanpho.webp" alt={t.alt_qp} width="1280" height="1100" loading="lazy" decoding="async">
+        </span>
+        <span class="wt-body">
+          <span class="wt-name" data-i18n="teaser_qp_name" set:html={t.teaser_qp_name}></span>
+          <span class="wt-kind" data-i18n="teaser_qp_kind" set:html={t.teaser_qp_kind}></span>
+          <span class="wt-go" data-i18n-html="teaser_go" set:html={t.teaser_go}></span>
+        </span>
+      </a>
+      <a class="wt-card" href={p("/work/young-group")}>
+        <span class="wt-media">
+          <img src="/assets/images/teaser-younggroup.webp" alt={t.alt_yg} width="1280" height="1100" loading="lazy" decoding="async">
+        </span>
+        <span class="wt-body">
+          <span class="wt-name" data-i18n="teaser_yg_name" set:html={t.teaser_yg_name}></span>
+          <span class="wt-kind" data-i18n="teaser_yg_kind" set:html={t.teaser_yg_kind}></span>
+          <span class="wt-go" data-i18n-html="teaser_go" set:html={t.teaser_go}></span>
+        </span>
+      </a>
+    </div>
+
+    <div class="proof-lower" data-reveal data-d="2">
+      <div class="founder-note">
+        <div class="fn-top">
+          <picture>
+            <source srcset="/assets/images/profile-pic.webp" type="image/webp">
+            <img class="fn-thumb" src="/assets/images/profile-pic.JPG" alt={t.alt_founder} width="677" height="687" loading="lazy">
+          </picture>
+          <div>
+            <div class="fn-name">Thao Phuong</div>
+            <div class="fn-role" data-i18n="proof_fn_role" set:html={t.proof_fn_role}></div>
+          </div>
+          <div class="fn-creds">
+            <span data-i18n="proof_cred1" set:html={t.proof_cred1}></span><span class="sep">&middot;</span>
+            <span data-i18n="proof_cred2" set:html={t.proof_cred2}></span><span class="sep">&middot;</span>
+            <span data-i18n="proof_cred3" set:html={t.proof_cred3}></span>
+          </div>
+        </div>
+        <p class="fn-quote" data-i18n="proof_fn_quote" set:html={t.proof_fn_quote}></p>
+      </div>
+    </div>
+
+    
+    <!-- TESTIMONIAL SLOT — uncomment and fill in when the first client quote lands.
+         Keep it deleted until then: an empty or "coming soon" card reads worse
+         than no card at all (that's why the old placeholder was removed).
+    <blockquote class="client-quote" data-reveal data-d="2">
+      <p class="cq-text">&ldquo;THE QUOTE, IN THEIR WORDS.&rdquo;</p>
+      <footer class="cq-by"><strong>CLIENT NAME</strong> &middot; BUSINESS, CITY</footer>
+    </blockquote>
+    -->
+
+    <div class="proof-cta" data-reveal>
+      <a href={p("/work")} class="ghost" data-i18n-html="proof_cta" set:html={t.proof_cta}></a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PROCESS -->
+<section class="sec band-pine" id="process">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <h2 data-i18n="process_h2" set:html={t.process_h2}></h2>
+      <p class="lead" data-i18n="process_lead" set:html={t.process_lead}></p>
+    </div>
+    <div class="proc-steps">
+      <div class="proc" data-reveal data-d="1">
+        <span class="n">1</span>
+        <h3 data-i18n="process_01_h3" set:html={t.process_01_h3}></h3>
+        <p data-i18n="process_01_body" set:html={t.process_01_body}></p>
+        <span class="free-tag" data-i18n="process_free_tag" set:html={t.process_free_tag}></span>
+      </div>
+      <div class="proc" data-reveal data-d="2">
+        <span class="n">2</span>
+        <h3 data-i18n="process_02_h3" set:html={t.process_02_h3}></h3>
+        <p data-i18n="process_02_body" set:html={t.process_02_body}></p>
+        <span class="free-tag" data-i18n="process_free_tag" set:html={t.process_free_tag}></span>
+      </div>
+      <div class="proc" data-reveal data-d="3">
+        <span class="n">3</span>
+        <h3 data-i18n="process_03_h3" set:html={t.process_03_h3}></h3>
+        <p data-i18n="process_03_body" set:html={t.process_03_body}></p>
+        <span class="free-tag" data-i18n="process_03_tag" set:html={t.process_03_tag}></span>
+      </div>
+    </div>
+    <div class="proc-foot">
+      <p class="proc-free" data-i18n-html="process_foot" set:html={t.process_foot}></p>
+      <a href="#audit" class="ghost" data-i18n-html="process_foot_cta" set:html={t.process_foot_cta}></a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo" data-reveal>
+      <div class="portrait-shell">
+        <div class="portrait-inner">
+          <picture>
+            <source srcset="/assets/images/profile-pic.webp" type="image/webp">
+            <img src="/assets/images/profile-pic.JPG" alt={t.alt_hero} width="677" height="687" loading="lazy">
+          </picture>
+        </div>
+      </div>
+      <div class="about-id">
+        <span class="fn">Thao Phuong</span>
+        <span class="fr" data-i18n="about_role" set:html={t.about_role}></span>
+      </div>
+    </div>
+    <div class="about-copy" data-reveal data-d="1">
+      <span class="eyebrow"><span class="dot"></span> <span data-i18n="about_eyebrow" set:html={t.about_eyebrow}></span></span>
+      <h2 data-i18n="about_h2" set:html={t.about_h2}></h2>
+      <p class="a-quote" data-i18n="about_quote" set:html={t.about_quote}></p>
+      <p data-i18n="about_studio" set:html={t.about_studio}></p>
+      <p data-i18n="about_p1" set:html={t.about_p1}></p>
+      <p data-i18n="about_p2" set:html={t.about_p2}></p>
+      <a href="#services" class="ghost" data-i18n-html="hero_cta_secondary" set:html={t.hero_cta_secondary}></a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section class="sec band-deep" id="faq">
+  <div class="wrap faq-wrap">
+    <div class="sec-head" data-reveal style="margin-bottom:.5rem">
+      <h2 data-i18n="faq_h2" set:html={t.faq_h2}></h2>
+    </div>
+    <div class="faq-list" data-reveal data-d="1">
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true"><span data-i18n="faq_q1" set:html={t.faq_q1}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a1" set:html={t.faq_a1}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q2" set:html={t.faq_q2}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a2" set:html={t.faq_a2}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q3" set:html={t.faq_q3}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a3" set:html={t.faq_a3}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q4" set:html={t.faq_q4}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a4" set:html={t.faq_a4}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q5" set:html={t.faq_q5}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a5" set:html={t.faq_a5}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q6" set:html={t.faq_q6}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a6" set:html={t.faq_a6}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q7" set:html={t.faq_q7}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a7" set:html={t.faq_a7}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q8" set:html={t.faq_q8}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a8" set:html={t.faq_a8}></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq_q9" set:html={t.faq_q9}></span> <span class="pm" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a9" set:html={t.faq_a9}></p></div>
+      </div>
+    </div>
+    <div class="faq-end" data-reveal data-d="1">
+      <p data-i18n="faq_end" set:html={t.faq_end}></p>
+      <a href="#audit" class="ghost" data-i18n-html="faq_end_cta" set:html={t.faq_end_cta}></a>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CLOSING CTA -->
+<section class="closing" id="cta">
+  <div class="wrap" data-reveal>
+    <h2 data-i18n-html="cta_h2" set:html={t.cta_h2}></h2>
+    <a href="#audit" class="island terra lg" id="closingCta" data-i18n-html="cta_btn" set:html={t.cta_btn}></a>
+    <p class="micro" data-i18n="cta_micro" set:html={t.cta_micro}></p>
+  </div>
+</section>
+
+<!-- 10. AUDIT FORM -->
+<section class="sec audit" id="audit">
+  <div class="wrap offer-grid">
+    <div class="offer-copy" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> <span data-i18n="offer_eyebrow" set:html={t.offer_eyebrow}></span></span>
+      <h2 data-i18n="offer_h2" set:html={t.offer_h2}></h2>
+      <p class="o-sub" data-i18n="offer_sub" set:html={t.offer_sub}></p>
+      <ul class="offer-list">
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li1" set:html={t.offer_li1}></span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li6" set:html={t.offer_li6}></span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li2" set:html={t.offer_li2}></span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li3" set:html={t.offer_li3}></span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li4" set:html={t.offer_li4}></span></li>
+        <li><span class="ck">&#10003;</span> <span data-i18n="offer_li5" set:html={t.offer_li5}></span></li>
+      </ul>
+      <p class="after-line" data-i18n-html="offer_after" set:html={t.offer_after}></p>
+      <p class="contact-inline" data-i18n-html="offer_contact" set:html={t.offer_contact}></p>
+    </div>
+
+    <div class="form-shell" data-reveal data-d="1">
+      <div class="form-card" id="formCard">
+        <div class="form-body">
+          <h3 data-i18n="form_h3" set:html={t.form_h3}></h3>
+          <p class="f-sub" data-i18n="form_sub" set:html={t.form_sub}></p>
+          <p class="f-no-site" data-i18n-html="form_no_site" set:html={t.form_no_site}></p>
+          <form id="auditForm" novalidate>
+            <div class="field" id="f-name">
+              <label for="name" data-i18n="form_label_name" set:html={t.form_label_name}></label>
+              <input id="name" name="name" type="text" placeholder="Jordan Avery" required>
+              <span class="err-msg" data-i18n="form_err_name" set:html={t.form_err_name}></span>
+            </div>
+            <div class="field" id="f-email">
+              <label for="email" data-i18n="form_label_email" set:html={t.form_label_email}></label>
+              <input id="email" name="email" type="email" placeholder="jordan@yourbusiness.com" required>
+              <span class="err-msg" data-i18n="form_err_email" set:html={t.form_err_email}></span>
+            </div>
+            <div class="field" id="f-site">
+              <label for="site" data-i18n="form_label_site" set:html={t.form_label_site}></label>
+              <input id="site" name="site" type="url" placeholder="https://yourbusiness.com" required>
+              <span class="err-msg" data-i18n="form_err_site" set:html={t.form_err_site}></span>
+            </div>
+            <div class="field" id="f-phone">
+              <label for="phone"><span data-i18n="form_label_phone" set:html={t.form_label_phone}></span> <span class="opt" id="phoneOpt" data-i18n="form_opt" set:html={t.form_opt}></span></label>
+              <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000">
+              <span class="err-msg" data-i18n="form_err_phone" set:html={t.form_err_phone}></span>
+            </div>
+            <div class="field">
+              <label for="problems"><span data-i18n="form_label_problems" set:html={t.form_label_problems}></span> <span class="opt" data-i18n="form_opt" set:html={t.form_opt}></span></label>
+              <textarea id="problems" name="problems" data-i18n-placeholder="form_placeholder_problems" placeholder={dec(t.form_placeholder_problems)}></textarea>
+            </div>
+            <div class="consent">
+              <input type="hidden" id="smsOptInValue" name="smsOptIn" value="no">
+              <input type="checkbox" id="smsOptIn" value="yes">
+              <label for="smsOptIn" data-i18n-html="form_consent" set:html={t.form_consent}></label>
+            </div>
+            <button type="submit" class="island" data-i18n-html="form_submit" set:html={t.form_submit}></button>
+            <div class="form-error" id="formError" data-i18n-html="form_error" set:html={t.form_error}></div>
+            <p class="form-fine" data-i18n="form_fine" set:html={t.form_fine}></p>
+          </form>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="success-ico" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p class="big" data-i18n="form_success_big" set:html={t.form_success_big}></p>
+          <p class="msg" data-i18n="form_success_msg" set:html={t.form_success_msg}></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-main">
+      <div class="foot-brand">
+        <a href="#top" class="logo">TechPersona <span class="mark">Studio</span></a>
+        <p class="foot-tagline" data-i18n="footer_tagline" set:html={t.footer_tagline}></p>
+        <p class="foot-desc" data-i18n="about_intro" set:html={t.about_intro}></p>
+        <p class="foot-meta" data-i18n="footer_meta" set:html={t.footer_meta}></p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <span class="foot-label" data-i18n="footer_contact" set:html={t.footer_contact}></span>
+          <a href="tel:+18578002667">+1 857 800 2667</a>
+          <a href="mailto:info@techpersonastudio.com">info@techpersonastudio.com</a>
+        </div>
+        <div class="foot-col">
+          <span class="foot-label" data-i18n="footer_legal" set:html={t.footer_legal}></span>
+          <a href="/privacy-policy" data-i18n="footer_privacy" set:html={t.footer_privacy}></a>
+          <a href="/terms" data-i18n="footer_terms" set:html={t.footer_terms}></a>
+        </div>
+        <div class="foot-col">
+          <span class="foot-label" data-i18n="footer_follow" set:html={t.footer_follow}></span>
+          <a href="https://www.google.com/maps?cid=7894838848981021571" target="_blank" rel="me noopener" aria-label="TechPersona Studio on Google">Google</a>
+          <a href="https://www.linkedin.com/company/techpersona-studio" target="_blank" rel="me noopener" aria-label="TechPersona Studio on LinkedIn">LinkedIn</a>
+          <a href="https://www.facebook.com/people/TechPersona-Studio/61591636400496/" target="_blank" rel="me noopener" aria-label="TechPersona Studio on Facebook">Facebook</a>
+          <a href="https://www.instagram.com/techpersonastudio/" target="_blank" rel="me noopener" aria-label="TechPersona Studio on Instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom" data-i18n="footer_built" set:html={t.footer_built}></div>
+  </div>
+</footer>
+
+<!-- STICKY CALL (mobile only) -->
+<a href="tel:+18578002667" class="call-fab" id="callFab" aria-label={t.aria_call}>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span class="call-fab-label" data-i18n="call_fab" set:html={t.call_fab}></span>
+</a>
+
+<!-- COOKIE -->
+<div class="cookie" id="cookie" role="region" aria-label={t.aria_cookie}>
+  <p data-i18n-html="cookie_text" set:html={t.cookie_text}></p>
+  <button id="cookieOk" data-i18n="cookie_ok" set:html={t.cookie_ok}></button>
+</div>
+
+<script is:inline set:html={"window.TP_I18N=" + runtime + ";"}></script>
+<script is:inline src="/index.js"></script>
+</body>
+</html>

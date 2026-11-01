@@ -1,0 +1,297 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
+      "@id": "https://www.techpersonastudio.com/#business",
+      "name": "TechPersona Studio",
+      "url": "https://www.techpersonastudio.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.techpersonastudio.com/assets/images/logo.png",
+        "width": 1022,
+        "height": 790
+      },
+      "description": "Web design, SEO and AI search optimization (GEO), and AI video ads for small businesses. Based in Worcester, MA, serving clients across the US.",
+      "telephone": "+18578002667",
+      "email": "info@techpersonastudio.com",
+      "foundingDate": "2026",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Worcester",
+        "addressRegion": "MA",
+        "postalCode": "01601",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.26259,
+        "longitude": -71.80229
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Worcester",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Massachusetts"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Boston",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Massachusetts"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
+      "sameAs": [
+        "https://www.google.com/maps?cid=7894838848981021571",
+        "https://www.linkedin.com/company/techpersona-studio",
+        "https://www.facebook.com/people/TechPersona-Studio/61591636400496/",
+        "https://www.instagram.com/techpersonastudio/"
+      ],
+      "founder": {
+        "@id": "https://www.techpersonastudio.com/#founder"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web design, SEO and AI ads",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.techpersonastudio.com/#service-redesign"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.techpersonastudio.com/#service-seo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.techpersonastudio.com/#service-ai-ads"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.techpersonastudio.com/#service-automation"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.techpersonastudio.com/#founder",
+      "name": "Thao Phuong",
+      "jobTitle": "Founder & Web Designer",
+      "worksFor": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      },
+      "url": "https://www.techpersonastudio.com/#about",
+      "image": "https://www.techpersonastudio.com/assets/images/profile-pic.JPG"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.techpersonastudio.com/#service-redesign",
+      "name": "Web Design and Website Redesign for Small Businesses",
+      "serviceType": "Website Redesign",
+      "description": "Full website redesign for service businesses that turns visitors into booked calls. Built for restaurants, nail salons, plumbers, and realtors. Based in Worcester, MA, serving clients everywhere.",
+      "provider": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "url": "https://www.techpersonastudio.com/#services"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.techpersonastudio.com/#service-seo",
+      "name": "SEO and AI Search Optimization (GEO)",
+      "serviceType": "Search Engine Optimization",
+      "description": "SEO and AI search optimization (GEO) for small businesses: get found on Google and named in ChatGPT, Perplexity and Google AI answers. One-time search tune-up or monthly growth.",
+      "provider": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "url": "https://www.techpersonastudio.com/#services"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.techpersonastudio.com/#service-ai-ads",
+      "name": "AI Video Ads",
+      "serviceType": "Video Advertising",
+      "description": "Short AI-made story ads for brands and small businesses, sized for Reels, TikTok and YouTube Shorts. Story, script, characters and edit done for you.",
+      "provider": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "url": "https://www.techpersonastudio.com/#services"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.techpersonastudio.com/#service-automation",
+      "name": "Automated Lead Follow-up",
+      "serviceType": "Lead Automation",
+      "description": "Automated follow-up and lead capture for service businesses. Converts missed calls and form fills into booked appointments without manual follow-up. Works with any website, anywhere.",
+      "provider": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "url": "https://www.techpersonastudio.com/#services"
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.techpersonastudio.com/#video-quanpho",
+      "name": "Quán Phở website redesign, before and after walkthrough",
+      "description": "A walkthrough of the redesigned Quán Phở restaurant website built by TechPersona Studio. The original site was a generic template; the rebuild converts visitors to reservations.",
+      "thumbnailUrl": "https://www.techpersonastudio.com/assets/images/poster-quanpho.webp",
+      "uploadDate": "2026-06-22",
+      "contentUrl": "https://www.techpersonastudio.com/assets/videos/new-quanpho.mp4",
+      "duration": "PT49S",
+      "publisher": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.techpersonastudio.com/#video-realestate",
+      "name": "Real estate website sample build, TechPersona Studio",
+      "description": "A sample real estate website build by TechPersona Studio, demonstrating lead capture design for realtors and property businesses.",
+      "thumbnailUrl": "https://www.techpersonastudio.com/assets/images/poster-realestate.webp",
+      "uploadDate": "2026-06-22",
+      "contentUrl": "https://www.techpersonastudio.com/assets/videos/demo-realestate-wordpress.mp4",
+      "duration": "PT1M19S",
+      "publisher": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.techpersonastudio.com/#video-ecommerce",
+      "name": "E-commerce website sample build, TechPersona Studio",
+      "description": "A sample e-commerce website build by TechPersona Studio, demonstrating product-focused design for retail and online service businesses.",
+      "thumbnailUrl": "https://www.techpersonastudio.com/assets/images/poster-ecommerce.webp",
+      "uploadDate": "2026-06-22",
+      "contentUrl": "https://www.techpersonastudio.com/assets/videos/demo-ecommerce-wordpress.mp4",
+      "duration": "PT1M17S",
+      "publisher": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.techpersonastudio.com/#website",
+      "url": "https://www.techpersonastudio.com/",
+      "name": "TechPersona Studio",
+      "description": "Web design, SEO and AI video ads for small businesses, based in Worcester, MA.",
+      "publisher": {
+        "@id": "https://www.techpersonastudio.com/#business"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "name": "Website Redesign FAQ, TechPersona Studio",
+      "url": "https://www.techpersonastudio.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the free audit include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I review your current website and send back a short walkthrough within about 2 days. It covers what's costing you leads, what needs to change, and exactly what I'd fix first. You keep it regardless of what you decide next."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I trust a solo operator to actually deliver?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You reach me directly, every time. But I'm not working alone. Behind me is a team of AI agents I built and trained myself, each one tested until it earned a place on your project. They handle the repetitive work around the clock, so you get the speed of a whole team with the accountability of one person whose name is on it. Seven years of engineering sits behind every build."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost if I want you to build it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prices are right on this page, websites from $950, SEO from $899, automation from $499. Custom builds get scoped after the free audit, so you see the full number before you commit. Most first projects are one-time, not a monthly retainer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to rebuild everything?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Most of the time the right move is fixing what you already have. If a piece works, we keep it. If it leaks, we replace it. You won't pay for a teardown you don't need."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can't I just use Squarespace or Wix myself?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can. But a template can't study your market for you. I research your business and your competitors so your site is built to put you ahead, not just match what everyone else in town already has. Template builders also rarely get you found in local search, and they don't catch leads that come in after hours. If you need a digital brochure, a template is fine. If you're losing leads because people can't find you or can't reach you fast enough, that's a different problem."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A website audit comes back in about 2 business days. Most website builds run 2 to 4 weeks from scoping call to launch. An automated system adds 1 to 2 weeks. You get a specific timeline on the call, not a vague estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with businesses outside Worcester, MA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The process is fully remote, so location is not a barrier. Most clients are in the Greater Worcester and Boston area, but I work with service businesses across the US."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of service businesses do you work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Restaurants, nail salons, hair salons, plumbers, electricians, HVAC companies, landscapers, realtors, and other local service businesses that rely on calls, bookings, or walk-ins. If a customer needs to find you online and reach you fast, that's the problem I solve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the automated system work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Automated lead follow-up that runs in the background while you work. When someone submits your contact form or calls after hours, the system sends an instant, friendly reply and a booking link. You wake up to a scheduled call instead of a cold lead. Nothing for you to log into or manage, it works alongside any website, mine or yours."
+          }
+        }
+      ]
+    }
+  ]
+}

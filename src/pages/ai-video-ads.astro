@@ -1,0 +1,174 @@
+---
+import ServicePage from "../components/services/ServicePage.astro";
+import Faq from "../components/services/Faq.astro";
+import ClosingCta from "../components/services/ClosingCta.astro";
+import AdPlayer from "../components/services/AdPlayer.astro";
+import { crumbs, faqPage, service, SITE, type Faq as FaqT } from "../components/services/schema";
+
+const path = "/ai-video-ads";
+const title = "AI Video Ads for Small Business, Made for You | TechPersona";
+const description = "AI video ads for small business, made for you: a story ad with AI characters, script, captions and sound, ready for Reels and TikTok. Quoted per brief.";
+const blogHref = "/blog/how-ai-videos-are-made-the-complete-step-by-step-process-from-prompt-to-final-edit";
+
+const faqs: FaqT[] = [
+  {
+    q: "Do I need to learn an AI video tool?",
+    a: "No. This is a done-for-you service, not an app. You tell me about your customer and your product. I write the story, make the scenes with AI and hand you a finished ad.",
+  },
+  {
+    q: "How much does an AI video ad cost?",
+    a: "Each ad is quoted per brief. The price depends on the length and how many scenes and characters the story needs. You see the full number before anything starts.",
+  },
+  {
+    q: "Where can I run the ad?",
+    a: "Every ad is vertical 9:16, made for Instagram and Facebook Reels and Stories, TikTok and YouTube Shorts. Captions are built in, so it works with the sound off.",
+  },
+  {
+    q: "Is the sample ad from a real client?",
+    a: "It is a sample story ad made for a weight-loss coach, shown without the client's name. Your ad is written around your own customer and your own product.",
+  },
+  {
+    q: "Why a story instead of a normal sales ad?",
+    a: "People scroll past ads that talk about the seller. A short story about a moment your customer has lived gives them a reason to stay and a reason to share it.",
+  },
+];
+
+const jsonLd = [
+  service({
+    path,
+    name: "AI video ads for small business",
+    serviceType: "AI video ad production",
+    description: "Done-for-you AI video ads for small businesses: story, script, AI characters and scenes, edit, captions and sound, delivered as vertical 9:16 video for Reels, Stories, TikTok and Shorts. Quoted per brief.",
+    areaServed: { "@type": "Country", name: "United States" },
+    offers: { "@type": "Offer", description: "Quoted per brief", url: `${SITE}${path}` },
+  }),
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "Sample AI story ad for a weight-loss coach",
+    description: "A short AI-made story ad: five good days, the moment she usually quits, and day 63. Vertical 9:16.",
+    thumbnailUrl: `${SITE}/assets/services/story-poster.webp`,
+    contentUrl: `${SITE}/assets/videos/story-sample-EN.mp4`,
+    uploadDate: "2026-10-31",
+    duration: "PT55S",
+    creator: { "@id": `${SITE}/#business` },
+  },
+  crumbs("AI video ads", path),
+  faqPage(faqs),
+];
+
+const frames = [
+  { src: "story-poster", n: "01", t: "Five good days. Life is fine." },
+  { src: "story-frame-grandma", n: "02", t: "Grandma's cooking. Temptation." },
+  { src: "story-frame-quit", n: "03", t: "The moment she usually quits." },
+  { src: "story-frame-coach", n: "04", t: "This time, she isn't alone." },
+  { src: "story-frame-day63", n: "05", t: "Day 63. The payoff." },
+];
+---
+
+<ServicePage title={title} description={description} path={path} jsonLd={jsonLd} image="/assets/services/story-poster.webp" imageAlt="Still from a sample AI story ad" ogTitle="AI video ads for small business, made for you">
+  <section class="sv-hero sv-dark">
+    <div class="sv-wrap sv-hero__grid">
+      <div>
+        <nav class="sv-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>AI video ads</nav>
+        <span class="sv-trk" style="color:var(--terra-light)">AI video ads</span>
+        <h1 class="sv-h1">AI video ads for small business. <span class="serif-i">Made for you.</span></h1>
+        <p class="sv-lead">AI video ads, done for you. Not another app to learn. I write the story, make the scenes with AI and hand you a finished ad for Reels, Stories and TikTok.</p>
+        <div class="sv-acts">
+          <a href="/#audit" class="island-btn island-btn--terra">Tell me about your business <span class="island-btn__icon" aria-hidden="true">&#8594;</span></a>
+          <a href="#story" class="sv-ghost">How it works</a>
+        </div>
+      </div>
+      <AdPlayer />
+    </div>
+    <span class="sv-side" aria-hidden="true">Tap for sound</span>
+  </section>
+
+  <section class="sv-sec" id="story" aria-labelledby="vs-h">
+    <div class="sv-wrap">
+      <div class="sv-head sv-head--split">
+        <div>
+          <span class="sv-trk">Why stories</span>
+          <h2 id="vs-h" class="sv-h2">Ads get skipped. <span class="serif-i">Stories get watched.</span></h2>
+        </div>
+        <p class="sv-p">Your customers already scroll past sales pitches all day. A story about their own life is the one thing they stop for.</p>
+      </div>
+      <div class="sv-vs sv-rv" role="table" aria-label="Sales pitch compared with a story ad">
+        <div class="sv-vs__row" role="row"><span class="sv-vs__h" role="columnheader">Sales pitch</span><span class="sv-vs__h" role="columnheader">Story ad</span></div>
+        <div class="sv-vs__row" role="row"><span class="sv-vs__a" role="cell">Talks about you</span><span class="sv-vs__b" role="cell">Talks about them</span></div>
+        <div class="sv-vs__row" role="row"><span class="sv-vs__a" role="cell">Asks for the sale first</span><span class="sv-vs__b" role="cell">Earns the trust first</span></div>
+        <div class="sv-vs__row" role="row"><span class="sv-vs__a" role="cell">Looks like every other ad</span><span class="sv-vs__b" role="cell">Looks like nothing else in the feed</span></div>
+        <div class="sv-vs__row" role="row"><span class="sv-vs__a" role="cell">Gets scrolled past</span><span class="sv-vs__b" role="cell">Gets sent to a friend</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-sec sv-sec--tight" aria-labelledby="film-h">
+    <div class="sv-wrap">
+      <div class="sv-head">
+        <span class="sv-trk">The sample, beat by beat</span>
+        <h2 id="film-h" class="sv-h2">One ad. <span class="serif-i">Five beats.</span></h2>
+      </div>
+      <div class="sv-film" tabindex="0" aria-label="Storyboard frames, scroll sideways">
+        {frames.map((f) => (
+          <figure class="sv-frame sv-rv">
+            <div class="sv-frame__pic"><img src={`/assets/services/${f.src}.webp`} width="420" height="747" loading="lazy" decoding="async" alt="" /></div>
+            <figcaption><b>{f.n}</b>{f.t}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="sv-note">Same craft, your customer's story. <a href="/work/sample-story-ad">See how the sample ad was made</a>.</p>
+    </div>
+  </section>
+
+  <section class="sv-sec" aria-labelledby="get-h">
+    <div class="sv-wrap">
+      <div class="sv-head">
+        <span class="sv-trk">What you get</span>
+        <h2 id="get-h" class="sv-h2">A finished ad. <span class="serif-i">Nothing to learn.</span></h2>
+      </div>
+      <ul class="sv-list sv-list--2">
+        <li><b>A story about your customer</b><span>Built on a moment they have lived, not on your feature list.</span></li>
+        <li><b>Script and storyboard</b><span>You approve the story before production starts.</span></li>
+        <li><b>AI characters and scenes</b><span>One consistent look from the first frame to the last.</span></li>
+        <li><b>Edit, captions and sound</b><span>Works with the sound off, lands with it on.</span></li>
+        <li><b>Vertical 9:16, ready to post</b><span>Reels, Stories, TikTok and Shorts.</span></li>
+        <li><b>Your brand at the end</b><span>So the people who felt something know who to call.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sv-sec sv-sec--tight" aria-labelledby="how-h">
+    <div class="sv-wrap">
+      <div class="sv-head">
+        <span class="sv-trk">Process</span>
+        <h2 id="how-h" class="sv-h2">From brief <span class="serif-i">to posted.</span></h2>
+      </div>
+      <div class="sv-steps" style="--n:4">
+        <div class="sv-step sv-rv"><b>Brief</b><span>You tell me the product, the customer and the feeling you want them to have.</span></div>
+        <div class="sv-step sv-rv"><b>Story</b><span>I write the script and key frames. You say yes or ask for changes.</span></div>
+        <div class="sv-step sv-rv"><b>Make</b><span>AI characters, scenes, edit, captions and sound.</span></div>
+        <div class="sv-step sv-rv"><b>Post</b><span>You get the final vertical files, ready for each platform.</span></div>
+      </div>
+      <p class="sv-note">Curious about the craft? Read <a href={blogHref}>how AI videos are made, step by step</a>.</p>
+    </div>
+  </section>
+
+  <section class="sv-sec" aria-labelledby="price-h">
+    <div class="sv-wrap">
+      <div class="sv-quote sv-rv">
+        <div>
+          <span class="sv-trk">Pricing</span>
+          <h2 id="price-h" class="sv-quote__big">Quoted per brief.</h2>
+          <p>Every story is a different length with different scenes, so there is no package to squeeze into. Tell me what you sell and who buys it. You get a fixed price before anything starts.</p>
+        </div>
+        <a href="/#audit" class="island-btn island-btn--pine">Start my brief <span class="island-btn__icon" aria-hidden="true">&#8594;</span></a>
+      </div>
+      <p class="sv-note">An ad sends people to your site, so make sure it is ready for them: <a href="/seo">SEO services for small business</a> and <a href="/web-design-worcester-ma">web design in Worcester, MA</a>.</p>
+    </div>
+  </section>
+
+  <Faq faqs={faqs} />
+
+  <ClosingCta slot="cta" heading="Your customer's story," accent="told in under a minute." text="Tell me what you sell and who buys it. I'll come back with a story idea and a fixed quote." button="Tell me about your business" />
+</ServicePage>

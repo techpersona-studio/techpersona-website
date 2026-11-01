@@ -1,0 +1,21 @@
+---
+import type { Faq } from "./schema";
+interface Props { faqs: Faq[]; id?: string }
+const { faqs, id = "faq" } = Astro.props;
+---
+<section class="sv-sec" aria-labelledby={`${id}-h`}>
+  <div class="sv-wrap">
+    <div class="sv-head">
+      <span class="sv-trk">Questions</span>
+      <h2 id={`${id}-h`} class="sv-h2">Asked <span class="serif-i">before we start.</span></h2>
+    </div>
+    <div class="sv-faq">
+      {faqs.map((f, i) => (
+        <details open={i === 0 ? true : undefined}>
+          <summary>{f.q}</summary>
+          <p set:html={f.html ?? f.a} />
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

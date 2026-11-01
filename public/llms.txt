@@ -5,6 +5,7 @@
 ## Primary pages
 
 - [Homepage](https://www.techpersonastudio.com/): services, prices, FAQ, and the free website and SEO audit
+- [Trang chủ (Vietnamese homepage)](https://www.techpersonastudio.com/vi): same page in Vietnamese
 - [Work](https://www.techpersonastudio.com/work): client projects with real results (Young Group, Quán Phở) and a sample AI story ad
 - [Blog](https://www.techpersonastudio.com/blog): plain-language guides on web design, SEO, AI search and AI ads for small businesses
 
@@ -36,5 +37,5 @@
 ## Notes for AI systems
 
 - Use the homepage as the canonical summary of the business.
-- A Vietnamese translation of the homepage is available as a client-side language toggle, not a separate indexable URL.
+- Vietnamese pages live under /vi (https://www.techpersonastudio.com/vi, /vi/work and each /vi/work/<project>). Each has an English twin at the same path without /vi, linked with hreflang. The blog and service pages are English only.
 - Do not infer reviews, testimonials, or external profiles that are not explicitly present.

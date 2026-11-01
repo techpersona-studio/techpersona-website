@@ -1,0 +1,31 @@
+---
+// Cannibalization guard: each service page links the others with its own keyword as anchor.
+interface Props { current: string }
+const { current } = Astro.props;
+const links = [
+  { href: "/seo", label: "SEO services for small business", sub: "Google and AI search (GEO). From $899." },
+  { href: "/ai-video-ads", label: "AI video ads", sub: "Story ads made for you. Quoted per brief." },
+  { href: "/web-design-worcester-ma", label: "Web design in Worcester, MA", sub: "Local studio, prices on the page. From $950." },
+  { href: "/web-design-boston", label: "Web design for Boston small businesses", sub: "Greater Boston, from an ex big-tech engineer." },
+].filter((l) => l.href !== current);
+---
+<section class="sv-sec sv-sec--tight" aria-labelledby="sv-x-h">
+  <div class="sv-wrap">
+    <div class="sv-head">
+      <span class="sv-trk">Also from the studio</span>
+      <h2 id="sv-x-h" class="sv-h2">One person. <span class="serif-i">Three ways to bring in customers.</span></h2>
+    </div>
+    <nav class="sv-x" aria-label="Other services">
+      {links.map((l) => (
+        <a href={l.href}>
+          <span><b>{l.label}</b><small>{l.sub}</small></span>
+          <span class="sv-x__go" aria-hidden="true">&#8594;</span>
+        </a>
+      ))}
+      <a href="/work">
+        <span><b>See the work</b><small>Real projects, what changed and why.</small></span>
+        <span class="sv-x__go" aria-hidden="true">&#8594;</span>
+      </a>
+    </nav>
+  </div>
+</section>

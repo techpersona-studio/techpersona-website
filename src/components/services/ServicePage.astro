@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/services.css";
+import CrossLinks from "./CrossLinks.astro";
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  jsonLd: Record<string, unknown>[];
+  image?: string;
+  imageAlt?: string;
+  ogTitle?: string;
+}
+const { title, description, path, jsonLd, image, imageAlt, ogTitle } = Astro.props;
+const site = "https://www.techpersonastudio.com";
+---
+<BaseLayout title={title} description={description} jsonLd={jsonLd} image={image ? site + image : undefined} imageAlt={imageAlt} ogTitle={ogTitle}>
+  <script slot="head" is:inline>document.documentElement.classList.add("js");</script>
+  <div class="svc">
+    <slot />
+    <CrossLinks current={path} />
+    <slot name="cta" />
+  </div>
+</BaseLayout>
+<script>
+  import { initServices } from "./svc-client";
+  initServices();
+</script>

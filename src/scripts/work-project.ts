@@ -3,6 +3,11 @@
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
 const TOUCH = matchMedia("(hover: none)").matches;
+const VI = document.documentElement.lang === "vi";
+// strings written by this script (the rest is server-rendered, src/i18n/work.ts)
+const L = VI
+  ? { swipe: "Vuốt để xem", swipeNote: "Vuốt màn hình để xem", scrollNote: "Cuộn trong màn hình để xem website thật", oldPct: "% website cũ", sound: "Chạm để bật tiếng", soundOn: "Đã bật tiếng" }
+  : { swipe: "Swipe to explore", swipeNote: "Swipe the screen to explore", scrollNote: "Scroll inside a screen to explore the real site", oldPct: "% old site", sound: "Tap for sound", soundOn: "Sound on" };
 const store = {
   get: (k: string) => { try { return localStorage.getItem(k); } catch { return null; } },
   set: (k: string, v: string) => { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
@@ -21,7 +26,7 @@ function initCompare(host: HTMLElement) {
     p = Math.max(0, Math.min(100, v));
     host.style.setProperty("--p", p + "%");
     h.setAttribute("aria-valuenow", String(Math.round(p)));
-    h.setAttribute("aria-valuetext", Math.round(p) + "% old site");
+    h.setAttribute("aria-valuetext", Math.round(p) + L.oldPct);
     lb.style.opacity = p < 12 ? "0" : "1";
     la.style.opacity = p > 88 ? "0" : "1";
   };
@@ -90,8 +95,8 @@ function initAd(host: HTMLElement) {
     v.muted = !v.muted;
     snd.setAttribute("aria-pressed", String(!v.muted));
     snd.innerHTML = v.muted
-      ? '<span aria-hidden="true">&#128263;</span> <b>Tap for sound</b>'
-      : '<span aria-hidden="true">&#128266;</span> <b>Sound on</b>';
+      ? `<span aria-hidden="true">&#128263;</span> <b>${L.sound}</b>`
+      : `<span aria-hidden="true">&#128266;</span> <b>${L.soundOn}</b>`;
     if (v.paused) { userPaused = false; play(); }
   });
 }
@@ -100,8 +105,8 @@ function initAd(host: HTMLElement) {
 function initStage(stage: HTMLElement) {
   const sw = document.getElementById("swView"), swd = document.getElementById("swDev");
   const hintEl = $(".hint", stage)!, note = $("[data-note]");
-  if (!fine) { hintEl.classList.add("touch"); $("span", hintEl)!.textContent = "Swipe to explore"; }
-  if (note) note.innerHTML = NOTE_ICON + (TOUCH ? "Swipe the screen to explore" : "Scroll inside a screen to explore the real site");
+  if (!fine) { hintEl.classList.add("touch"); $("span", hintEl)!.textContent = L.swipe; }
+  if (note) note.innerHTML = NOTE_ICON + (TOUCH ? L.swipeNote : L.scrollNote);
 
   const IDLE = 3200;
   let seen = store.get("tpb-hint") === "1", inView = false, raf = 0, last = 0, view = "new";

@@ -1,0 +1,142 @@
+---
+import ServicePage from "../components/services/ServicePage.astro";
+import Faq from "../components/services/Faq.astro";
+import ClosingCta from "../components/services/ClosingCta.astro";
+import { crumbs, faqPage, service, offer, type Faq as FaqT } from "../components/services/schema";
+
+const path = "/web-design-boston";
+const title = "Web Design for Boston Small Businesses | TechPersona Studio";
+const description = "Web design for Greater Boston small businesses, from an engineer with 7 years building software for big tech in Boston. Fixed prices from $950. Free audit.";
+
+const faqs: FaqT[] = [
+  {
+    q: "Are you based in Boston?",
+    a: "I'm based in Worcester, about an hour west. I spent 7 years writing software for big tech companies in Boston, and I work with Greater Boston businesses remotely, over video calls and shared links.",
+  },
+  {
+    q: "How much does web design cost for a Boston small business?",
+    a: "$950 for a one-page Launch site, $1,850 for a Growth website of up to 5 pages, and from $2,500 for Custom builds. Same prices everywhere, written on the site before we talk.",
+  },
+  {
+    q: "Why hire an engineer instead of an agency?",
+    a: "You talk to the person who builds your site, every time. No account managers, no handoffs, and the same testing habits big tech uses on its own releases.",
+  },
+  {
+    q: "Which areas do you work with?",
+    a: "All of Greater Boston, including the North Shore, where Quán Phở in Saugus is. I also work with small businesses across the US.",
+  },
+  {
+    q: "Can you help my Boston business show up on Google too?",
+    a: "Yes. Every build ships with basic SEO and AI search setup. Ongoing ranking work is a separate service.",
+    html: "Yes. Every build ships with basic SEO and AI search setup. Ongoing ranking work is a separate service, see <a href=\"/seo\">SEO services for small business</a>.",
+  },
+];
+
+const jsonLd = [
+  service({
+    path,
+    name: "Web design for Greater Boston small businesses",
+    serviceType: "Web design",
+    description: "Website design and build for small businesses in Boston and Greater Boston, by a Worcester, MA studio founder with 7 years of software engineering at big tech companies in Boston.",
+    areaServed: [
+      { "@type": "City", name: "Boston", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+      { "@type": "City", name: "Saugus", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+      { "@type": "AdministrativeArea", name: "Greater Boston" },
+    ],
+    offers: [
+      offer("Launch Page", 950),
+      offer("Growth Website", 1850),
+      offer("Custom + Systems", 2500, { priceSpecification: { "@type": "PriceSpecification", minPrice: "2500", priceCurrency: "USD" } }),
+    ],
+  }),
+  crumbs("Web design Boston", path),
+  faqPage(faqs),
+];
+---
+
+<ServicePage title={title} description={description} path={path} jsonLd={jsonLd} image="/assets/services/qp-cover.webp" imageAlt="Quán Phở in Saugus, a TechPersona website project" ogTitle="Web design for Boston small businesses, built with big-tech engineering">
+  <section class="sv-hero bos-hero">
+    <div class="sv-wrap sv-hero__grid">
+      <div>
+        <nav class="sv-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>Web design Boston</nav>
+        <span class="sv-trk">Greater Boston</span>
+        <h1 class="sv-h1">Web design for Boston small businesses. <span class="serif-i">Built like big tech builds.</span></h1>
+        <p class="sv-lead">I spent 7 years writing software for big tech companies in Boston. Now I do web design for Greater Boston small businesses, with the same engineering habits and none of the agency layers.</p>
+        <div class="sv-acts">
+          <a href="/#audit" class="island-btn island-btn--pine">Get my free website audit <span class="island-btn__icon" aria-hidden="true">&#8594;</span></a>
+          <a href="#habits" class="sv-ghost">What that means for you</a>
+        </div>
+        <p class="sv-route" aria-label="Worcester to Boston, about an hour">Worcester <i></i> Boston</p>
+      </div>
+      <div class="sv-spec" aria-label="Launch checks on this studio's own homepage">
+        <div class="sv-spec__k"><span>Launch check</span><span>Mobile</span></div>
+        <div class="sv-spec__row"><span>Performance</span><b>96</b></div>
+        <div class="sv-spec__row"><span>Accessibility</span><b>100</b></div>
+        <div class="sv-spec__row"><span>Best practices</span><b>100</b></div>
+        <div class="sv-spec__row"><span>SEO</span><b>100</b></div>
+        <div class="sv-spec__row"><span>Status</span><span class="sv-spec__ok">Ready to ship</span></div>
+        <p class="sv-spec__foot">Google Lighthouse scores for this studio's own homepage, mobile test. Your site gets the same check before launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-sec bos-slab bos-dark" id="habits" aria-labelledby="habits-h">
+    <div class="sv-wrap">
+      <div class="sv-head sv-head--split">
+        <div>
+          <span class="sv-trk">Big-tech habits</span>
+          <h2 id="habits-h" class="sv-h2">What I brought home <span class="serif-i">from 7 years in Boston tech.</span></h2>
+        </div>
+        <p class="sv-p">Big companies never ship without these. Most small business sites never get them.</p>
+      </div>
+      <div class="sv-habits">
+        <div class="sv-habit sv-rv"><small>Testing</small><b>Checked before it ships</b><p>Every page tested on phone and desktop screens, so customers never find the bug first.</p></div>
+        <div class="sv-habit sv-rv"><small>Speed</small><b>Measured, not guessed</b><p>Load time tested on a phone before launch. Fast sites keep the people who would have left.</p></div>
+        <div class="sv-habit sv-rv"><small>Security</small><b>Locked from day one</b><p>Padlock, spam-protected forms and the hardening most small sites skip.</p></div>
+        <div class="sv-habit sv-rv"><small>Monitoring</small><b>Watched after launch</b><p>Uptime, form checks and security updates on a care plan from $39/mo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-sec bos-slab bos-warm" aria-labelledby="qp-h">
+    <div class="sv-wrap sv-feature">
+      <div class="sv-feature__pics">
+        <a class="sv-matlink sv-rv" href="/work/quan-pho" aria-label="Quán Phở project"><div class="sv-mat"><div class="sv-mat__img"><img src="/assets/services/qp-pho.webp" width="600" height="600" loading="lazy" decoding="async" alt="A bowl of phở at Quán Phở in Saugus" /></div></div></a>
+        <a class="sv-matlink sv-rv" href="/work/quan-pho" tabindex="-1" aria-hidden="true"><div class="sv-mat sv-mat--dark"><div class="sv-mat__img"><img src="/assets/services/qp-phone.webp" width="480" height="1038" loading="lazy" decoding="async" alt="" /></div></div></a>
+      </div>
+      <div>
+        <span class="sv-trk">North Shore &middot; Saugus, MA</span>
+        <h2 id="qp-h" class="sv-h2">Quán Phở. <span class="serif-i">Feels like walking in.</span></h2>
+        <p class="sv-p">A Vietnamese restaurant in Saugus, rebuilt so the site sells the room, the food and the party nights.</p>
+        <ul class="sv-list">
+          <li><b>2 taps</b><span>to order online or book the whole place.</span></li>
+          <li><b>Seconds</b><span>for a party request to reach the owner's phone.</span></li>
+          <li><b>1 minute</b><span>to change the menu. No developer bills.</span></li>
+        </ul>
+        <p class="sv-note"><a href="/work/quan-pho">See the Quán Phở project</a> or <a href="/work">all work</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-sec bos-quote" aria-labelledby="me-h">
+    <div class="sv-wrap sv-bio">
+      <img src="/assets/services/thao.webp" width="480" height="487" loading="lazy" decoding="async" alt="Thao Phuong, founder of TechPersona Studio" />
+      <div>
+        <span class="sv-trk">Who builds it</span>
+        <h2 id="me-h" class="sr-only">Who builds your site</h2>
+        <blockquote class="sv-rv" style="margin-top:1rem">"I started TechPersona Studio to put that same engineering to work for small businesses, the ones that get overlooked and left to fall behind on tech."</blockquote>
+        <cite>Thao Phuong, founder. 7 years writing software for big tech companies in Boston.</cite>
+        <div class="sv-prices">
+          <div><span>Launch Page &middot; one page</span><b>$950</b></div>
+          <div><span>Growth Website &middot; up to 5 pages</span><b>$1,850</b></div>
+          <div><span>Custom + Systems &middot; 6+ pages</span><b>from $2,500</b></div>
+        </div>
+        <p class="sv-note">Same prices for every city. What each package includes: <a href="/web-design-worcester-ma#prices">web design in Worcester, MA</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq faqs={faqs} />
+
+  <ClosingCta slot="cta" heading="Big-tech care for" accent="your Boston business." button="Get my free website audit" />
+</ServicePage>

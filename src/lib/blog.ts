@@ -76,7 +76,7 @@ const LANE_SERVICE: Record<string, { href: string; text: string }> = {
   systems: { href: "/#services", text: "Lead follow-up that works while you're away" },
 };
 // service pages not live yet: link to the homepage section until they ship
-const SERVICE_PAGES_LIVE = false;
+const SERVICE_PAGES_LIVE = true;
 export function serviceFor(lane: Lane): { href: string; text: string } {
   const s = LANE_SERVICE[lane.id] ?? LANE_SERVICE.design;
   return SERVICE_PAGES_LIVE ? s : { ...s, href: "/#services" };

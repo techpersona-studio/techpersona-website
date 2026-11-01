@@ -1,0 +1,12 @@
+---
+interface Props { heading: string; accent: string; text?: string; button?: string; href?: string }
+const { heading, accent, text = "Send me your website. I'll send back what's costing you customers and what I'd fix first. Free, in about 2 business days.", button = "Get my free audit", href = "/#audit" } = Astro.props;
+---
+<section class="sv-cta" aria-labelledby="sv-cta-h">
+  <div class="sv-wrap">
+    <h2 id="sv-cta-h">{heading} <span class="serif-i">{accent}</span></h2>
+    <p>{text}</p>
+    <a href={href} class="island-btn island-btn--terra">{button} <span class="island-btn__icon" aria-hidden="true">&#8594;</span></a>
+    <p class="sv-trust">Free &middot; no commitment &middot; Worcester, MA &middot; <span style="white-space:nowrap">+1 857 800 2667</span></p>
+  </div>
+</section>

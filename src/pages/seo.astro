@@ -1,0 +1,237 @@
+---
+import ServicePage from "../components/services/ServicePage.astro";
+import Faq from "../components/services/Faq.astro";
+import ClosingCta from "../components/services/ClosingCta.astro";
+import { crumbs, faqPage, service, offer, type Faq as FaqT } from "../components/services/schema";
+
+const path = "/seo";
+const title = "SEO Services for Small Business and GEO | TechPersona";
+const description = "SEO services for small business, built for Google and AI search (GEO). One client reached #1 on Google in the US 8 weeks after launch. Free audit.";
+
+const faqs: FaqT[] = [
+  {
+    q: "What is the difference between SEO and GEO?",
+    a: "SEO gets your business onto Google's list of links. GEO, or AI search optimization, gets your business named inside the answers from ChatGPT, Perplexity and Google's AI Overviews. Most of the work overlaps, so I do both together.",
+  },
+  {
+    q: "How long does SEO take for a small business?",
+    a: "Young Group's main page reached #1 on Google in the US 8 weeks after launch, in a niche with little competition. Busier local markets usually take a few months. After the free audit I tell you what is realistic for yours.",
+  },
+  {
+    q: "Do I have to sign up for the monthly plan?",
+    a: "No. The Search tune-up is a one-time $899 job and the fixes are yours to keep. The monthly plan ($969/mo, 3-month minimum) is only for owners who want ongoing growth. Nobody pays monthly for work that ends.",
+  },
+  {
+    q: "Can you guarantee a #1 ranking?",
+    a: "No, and nobody honest can. Google and the AI engines decide. What I can show you is what I changed, where you rank before and after, and dated screenshots of every win.",
+  },
+  {
+    q: "Do you only work with businesses in Worcester, MA?",
+    a: "No. I am based in Worcester, MA and work remotely with small businesses across the US. Young Group's site serves clients in four countries.",
+  },
+  {
+    q: "What does the free audit include?",
+    a: "I review your website and send back a short walkthrough in about 2 business days: why you are not showing up on Google, whether AI assistants can read your site, how fast it loads on a phone, and what I would fix first. You keep it either way.",
+  },
+];
+
+const jsonLd = [
+  service({
+    path,
+    name: "SEO and AI search optimization (GEO) for small business",
+    serviceType: "Search engine optimization",
+    description: "SEO services for small business: Google rankings, Google Business Profile, structured data, site speed and AI search optimization (GEO) so ChatGPT, Perplexity and Google's AI Overviews can name your business.",
+    areaServed: [{ "@type": "City", name: "Worcester" }, { "@type": "Country", name: "United States" }],
+    offers: [
+      offer("Search tune-up", 899, { description: "One-time, 3 to 4 weeks. Implements what the free audit found." }),
+      offer("Grow your presence", 969, { description: "Monthly, 3-month minimum. Articles, structured data, AI search work, Google Business Profile posts, competitor tracking.", priceSpecification: { "@type": "UnitPriceSpecification", price: "969", priceCurrency: "USD", unitText: "MONTH" } }),
+    ],
+  }),
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: "GEO (generative engine optimization)",
+    alternateName: "AI search optimization",
+    description: "GEO is the work that gets a business named inside AI answers from ChatGPT, Perplexity and Google's AI Overviews. It makes a website easy for those engines to read, trust and quote, the way SEO does for Google's list of links.",
+    url: "https://www.techpersonastudio.com/seo#what-is-geo",
+  },
+  crumbs("SEO services", path),
+  faqPage(faqs),
+];
+---
+
+<ServicePage title={title} description={description} path={path} jsonLd={jsonLd} image="/assets/services/seo-google-ai-overview.webp" imageAlt="Google AI Overview naming a TechPersona client first" ogTitle="SEO services for small business. Found on Google, named by AI.">
+  <!-- hero -->
+  <section class="sv-hero">
+    <div class="sv-wrap sv-hero__grid">
+      <div>
+        <nav class="sv-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>SEO services</nav>
+        <span class="sv-trk">SEO &amp; AI search</span>
+        <h1 class="sv-h1">SEO services for small business. <span class="serif-i">Found on Google, named by AI.</span></h1>
+        <p class="sv-lead">SEO services for small business owners who want the call, not a report full of charts. I get you found on Google and named in the answers from ChatGPT, Perplexity and Google's AI.</p>
+        <div class="sv-acts">
+          <a href="/#audit" class="island-btn island-btn--pine">Get my free SEO audit <span class="island-btn__icon" aria-hidden="true">&#8594;</span></a>
+          <a href="#proof" class="sv-ghost">See the proof</a>
+        </div>
+      </div>
+      <div class="sv-search" aria-hidden="true">
+        <span class="sv-lab">Google &middot; our client</span>
+        <div class="sv-g">
+          <div class="sv-g__bar"><b class="sv-g__logo">G</b>vietnamese weight loss coach<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+          <div class="sv-g__ov">
+            <p class="sv-g__k"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 1c.6 5.7 5.3 10.4 11 11-5.7.6-10.4 5.3-11 11-.6-5.7-5.3-10.4-11-11C6.7 11.4 11.4 6.7 12 1z" fill="url(#svgem)"/><defs><linearGradient id="svgem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4285f4"/><stop offset="1" stop-color="#9b72cb"/></linearGradient></defs></svg>AI Overview</p>
+            <p class="sv-g__li"><mark>Tran Thuy Tien (Young Group):</mark> 1-on-1 daily coaching, fully in Vietnamese.</p>
+          </div>
+          <div class="sv-g__res">
+            <span class="sv-g__site"><i>Y</i>tranthuytien.net</span>
+            <span class="sv-g__t">Tran Thuy Tien | Weight-Loss Coach</span>
+          </div>
+        </div>
+        <span class="sv-lab sv-lab--chat">AI chat &middot; your business next</span>
+        <div class="sv-chat" data-chat>
+          <p class="sv-chat__u" data-u>best bakery near me</p>
+          <p class="sv-chat__think" data-think><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2" stroke="#c06a45" stroke-width="2.4" stroke-linecap="round"/></svg>Thinking</p>
+          <p class="sv-chat__a"><i class="sv-chat__av" aria-hidden="true"></i><span data-a>A good place to start:</span></p>
+          <div class="sv-chat__row" data-row><b>Your Business</b><span>Locals mention fast replies and fair prices.<em>yourbusiness.com</em></span></div>
+          <div class="sv-chat__in"><span data-in>Ask anything</span><span class="sv-caret"></span><i class="sv-chat__send" aria-hidden="true">&#8593;</i></div>
+        </div>
+      </div>
+    </div>
+    <span class="sv-side" aria-hidden="true">Find it &middot; fix it &middot; grow it</span>
+  </section>
+
+  <!-- two kinds of search + GEO definition -->
+  <section class="sv-sec sv-sec--tight" id="what-is-geo" aria-labelledby="geo-h">
+    <div class="sv-wrap">
+      <div class="sv-def sv-rv">
+        <div>
+          <p class="sv-def__word" aria-hidden="true">geo<span class="sv-def__ph">noun &middot; generative engine optimization</span></p>
+        </div>
+        <div>
+          <h2 id="geo-h">What is GEO?</h2>
+          <p class="sv-def__txt">Getting your business named when people ask ChatGPT, Perplexity or Google's AI.</p>
+          <p class="sv-def__note">Google shows ten links. AI gives one name. I work on both.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- proof -->
+  <section class="sv-sec" id="proof" aria-labelledby="proof-h">
+    <div class="sv-wrap">
+      <div class="sv-head sv-head--split">
+        <div>
+          <span class="sv-trk">Proof &middot; Young Group</span>
+          <h2 id="proof-h" class="sv-h2">#1 on Google. <span class="serif-i">Named first by AI.</span></h2>
+        </div>
+        <p class="sv-p">A Vietnamese weight-loss coach with clients across the US. New site live Aug 29, 2026. Here is what search looked like after.</p>
+      </div>
+      <div class="sv-strip sv-rv">
+        <div class="sv-strip__i"><span class="sv-strip__v">#1</span><span class="sv-strip__l">on Google in the US for "vietnamese weight loss coach"</span><span class="sv-strip__w">8 weeks after launch</span></div>
+        <div class="sv-strip__i"><span class="sv-strip__v">7 of 9</span><span class="sv-strip__l">coach searches where Google's AI names her first</span><span class="sv-strip__w">Oct 27, 2026 snapshot</span></div>
+        <div class="sv-strip__i"><span class="sv-strip__v">1st</span><span class="sv-strip__l">row in Perplexity's answer for the same search</span><span class="sv-strip__w">Oct 27, 2026</span></div>
+      </div>
+      <div class="sv-proofgrid">
+        <figure class="sv-mat sv-mat--gold sv-rv">
+          <img src="/assets/services/seo-google-ai-overview.webp" width="640" height="992" loading="lazy" decoding="async" alt="Google AI Overview for vietnamese weight loss coach naming Tran Thuy Tien (Young Group) first, with her website as the top result below" />
+          <figcaption><b>Google's AI names her first. Her site sits right below.</b>Google, United States, signed out, Oct 27, 2026.</figcaption>
+        </figure>
+        <figure class="sv-mat sv-mat--pine sv-rv">
+          <img src="/assets/services/seo-perplexity.webp" width="400" height="700" loading="lazy" decoding="async" alt="Perplexity answer for vietnamese weight loss coach listing Tran Thuy Tien / Young Group in the first row" />
+          <figcaption><b>Perplexity puts her in row one.</b>Signed out, Oct 27, 2026.</figcaption>
+        </figure>
+      </div>
+      <p class="sv-note">AI answers change between searches, so these are dated snapshots, not a promise. <a href="/work/young-group">Read the full Young Group story</a>.</p>
+    </div>
+  </section>
+
+  <!-- what the work covers -->
+  <section class="sv-sec sv-sec--tight" aria-labelledby="cover-h">
+    <div class="sv-wrap">
+      <div class="sv-head">
+        <span class="sv-trk">What I fix</span>
+        <h2 id="cover-h" class="sv-h2">Six things that decide <span class="serif-i">who gets the call.</span></h2>
+      </div>
+      <details class="sv-fold" open>
+        <summary>Show all six</summary>
+        <ul class="sv-list sv-list--2">
+          <li><b>First impressions</b><span>Titles and descriptions people actually click.</span></li>
+          <li><b>Trust</b><span>Signals that prove you are real: reviews, people, proof.</span></li>
+          <li><b>Local presence</b><span>Google Business Profile and the map pack.</span></li>
+          <li><b>How Google reads you</b><span>Structured data, so you get stars, not a plain blue link.</span></li>
+          <li><b>Speed</b><span>A fast site on a phone, so fewer people leave.</span></li>
+          <li><b>AI search visibility, or GEO</b><span>Clear, quotable pages AI answers can name.</span></li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- pricing -->
+  <section class="sv-sec" id="pricing" aria-labelledby="price-h">
+    <div class="sv-wrap">
+      <div class="sv-head sv-head--split">
+        <div>
+          <span class="sv-trk">Pricing</span>
+          <h2 id="price-h" class="sv-h2">Find it. Fix it. <span class="serif-i">Grow it.</span></h2>
+        </div>
+        <p class="sv-p">Nobody pays monthly for work that ends. Start free, fix once, and grow only if you want to.</p>
+      </div>
+      <div class="sv-flow">
+        <div class="sv-tier sv-tier--free sv-rv">
+          <span class="sv-tier__n">01 &middot; Find it</span>
+          <h3>Free audit</h3>
+          <p class="sv-tier__price">$0</p>
+          <p>A short walkthrough of what is keeping you off Google and out of AI answers. About 2 business days.</p>
+          <div class="sv-tier__go"><a href="/#audit" class="sv-ghost">Get my audit</a></div>
+        </div>
+        <div class="sv-tier sv-rv">
+          <span class="sv-tier__n">02 &middot; Fix it</span>
+          <h3>Search tune-up</h3>
+          <p class="sv-tier__price">$899<small>one-time</small></p>
+          <p>3 to 4 weeks. I implement what the audit found. Yours to keep, whether or not you continue.</p>
+          <ul><li>Titles, headings, structured data</li><li>Speed fixes</li><li>Google Business Profile</li><li>AI search setup</li></ul>
+        </div>
+        <div class="sv-tier sv-tier--pine sv-rv">
+          <span class="sv-tier__n">03 &middot; Grow it</span>
+          <h3>Grow your presence</h3>
+          <p class="sv-tier__price">$969<small>/month</small></p>
+          <p>Ongoing work for owners who want more searches to end at their door. 3-month minimum.</p>
+          <ul><li>2 articles a month</li><li>AI search work and structured data</li><li>Google Business Profile posts</li><li>Competitor tracking</li><li>Bilingual or multi-location included</li></ul>
+        </div>
+      </div>
+      <p class="sv-note">Need a new site first? Basic SEO and AI search setup ship with every build, see <a href="/web-design-worcester-ma">web design in Worcester, MA</a>. Want people to see you before they search? Pair it with <a href="/ai-video-ads">AI video ads</a>.</p>
+    </div>
+  </section>
+
+  <Faq faqs={faqs} />
+
+  <ClosingCta slot="cta" heading="Find out why they" accent="call someone else." text="Send me your website. In about 2 business days you get what is keeping you off Google and out of AI answers, and what I would fix first. Free." button="Get my free SEO audit" />
+<script>
+  const c = document.querySelector<HTMLElement>("[data-chat]");
+  if (c && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const $ = (k: string) => c.querySelector<HTMLElement>(`[data-${k}]`)!;
+    const u = $("u"), th = $("think"), a = $("a"), ap = a.parentElement!, row = $("row"), inp = $("in");
+    const QS = ["best bakery near me", "plumber open today", "nail salon near me", "family dentist nearby"], A = a.textContent!; let qi = 0; const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    let on = false, running = false;
+    const run = async () => {
+      running = true;
+      while (on) {
+        c.classList.add("is-anim"); [u, th, ap, row].forEach((e) => e.classList.remove("is-on"));
+        a.textContent = ""; inp.textContent = ""; inp.classList.add("is-typed");
+        await wait(500);
+        const Q = QS[qi++ % QS.length];
+        for (const ch of Q) { inp.textContent += ch; await wait(45); }
+        await wait(350); c.classList.add("is-send"); await wait(200); c.classList.remove("is-send");
+        u.textContent = Q; inp.textContent = "Ask anything"; inp.classList.remove("is-typed"); u.classList.add("is-on");
+        await wait(400); th.classList.add("is-on"); await wait(1300); th.classList.remove("is-on");
+        ap.classList.add("is-on");
+        for (const w of A.split(" ")) { a.textContent += (a.textContent ? " " : "") + w; await wait(90); }
+        await wait(200); row.classList.add("is-on");
+        await wait(4500);
+      }
+      running = false;
+    };
+    new IntersectionObserver(([e]) => { on = e.isIntersecting; if (on && !running) run(); }, { threshold: 0.3 }).observe(c);
+  }
+</script>
+</ServicePage>

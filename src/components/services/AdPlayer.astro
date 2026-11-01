@@ -1,0 +1,17 @@
+---
+// Vertical sample ad: muted autoplay while in view (svc-client.ts), tap for sound.
+interface Props { label?: string }
+const { label = "Sample story ad · weight-loss coach" } = Astro.props;
+---
+<div class="sv-adwrap">
+  <span class="sv-adtag">{label}</span>
+  <div class="sv-mat sv-mat--dark">
+    <div class="sv-stp paused" data-stp>
+      <video muted playsinline loop preload="none" poster="/assets/services/story-poster.webp" aria-label="Sample AI story ad for a weight-loss coach, vertical video" width="540" height="960">
+        <source src="/assets/videos/story-sample-EN.mp4" type="video/mp4" />
+      </video>
+      <button type="button" class="sv-stp__snd" aria-pressed="false"><span aria-hidden="true">&#128263;</span> <b>Tap for sound</b></button>
+      <span class="sv-stp__st" aria-hidden="true">&#9654;</span>
+    </div>
+  </div>
+</div>
