@@ -12,7 +12,7 @@
       nav_cta: 'Get my free website audit <span class="ic" aria-hidden="true">&#8594;</span>',
 
       hero_eyebrow_main: 'Web design · SEO · AI ads',
-      hero_eyebrow_loc: 'Worcester, MA · clients across the US',
+      hero_eyebrow_loc: 'Worcester, MA',
       hero_h1: 'Web design, SEO and AI video ads <span class="serif-i">that bring small businesses customers.</span>',
       hero_location_line: 'Get found on Google and AI search, look like the real thing, and get your product talked about.',
       hero_sub: "Service businesses lose leads every day because their site can't be found and no one answers fast enough. I fix both, from Worcester, MA to wherever you run your business. One person on your project, start to finish.",
@@ -303,7 +303,7 @@
       nav_cta: 'Nhận đánh giá miễn phí <span class="ic" aria-hidden="true">&#8594;</span>',
 
       hero_eyebrow_main: 'Thiết kế web · SEO · Quảng cáo AI',
-      hero_eyebrow_loc: 'Worcester, MA · khách hàng khắp nước Mỹ',
+      hero_eyebrow_loc: 'Worcester, MA',
       hero_h1: 'Thiết kế web, SEO và video quảng cáo AI <span class="serif-i">giúp doanh nghiệp nhỏ có thêm khách.</span>',
       hero_location_line: 'Được tìm thấy trên Google và AI, trông chuyên nghiệp, và khiến sản phẩm của bạn được nhắc đến.',
       hero_sub: 'Mỗi ngày, nhiều doanh nghiệp dịch vụ đang mất khách vì website khó được tìm thấy và không ai phản hồi đủ nhanh. Tôi giúp bạn khắc phục cả hai, từ Worcester, MA đến bất cứ nơi nào bạn kinh doanh. Bạn làm việc trực tiếp với tôi từ đầu đến cuối dự án.',

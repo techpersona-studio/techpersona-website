@@ -593,3 +593,7 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .devices .scroll-shot{position:absolute;top:0;left:0;width:100%;will-change:transform}
 .devices .scroll-shot img{width:100%;height:auto;display:block}
 @media(max-width:600px){ .dev-phone{width:34%} .dev-phone .dev-screen{border-radius:16px} }
+
+/* hero: eyebrow never breaks mid-phrase; the long paragraph is gone on every screen (too much text) */
+.hero-eyebrow span{white-space:nowrap}
+.hero .sub{display:none}

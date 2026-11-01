@@ -66,17 +66,20 @@ function initAd(host: HTMLElement) {
   $("source", v)?.remove();
   v.removeAttribute("controls");
   v.muted = true; v.loop = true;
+  v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
   let loaded = false, userPaused = false;
   const auto = !reduced;
+  if (!auto) v.controls = true; // reduced motion: no autoplay, so keep the native play button
   const load = () => { if (!loaded) { loaded = true; v.preload = "metadata"; v.src = src; } };
-  const play = () => { load(); v.play().catch(() => {}); };
+  // autoplay refused (iOS low power, data saver): give the visitor native controls instead of a dead frame
+  const play = () => { load(); v.play().catch(() => { v.controls = true; }); };
   if ("IntersectionObserver" in window) {
     const near = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { load(); near.disconnect(); } }), { rootMargin: "400px 0px" });
     near.observe(v);
     new IntersectionObserver((es) => es.forEach((e) => {
       if (e.isIntersecting && auto && !userPaused) play();
       else if (!e.isIntersecting && !v.paused) v.pause();
-    }), { threshold: 0.5 }).observe(v);
+    }), { threshold: 0.35 }).observe(v);
   } else load();
   const sync = () => host.classList.toggle("paused", v.paused);
   v.addEventListener("play", sync); v.addEventListener("pause", sync); sync();
