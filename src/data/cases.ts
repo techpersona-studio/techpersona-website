@@ -185,9 +185,9 @@ const CASES: Case[] = [
       description: "A sample AI story ad for a weight-loss coach: a short Pixar-style story made to be watched, not skipped. Vertical 9:16 for Reels, Stories and TikTok.",
     },
     media: {
-      video: "/assets/videos/ad-sample-story-EN.mp4",
-      poster: W + "ad-story-poster.webp",
-      og: W + "ad-story-poster.webp",
+      video: "/assets/videos/story-sample-EN.mp4",
+      poster: W + "story-poster.webp",
+      og: W + "story-poster.webp",
     },
     outcomes: ["A short story, not a hard sell", "AI-made, Pixar-style characters", "Vertical 9:16 for Reels, Stories and TikTok"],
     proof: [],
@@ -195,8 +195,8 @@ const CASES: Case[] = [
       { kind: "note", span: 2, label: "Hook", text: "Ads get skipped. Stories get watched.", caption: "The one idea behind the ad" },
       { kind: "palette", span: 1, label: "Color", caption: "Warm kitchen light keeps it homey", swatches: [
         { name: "Ember", hex: "#431B0F" }, { name: "Rust", hex: "#893719" }, { name: "Blush", hex: "#DE8D74" }, { name: "Glow", hex: "#EFB27D" } ] },
-      { kind: "image", span: 1, label: "Style frame", src: W + "ad-b-quit.webp", w: 420, h: 747, alt: "The scene turns grey as she thinks about quitting", caption: "Color drains when she wants to quit" },
-      { kind: "image", span: 2, label: "Style frame", src: W + "ad-b-day63.webp", w: 420, h: 747, alt: "Day 63, stretching with her daughter", caption: "Day 63, the payoff" },
+      { kind: "image", span: 1, label: "Style frame", src: W + "story-b-quit.webp", w: 420, h: 747, alt: "The scene turns grey as she thinks about quitting", caption: "Color drains when she wants to quit" },
+      { kind: "image", span: 2, label: "Style frame", src: W + "story-b-day63.webp", w: 420, h: 747, alt: "Day 63, stretching with her daughter", caption: "Day 63, the payoff" },
     ],
   },
 ];

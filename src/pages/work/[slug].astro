@@ -67,9 +67,9 @@ const jsonLd = [
     {gfHref && <link rel="stylesheet" href={gfHref} />}
   </Fragment>
 
-  <div class:list={["wk", { "is-ad": isAd }]} style={`--acc-rgb:${rgb(c.accent)}`} data-slug={c.slug}>
+  <div class:list={["wk", { "is-story": isAd }]} style={`--acc-rgb:${rgb(c.accent)}`} data-slug={c.slug}>
     <!-- intro: summary first, before/after (or the ad) in a colored mat -->
-    <section class:list={["sp", { ad: isAd }]}>
+    <section class:list={["sp", { story: isAd }]}>
       <div class="sp-head">
         <a class="back" href="/work">&#8592; All work</a>
         <div class="eyr">
@@ -82,12 +82,12 @@ const jsonLd = [
 
       {isAd ? (
         <div class="mat">
-          <div class="adbox adp" data-adp>
+          <div class="stbox stp" data-stp>
             <video controls playsinline preload="none" poster={c.media.poster} aria-label={`${c.name}, video`}>
               <source src={c.media.video} type="video/mp4" />
             </video>
-            <button type="button" class="adp-snd" aria-pressed="false"><span aria-hidden="true">&#128263;</span> <b>Tap for sound</b></button>
-            <span class="adp-st" aria-hidden="true">&#9654;</span>
+            <button type="button" class="stp-snd" aria-pressed="false"><span aria-hidden="true">&#128263;</span> <b>Tap for sound</b></button>
+            <span class="stp-st" aria-hidden="true">&#9654;</span>
           </div>
         </div>
       ) : (

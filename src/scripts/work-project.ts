@@ -61,7 +61,7 @@ function initCompare(host: HTMLElement) {
 
 /* vertical ad: SSR ships <video controls>; with JS it becomes muted autoplay-in-view + sound toggle */
 function initAd(host: HTMLElement) {
-  const v = $<HTMLVideoElement>("video", host)!, snd = $<HTMLButtonElement>(".adp-snd", host)!;
+  const v = $<HTMLVideoElement>("video", host)!, snd = $<HTMLButtonElement>(".stp-snd", host)!;
   const src = $<HTMLSourceElement>("source", v)?.src || "";
   $("source", v)?.remove();
   v.removeAttribute("controls");
@@ -256,7 +256,7 @@ function initReveal() {
 export function initProject() {
   const cmp = $("[data-cmp]");
   if (cmp) initCompare(cmp);
-  const ad = $("[data-adp]");
+  const ad = $("[data-stp]");
   if (ad) initAd(ad);
   const stage = document.getElementById("stage");
   if (stage) initStage(stage);
