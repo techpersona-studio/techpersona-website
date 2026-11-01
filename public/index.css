@@ -245,6 +245,7 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 .scenario-box b{color:var(--pine);font-weight:700}
 .flist{list-style:none;margin:1.3rem 0;display:flex;flex-direction:column;gap:.7rem}
 .flist li{display:flex;gap:.7rem;font-size:.97rem;color:var(--ink-soft);line-height:1.45}
+.card-more{display:none}
 .flist .ck{color:var(--pine);font-weight:800;flex-shrink:0}
 .core-card .tag{display:inline-block;font-size:.8rem;color:var(--ink-faint);margin-bottom:1.3rem}
 .core-card .ghost{margin-top:auto}
@@ -518,6 +519,10 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
   .nav-burger{display:flex}
   .bento{grid-template-columns:1fr}
   .proc-steps{grid-template-columns:1fr}
+  /* process cards stack on scroll; opaque bg so lower cards cover upper */
+  .proc{position:sticky;top:84px;background:linear-gradient(rgba(255,255,255,.045),rgba(255,255,255,.045)),var(--pine);box-shadow:0 -10px 24px -14px rgba(0,0,0,.45)}
+  .proc:nth-child(2){top:100px}
+  .proc:nth-child(3){top:116px}
   /* journey stacks into a skimmable vertical timeline */
   .jflow{grid-template-columns:1fr;gap:0;max-width:460px}
   .jline{top:0;bottom:0;left:28px;right:auto;width:3px;height:auto;margin:44px 0;background:repeating-linear-gradient(180deg,rgba(30,58,52,.20) 0 6px,transparent 6px 12px)}
@@ -527,6 +532,13 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
   .jdot{margin:0;width:56px;height:56px}
   .jnode.lit .jdot{transform:translateX(2px)}
   .jsub{max-width:none;margin:0}
+}
+/* service cards stack on scroll; only where a whole card fits under the nav */
+@media(max-width:860px) and (min-height:760px){
+  #services .shell{position:sticky;top:84px;background:linear-gradient(rgba(30,58,52,.04),rgba(30,58,52,.04)),var(--paper);box-shadow:0 -10px 24px -16px rgba(30,58,52,.35)}
+  #services .shell:nth-child(2){top:100px}
+  #services .shell:nth-child(3){top:116px}
+  #services .shell:has(.more-open){position:relative}
 }
 @media(max-width:600px){
   .ba-grid{grid-template-columns:1fr}
@@ -544,6 +556,20 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
   .hero-eyebrow{display:block}
   .hero-eyebrow .dot,.hero-eyebrow .eb-sep{display:none}
   .hero-eyebrow .eb-loc{display:block}
+  /* phones: less text. desktop keeps everything; hidden copy stays in the DOM for search */
+  .hero .sub,.hero-actions .ghost{display:none}
+  .hero-visual{max-width:260px}
+  .problem .p-body,.journey .lead,.jstep{display:none}
+  #services .lead,.not-for{display:none}
+  .core-card:not(.more-open)>p,.core-card:not(.more-open) .flist,.core-card:not(.more-open)>.tag{display:none}
+  .card-more{display:inline-flex;align-self:flex-start;margin:0 0 1rem;padding:.55rem 1rem;border:1px solid var(--hair);border-radius:999px;background:none;font:inherit;font-size:.92rem;font-weight:600;color:var(--pine);cursor:pointer}
+  .card-more::after{content:"+";margin-left:.5rem}
+  .more-open .card-more::after{content:"\2212"}
+  #work .lead,.proof-lower{display:none}
+  #process .lead,.proc-free{display:none}
+  .about-photo,.about-copy [data-i18n="about_studio"],.about-copy [data-i18n="about_p2"]{display:none}
+  .faq-end{display:none}
+  .offer-list li:nth-child(n+4),.upsell-line,.after-line{display:none}
 }
 
 @media(prefers-reduced-motion:reduce){
