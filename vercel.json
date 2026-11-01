@@ -13,8 +13,28 @@
       "permanent": true
     },
     {
+      "source": "/work.html",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
       "source": "/terms-of-service",
       "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/blog/next-js-server-actions-explained-the-simplest-way-to-build-full-stack-features-in-2026",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/wordpress-development-2026-what-you-need-to-know-before-you-start-learning",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/micro-interactions-the-tiny-animations-that-make-your-website-feel-premium",
+      "destination": "/blog",
       "permanent": true
     }
   ],
@@ -22,7 +42,10 @@
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {

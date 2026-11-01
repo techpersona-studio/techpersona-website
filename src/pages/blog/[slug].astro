@@ -20,6 +20,7 @@ import {
   manualExcerpt,
   formatShortDate,
   laneOf,
+  serviceFor,
   metaDescription,
   postTitle,
   prepareArticle,
@@ -48,6 +49,7 @@ const imageUrl = getFeaturedImageUrl(post);
 const imageAlt = getFeaturedImageAlt(post) || title;
 const topic = primaryTopic(post);
 const lane = laneOf(post);
+const service = serviceFor(lane);
 const mins = readingMinutes(post);
 const { html, toc } = prepareArticle(post.content.rendered);
 const showToc = toc.length >= 3;
@@ -194,6 +196,7 @@ const jsonLd = [
   </article>
 
   <div class="page-shell post-after">
+    <p class="svc-link"><span>Related service</span> <a href={service.href}>{service.text} <span aria-hidden="true">&#8594;</span></a></p>
     <EndCta variant="card" />
 
     {(previousPost || nextPost) && (
@@ -275,3 +278,9 @@ const jsonLd = [
     a.addEventListener("click", () => a.closest("details")?.removeAttribute("open")),
   );
 </script>
+
+<style>
+  .svc-link{margin:0 0 2rem;display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:baseline;font-size:1.05rem}
+  .svc-link span:first-child{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#9F4F33}
+  .svc-link a{font-weight:700;color:#1E3A34;border-bottom:1px solid currentColor;padding-bottom:2px}
+</style>

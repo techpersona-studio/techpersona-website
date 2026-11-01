@@ -222,7 +222,7 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
 /* ===========================================================
    SERVICES (2-col double-shell)
    =========================================================== */
-.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:clamp(2.5rem,5vw,3.5rem)}
+.bento{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem;margin-top:clamp(2.5rem,5vw,3.5rem)}
 .tiers{list-style:none;margin:0 0 1.25rem;padding:0}
 .tiers li{display:flex;justify-content:space-between;align-items:baseline;gap:.9rem;padding:.6rem 0;border-bottom:1px solid rgba(30,58,52,.09)}
 .tiers li:last-child{border-bottom:none}
@@ -538,6 +538,7 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em;l
   #services .shell{position:sticky;top:84px;background:linear-gradient(rgba(30,58,52,.04),rgba(30,58,52,.04)),var(--paper);box-shadow:0 -10px 24px -16px rgba(30,58,52,.35)}
   #services .shell:nth-child(2){top:100px}
   #services .shell:nth-child(3){top:116px}
+  #services .shell:nth-child(4){top:132px}
   #services .shell:has(.more-open){position:relative}
 }
 @media(max-width:600px){

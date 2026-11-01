@@ -65,7 +65,21 @@ function clip(s: string, max: number): string {
 // card excerpt: WP excerpt minus emoji and the "[…]" tail; falls back to first paragraph
 export function excerptFor(post: WordPressPost): string {
   const ex = stripLeadingEmoji(plain(post.excerpt.rendered).replace(/\s*\[…\]\s*$/, "").replace(/\s*…$/, ""));
-  return ex || firstParagraph(post);
+  return noDashes(ex || firstParagraph(post));
+}
+
+// each lane links to the service page that sells it (internal links from posts)
+const LANE_SERVICE: Record<string, { href: string; text: string }> = {
+  design: { href: "/web-design-worcester-ma", text: "Web design that brings you customers" },
+  search: { href: "/seo", text: "SEO and AI search for small businesses" },
+  ads: { href: "/ai-video-ads", text: "AI video ads, made for you" },
+  systems: { href: "/#services", text: "Lead follow-up that works while you're away" },
+};
+// service pages not live yet: link to the homepage section until they ship
+const SERVICE_PAGES_LIVE = false;
+export function serviceFor(lane: Lane): { href: string; text: string } {
+  const s = LANE_SERVICE[lane.id] ?? LANE_SERVICE.design;
+  return SERVICE_PAGES_LIVE ? s : { ...s, href: "/#services" };
 }
 
 // hand-written WP excerpt, or "" when WP auto-generated it (ends in "[…]",

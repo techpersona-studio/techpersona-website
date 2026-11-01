@@ -11,7 +11,7 @@ const navItems = [
   { href: "/blog", label: "Blog" },
 ];
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => href === "/blog" && path.startsWith("/blog");
+const isCurrent = (href: string) => (href === "/blog" || href === "/work") && (path === href || path.startsWith(href + "/"));
 ---
 
 <header class="site-head">

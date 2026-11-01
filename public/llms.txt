@@ -1,18 +1,24 @@
 # TechPersona Studio
 
-> TechPersona Studio is a one-person web design and lead automation studio based in Worcester, MA. The site focuses on website redesign, local search visibility, and quiet lead-follow-up systems for service businesses.
+> TechPersona Studio is a one-person studio in Worcester, MA that builds websites, SEO and AI search optimization (GEO), and AI video ads for small businesses across the US. The goal of every project: get found on Google and AI search, look like the real thing, and get the product talked about.
 
 ## Primary pages
 
-- [Homepage](https://www.techpersonastudio.com/): services, pricing, FAQ, and the free website audit offer
-- [Work](https://www.techpersonastudio.com/work): case studies for real clients (Quán Phở, Young Group)
-- [Blog](https://www.techpersonastudio.com/blog): articles on web design, local SEO, and small-business automation
+- [Homepage](https://www.techpersonastudio.com/): services, prices, FAQ, and the free website and SEO audit
+- [Work](https://www.techpersonastudio.com/work): client projects with real results (Young Group, Quán Phở) and a sample AI story ad
+- [Blog](https://www.techpersonastudio.com/blog): plain-language guides on web design, SEO, AI search and AI ads for small businesses
 
-## What the site offers
+## Services
 
-- Website redesign for service businesses
-- Lead automation (automated follow-up that works while you're away)
-- Free website audits
+- Web design and website redesign: Launch (1 page) $950, Growth (2 to 5 pages) $1,850, Custom from $2,500
+- SEO and AI search optimization (GEO): Search tune-up $899 one-time, Grow your presence $969 per month (3-month minimum)
+- AI video ads: short AI-made story ads for Reels, TikTok and YouTube Shorts, quoted per brief
+- Add-on: lead follow-up automation that works while you're away (missed-call text-back, form routing)
+- Free website and SEO audit, delivered in about 2 business days
+
+## Results on record
+
+- Young Group (1-on-1 weight-loss coaching, tranthuytien.net): #1 on Google in the US for "vietnamese weight loss coach" 8 weeks after launch; Google's AI named the coach first in 7 of 9 coach searches tested on Oct 27, 2026
 
 ## Business context
 

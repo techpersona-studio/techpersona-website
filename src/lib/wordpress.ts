@@ -94,6 +94,10 @@ async function fetchFromWordPress<T>(endpoint: string): Promise<T> {
 // - the-2026-seo-playbook…: body says "2025" throughout; needs a rewrite.
 export const EXCLUDED_SLUGS = new Set<string>([
   "the-2026-seo-playbook-what-actually-works-after-googles-latest-algorithm-shift",
+  // off-lane dev topics, retired 2026-11-01 (301 to /blog in vercel.json)
+  "next-js-server-actions-explained-the-simplest-way-to-build-full-stack-features-in-2026",
+  "wordpress-development-2026-what-you-need-to-know-before-you-start-learning",
+  "micro-interactions-the-tiny-animations-that-make-your-website-feel-premium",
 ]);
 
 // fetched once per build; every blog page used to refetch these and trip the host's rate limit
