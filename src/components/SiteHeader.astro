@@ -5,16 +5,18 @@
 // reader on any /blog page can jump back into the funnel.
 const navItems = [
   { href: "/#services", label: "What I build" },
-  { href: "/#work", label: "Real work" },
+  { href: "/work", label: "Work" },
   { href: "/#about", label: "About" },
   { href: "/#faq", label: "FAQ" },
   { href: "/blog", label: "Blog" },
 ];
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => href === "/blog" && path.startsWith("/blog");
 ---
 
-<header class="sticky top-0 z-[200] border-b border-[var(--hair)] bg-[var(--paper)]">
-  <div class="page-shell flex items-center gap-6 py-4">
-    <a href="/" class="text-xl font-bold tracking-[-0.04em] text-[var(--ink)] sm:text-2xl">
+<header class="site-head">
+  <div class="page-shell flex h-[60px] items-center gap-6 sm:h-[68px]">
+    <a href="/" class="text-lg font-extrabold tracking-[-0.04em] text-[var(--ink)] sm:text-xl">
       TechPersona <span class="text-[var(--pine)]">Studio</span>
     </a>
 
@@ -23,7 +25,11 @@ const navItems = [
       <ul class="flex items-center gap-7 text-sm font-medium text-[var(--ink-soft)]">
         {navItems.map((item) => (
           <li>
-            <a href={item.href} class="transition-colors duration-150 hover:text-[var(--ink)]">
+            <a
+              href={item.href}
+              aria-current={isCurrent(item.href) ? "page" : undefined}
+              class="nav-link transition-colors duration-150 hover:text-[var(--ink)]"
+            >
               {item.label}
             </a>
           </li>
@@ -65,6 +71,19 @@ const navItems = [
 </div>
 
 <style>
+  .site-head {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    border-bottom: 1px solid var(--hair);
+    background: rgba(246, 243, 238, 0.86);
+    -webkit-backdrop-filter: saturate(1.2) blur(12px);
+    backdrop-filter: saturate(1.2) blur(12px);
+  }
+  .nav-link[aria-current="page"] {
+    color: var(--ink);
+    font-weight: 700;
+  }
   /* Desktop nav — shown by default, hidden on mobile (matches landing) */
   .nav-desktop {
     margin-left: auto;

@@ -2,14 +2,18 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-[var(--hair)] bg-[var(--paper-deep)]">
-  <div class="page-shell py-10 sm:py-12">
-    <p class="text-lg font-semibold tracking-[-0.03em] text-[var(--ink)]">TechPersona Studio</p>
-    <p class="mt-2 max-w-xl text-sm leading-relaxed text-[var(--ink-soft)]">
-      Notes on website redesign, lead automation, and local search for service businesses in Worcester, MA.
-    </p>
-    <p class="mt-6 text-xs tracking-[0.16em] text-[var(--ink-faint)]">
-      &copy; {year} TechPersona Studio &middot; <a href="/" class="hover:text-[var(--ink)]">techpersonastudio.com</a>
-    </p>
+<footer class="site-foot">
+  <div class="page-shell site-foot__in">
+    <div>
+      <p class="site-foot__brand">TechPersona <span>Studio</span></p>
+      <p class="site-foot__line">Web design, SEO and AI ads for small businesses. Worcester, MA.</p>
+    </div>
+    <nav aria-label="Footer" class="site-foot__nav">
+      <a href="/">Home</a>
+      <a href="/work">Work</a>
+      <a href="/blog">Blog</a>
+      <a href="/#audit">Free audit</a>
+    </nav>
+    <p class="site-foot__copy">&copy; {year} TechPersona Studio</p>
   </div>
 </footer>

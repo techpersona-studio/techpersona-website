@@ -1,0 +1,36 @@
+---
+// Image slot for a post: the WP featured image, or a typographic cover
+// (lane word in serif italic) when the post has none.
+import type { WordPressPost } from "../lib/wordpress";
+import { getFeaturedImageAlt, getFeaturedImageUrl } from "../lib/wordpress";
+import { coverWord, laneOf, postTitle } from "../lib/blog";
+
+interface Props {
+  post: WordPressPost;
+  eager?: boolean;
+  class?: string;
+}
+
+const { post, eager = false, class: cls = "" } = Astro.props;
+const src = getFeaturedImageUrl(post);
+const alt = getFeaturedImageAlt(post) || postTitle(post);
+const lane = laneOf(post);
+const word = coverWord(post);
+---
+
+<div class:list={["cover", `cover--${lane.tone}`, cls]}>
+  {src ? (
+    <img
+      src={src}
+      alt={alt}
+      loading={eager ? "eager" : "lazy"}
+      fetchpriority={eager ? "high" : undefined}
+      decoding="async"
+    />
+  ) : (
+    <div class="cover__type" aria-hidden="true">
+      <span class="cover__word" style={`--len:${Math.max(word.length, 6)}`}>{word}</span>
+      <span class="cover__rule"></span>
+    </div>
+  )}
+</div>

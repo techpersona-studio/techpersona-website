@@ -1,0 +1,22 @@
+---
+interface Props {
+  variant?: "band" | "card";
+}
+const { variant = "band" } = Astro.props;
+---
+
+<section class:list={["endcta", `endcta--${variant}`]} aria-labelledby={`endcta-h-${variant}`}>
+  <div class="endcta__in">
+    <p class="endcta__k">Free website audit</p>
+    <h2 id={`endcta-h-${variant}`} class="endcta__h">
+      Want a second pair of eyes <span class="serif-i">on your site?</span>
+    </h2>
+    <p class="endcta__p">
+      I'll review your website and send back a short walkthrough: what's costing you leads and what I'd fix first. Free, in about two days.
+    </p>
+    <a href="/#audit" class="island-btn island-btn--terra">
+      Get my free website audit
+      <span class="island-btn__icon" aria-hidden="true">&#8594;</span>
+    </a>
+  </div>
+</section>

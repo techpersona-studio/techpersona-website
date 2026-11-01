@@ -1,55 +1,43 @@
 ---
 import type { WordPressPost } from "../lib/wordpress";
-import {
-  formatPostDate,
-  getAuthorName,
-  getFeaturedImageAlt,
-  getFeaturedImageUrl,
-  cleanInline,
-  cleanText,
-} from "../lib/wordpress";
+import PostCover from "./PostCover.astro";
+import { excerptFor, formatShortDate, laneOf, postTitle, primaryTopic, readingMinutes } from "../lib/blog";
 
 interface Props {
   post: WordPressPost;
+  variant?: "feature" | "grid" | "related";
+  index?: number;
+  headingLevel?: 2 | 3;
 }
 
-const { post } = Astro.props;
-const imageUrl = getFeaturedImageUrl(post);
-const imageAlt = getFeaturedImageAlt(post);
-const author = getAuthorName(post);
-const excerpt = cleanText(post.excerpt.rendered);
-const titleHtml = cleanInline(post.title.rendered);
+const { post, variant = "grid", index, headingLevel = 3 } = Astro.props;
+const title = postTitle(post);
+const excerpt = excerptFor(post);
+const lane = laneOf(post);
+const topic = primaryTopic(post);
+const mins = readingMinutes(post);
+const date = formatShortDate(post.date);
+const H = `h${headingLevel}` as "h2" | "h3";
 ---
 
-<article class="double-shell group h-full">
-  <a href={"/blog/" + post.slug} class="double-shell__inner block h-full overflow-hidden">
-    {imageUrl ? (
-      <img
-        src={imageUrl}
-        alt={imageAlt || cleanText(post.title.rendered)}
-        class="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-        loading="lazy"
-      />
-    ) : (
-      <div class="flex aspect-[4/3] items-center justify-center bg-[var(--pine-wash)] text-sm font-medium text-[var(--ink-faint)]">
-        No featured image
-      </div>
-    )}
-    <div class="flex h-full flex-col p-5 sm:p-6">
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.2em] text-[var(--ink-faint)]">
-        <time datetime={post.date}>
-          {formatPostDate(post.date)}
-        </time>
-        {author && <span class="text-[var(--ink-faint)]">By {author}</span>}
-      </div>
-      <h2
-        class="mt-4 text-2xl font-bold leading-tight tracking-[-0.03em] text-[var(--ink)] transition-colors duration-150 group-hover:text-[var(--pine)]"
-        set:html={titleHtml}
-      />
-      <p class="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">{excerpt}</p>
-      <p class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--pine)]">
-        Read post
-        <span class="transition-transform duration-150 group-hover:translate-x-0.5">→</span>
+<article class:list={["bcard", `bcard--${variant}`]} data-lane={lane.id}>
+  <a href={"/blog/" + post.slug} class="bcard__link">
+    <PostCover post={post} eager={variant === "feature"} class="bcard__media" />
+    <div class="bcard__body">
+      <p class="bcard__kicker">
+        {variant === "feature" && <span class="bcard__new">Latest</span>}
+        {typeof index === "number" && <span class="bcard__num">{String(index).padStart(2, "0")}</span>}
+        <span>{topic}</span>
+      </p>
+      <H class="bcard__title"><span>{title}</span></H>
+      {variant !== "related" && <p class="bcard__excerpt">{excerpt}</p>}
+      <p class="bcard__meta">
+        <time datetime={post.date}>{date}</time>
+        <span aria-hidden="true">·</span>
+        <span>{mins} min read</span>
+        {variant === "feature" && (
+          <span class="bcard__go" aria-hidden="true">Read the post <span class="bcard__arrow">&#8594;</span></span>
+        )}
       </p>
     </div>
   </a>

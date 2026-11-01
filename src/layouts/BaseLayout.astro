@@ -7,19 +7,26 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   canonical?: string;
   type?: "website" | "article";
+  ogTitle?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, image, canonical, type = "website" } = Astro.props;
+const { title, description, image, imageAlt, canonical, type = "website", ogTitle, publishedTime, modifiedTime, jsonLd } = Astro.props;
 const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? Astro.site?.href ?? "";
-const pageDescription = description ?? "Notes on website redesign, lead automation, and local search from TechPersona Studio in Worcester, MA.";
-const ogImage = image ?? (siteUrl ? siteUrl + "/assets/images/og-image.jpg" : undefined);
+const pageDescription = description ?? "Plain-language notes on web design, SEO and AI ads for small businesses, from TechPersona Studio in Worcester, MA.";
+// new URL() joins cleanly whether siteUrl ends in "/" or not (was producing com//assets)
+const ogImage = image ?? (siteUrl ? new URL("/assets/images/og-image.jpg", siteUrl).href : undefined);
 // Strip the trailing slash (except root) so the canonical matches the URL the
 // site actually serves — vercel.json trailingSlash:false 308s /path/ → /path.
 const canonicalPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
 const canonicalUrl = canonical ?? (siteUrl ? new URL(canonicalPath, siteUrl).href : undefined);
 const pageUrl = canonicalUrl ?? Astro.url.href;
+const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <!doctype html>
@@ -30,25 +37,32 @@ const pageUrl = canonicalUrl ?? Astro.url.href;
     <title>{title}</title>
     <meta name="description" content={pageDescription} />
     <meta name="theme-color" content="#f6f3ee" />
-    <!-- fonts self-hosted (see @font-face in styles/global.css). Only the sans is
-         preloaded — nothing in the blog templates uses --font-serif yet, so
-         preloading Cormorant would fetch 39KB nothing renders. -->
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/HankenGrotesk-normal-latin.woff2" crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/CormorantGaramond-italic-latin.woff2" crossorigin="anonymous" />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={ogTitle ?? title} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content={type} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:site_name" content="TechPersona Studio" />
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={ogTitle ?? title} />
+    <meta name="twitter:description" content={pageDescription} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {ldBlocks.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
   </head>
   <body class="flex min-h-screen flex-col">
+    <a href="#main" class="skip-link">Skip to content</a>
     <SiteHeader />
-    <main class="flex-1">
+    <main id="main" class="flex-1">
       <slot />
     </main>
     <SiteFooter />
+    <div class="grain" aria-hidden="true"></div>
   </body>
 </html>

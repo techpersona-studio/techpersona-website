@@ -1,43 +1,137 @@
 ---
 import BlogCard from "../../components/BlogCard.astro";
+import EndCta from "../../components/EndCta.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPosts } from "../../lib/wordpress";
+import { AUTHOR, LANES, SITE_NAME, absUrl, laneOf, postTitle } from "../../lib/blog";
 
 const posts = await getPosts();
+const [featured, ...rest] = posts;
+const lanes = LANES.map((l) => ({ ...l, count: posts.filter((p) => laneOf(p).id === l.id).length })).filter((l) => l.count > 0);
+
+const pageTitle = "Web Design, SEO & AI Ads Blog | TechPersona Studio";
+const description =
+  "Plain-language guides on web design, SEO, AI search and AI ads for small businesses. Written by Thao Phuong of TechPersona Studio, Worcester, MA.";
+const blogUrl = absUrl("/blog");
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": blogUrl + "#page",
+    url: blogUrl,
+    name: "Web design, SEO and AI ads for small businesses",
+    description,
+    inLanguage: "en-US",
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: absUrl("/") },
+    mainEntity: {
+      "@type": "Blog",
+      "@id": blogUrl + "#blog",
+      name: `${SITE_NAME} blog`,
+      url: blogUrl,
+      author: { "@type": "Person", name: AUTHOR.name },
+      publisher: {
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: absUrl("/"),
+        logo: { "@type": "ImageObject", url: absUrl("/assets/images/logo.png") },
+      },
+      blogPost: posts.map((p) => ({
+        "@type": "BlogPosting",
+        headline: postTitle(p),
+        url: absUrl(`/blog/${p.slug}`),
+        datePublished: new Date(p.date).toISOString(),
+      })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Blog", item: blogUrl },
+    ],
+  },
+];
 ---
 
-<BaseLayout
-  title="Blog | TechPersona Studio"
-  description="Notes on website redesign, lead automation, and local search for service businesses in Worcester, MA."
->
-  <section class="section-band bg-[var(--paper)]">
-    <div class="page-shell">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-faint)]">Journal</p>
-      <h1 class="mt-3 text-4xl font-extrabold tracking-[-0.045em] text-[var(--ink)] sm:text-5xl">
-        The blog
-      </h1>
-      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--ink-soft)]">
-        Practical notes on website redesign, lead automation, and getting found on Google — written for local service businesses.
+<BaseLayout title={pageTitle} description={description} ogTitle="Web design, SEO and AI ads for small businesses" jsonLd={jsonLd}>
+  <section class="bhero page-shell">
+    <p class="eyebrow"><span class="dot"></span>The studio journal</p>
+    <h1 class="bhero__title">
+      Web design, SEO and AI&nbsp;ads <span class="serif-i">for small businesses</span>
+    </h1>
+    <div class="bhero__foot">
+      <p class="bhero__lead">
+        Practical notes from a one-person studio in Worcester, MA. What to fix first, what to skip, and how customers find you now.
       </p>
-
-      {posts.length > 0 ? (
-        <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {posts.map((post) => (
-            <BlogCard post={post} />
-          ))}
-        </div>
-      ) : (
-        <div class="double-shell mt-12">
-          <div class="double-shell__inner p-8 text-center sm:p-10">
-            <p class="text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-              New posts are on the way
-            </p>
-            <p class="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-              Check back soon — fresh notes on web design, automation, and local search are coming.
-            </p>
-          </div>
-        </div>
-      )}
+      <p class="bhero__by">
+        <img src={AUTHOR.avatar} alt="" width="40" height="40" />
+        <span><b>{AUTHOR.name}</b>{posts.length} posts</span>
+      </p>
     </div>
   </section>
+
+  {featured ? (
+    <>
+      <section class="page-shell" aria-label="Latest post">
+        <BlogCard post={featured} variant="feature" headingLevel={2} />
+      </section>
+
+      {rest.length > 0 && (
+        <section class="page-shell bindex" aria-labelledby="all-content">
+          <div class="bindex__head">
+            <h2 id="all-content" class="bindex__h">All content</h2>
+            {lanes.length > 1 && (
+              <div class="bfilter" role="group" aria-label="Filter by topic" data-filter>
+                <button type="button" aria-pressed="true" data-lane="all">All</button>
+                {lanes.map((l) => (
+                  <button type="button" aria-pressed="false" data-lane={l.id}>{l.label}</button>
+                ))}
+              </div>
+            )}
+          </div>
+          <div class="bgrid" data-grid>
+            {rest.map((post, i) => <BlogCard post={post} index={i + 2} />)}
+          </div>
+          <p class="bindex__empty" data-empty hidden>Nothing here yet in this topic. The latest post above may still help.</p>
+          <p class="sr-only" aria-live="polite" data-filter-status></p>
+        </section>
+      )}
+    </>
+  ) : (
+    <section class="page-shell">
+      <div class="bempty">
+        <p class="bempty__t">New posts are on the way.</p>
+        <p>Check back soon for notes on web design, SEO and AI ads.</p>
+      </div>
+    </section>
+  )}
+
+  <EndCta />
 </BaseLayout>
+
+<script>
+  const group = document.querySelector<HTMLElement>("[data-filter]");
+  const grid = document.querySelector<HTMLElement>("[data-grid]");
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+  const status = document.querySelector<HTMLElement>("[data-filter-status]");
+  if (group && grid) {
+    const buttons = [...group.querySelectorAll<HTMLButtonElement>("button")];
+    const cards = [...grid.querySelectorAll<HTMLElement>(".bcard")];
+    group.addEventListener("click", (e) => {
+      const btn = (e.target as HTMLElement).closest("button");
+      if (!btn) return;
+      const lane = btn.dataset.lane;
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      let shown = 0;
+      cards.forEach((c) => {
+        const on = lane === "all" || c.dataset.lane === lane;
+        c.hidden = !on;
+        if (on) shown++;
+      });
+      if (empty) empty.hidden = shown > 0;
+      if (status) status.textContent = `${shown} ${shown === 1 ? "post" : "posts"} shown`;
+    });
+  }
+</script>
