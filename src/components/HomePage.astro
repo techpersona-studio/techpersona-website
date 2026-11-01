@@ -470,10 +470,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="eyebrow"><span class="dot"></span> <span data-i18n="about_eyebrow" set:html={t.about_eyebrow}></span></span>
       <h2 data-i18n="about_h2" set:html={t.about_h2}></h2>
       <p class="a-quote" data-i18n="about_quote" set:html={t.about_quote}></p>
-      <p data-i18n="about_studio" set:html={t.about_studio}></p>
-      <p data-i18n="about_p1" set:html={t.about_p1}></p>
-      <p data-i18n="about_p2" set:html={t.about_p2}></p>
-      <a href="#services" class="ghost" data-i18n-html="hero_cta_secondary" set:html={t.hero_cta_secondary}></a>
+      <!-- then -> now story -->
+      <div class="a-arc">
+        <div class="a-then">
+          <span class="k" set:html={t.about_then_k}></span>
+          <strong class="v" set:html={t.about_then_v}></strong>
+          <span class="p" set:html={t.about_then_p}></span>
+        </div>
+        <span class="a-arrow" aria-hidden="true"><i></i></span>
+        <div class="a-now">
+          <span class="k" set:html={t.about_now_k}></span>
+          <strong class="v" set:html={t.about_now_v}></strong>
+          <span class="p" set:html={t.about_now_p}></span>
+        </div>
+      </div>
+      <ul class="a-gets">
+        <li><strong set:html={t.about_get1}></strong><span set:html={t.about_get1_s}></span></li>
+        <li><strong set:html={t.about_get2}></strong><span set:html={t.about_get2_s}></span></li>
+        <li><strong set:html={t.about_get3}></strong><span set:html={t.about_get3_s}></span></li>
+      </ul>
+      <div class="a-for">
+        <span class="k" set:html={t.about_for}></span>
+        <ul>{t.about_trades.split('|').map((x) => <li>{x}</li>)}</ul>
+      </div>
+      <div class="a-end">
+        <a href="#services" class="ghost" data-i18n-html="hero_cta_secondary" set:html={t.hero_cta_secondary}></a>
+        <span class="a-audit"><span class="tick" aria-hidden="true">&#10003;</span> <span set:html={t.about_audit}></span></span>
+      </div>
     </div>
   </div>
 </section>

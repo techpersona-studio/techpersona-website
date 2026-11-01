@@ -80,7 +80,7 @@ html:not(.js) .cmp{cursor:auto}
 .meta{position:relative;padding:1.6rem 6% 0;text-align:right;-webkit-transform:translateZ(46px);transform:translateZ(46px)}
 .meta h2{font-size:clamp(2.1rem,4.4vw,3.8rem);line-height:1;letter-spacing:-.04em}
 .meta p{font-size:.85rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:.7rem}
-.meta .res{letter-spacing:0;text-transform:none;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:600;line-height:1.4;color:var(--ink);margin-top:.5rem;max-width:30ch;margin-left:auto}
+.meta .res{letter-spacing:0;text-transform:none;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:600;line-height:1.4;color:var(--ink);margin-top:.5rem;max-width:34ch;margin-left:auto;margin-right:0;padding:0}
 
 .card.v .meta h2{color:var(--paper)}.card.v .meta p{color:rgba(246,243,238,.6)}.card.v .meta .res{color:var(--terra-light)}
 .num{position:absolute;left:6%;bottom:6%;font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--ink-faint);font-variant-numeric:tabular-nums;-webkit-transform:translateZ(30px);transform:translateZ(30px)}
