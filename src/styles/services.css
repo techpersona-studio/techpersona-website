@@ -142,7 +142,9 @@ a.sv-mat:hover,.sv-matlink:hover .sv-mat{box-shadow:0 1px 2px rgba(20,40,34,.05)
 .sv-tier ul{margin-top:1rem;display:grid;gap:.45rem;font-size:.92rem}
 .sv-tier li{list-style:none;padding-left:1.2rem;position:relative}
 .sv-tier li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--terra)}
-.sv-tier--free{background:transparent;box-shadow:none;border:1px dashed rgba(30,58,52,.28)}
+.sv-tier--free{background:linear-gradient(160deg,#c9774f,#a9553a);box-shadow:var(--lift);color:rgba(255,248,240,.86)}
+.sv-tier--free .sv-tier__n{color:#ffd9c4}.sv-tier--free h3,.sv-tier--free .sv-tier__price{color:#fff8f0}
+.sv-tier--free .sv-ghost{color:#fff8f0;border-color:rgba(255,248,240,.45)}.sv-tier--free .sv-ghost:hover{background:#fff8f0;color:var(--terra-deep)}
 .sv-tier--pine{background:var(--pine);color:rgba(246,243,238,.78)}
 .sv-tier--pine h3,.sv-tier--pine .sv-tier__price{color:var(--paper)}
 .sv-tier--pine .sv-tier__n{color:var(--terra-light)}
