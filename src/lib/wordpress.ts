@@ -72,20 +72,21 @@ async function fetchFromWordPress<T>(endpoint: string): Promise<T> {
 
   let response: Response;
 
-  try {
-    response = await fetch(url);
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown network error";
-    throw new Error(`Failed to reach WordPress API at ${url}: ${message}`);
+  // retry: one WP blip at build time used to ship an empty /blog
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      response = await fetch(url);
+      if (response.ok) return (await response.json()) as T;
+      lastError = new Error(`WordPress API returned ${response.status} ${response.statusText} for ${url}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown network error";
+      lastError = new Error(`Failed to reach WordPress API at ${url}: ${message}`);
+    }
+    // host rate-limits (429): back off hard
+    if (attempt < 4) await new Promise((r) => setTimeout(r, 3000 * attempt));
   }
-
-  if (!response.ok) {
-    throw new Error(
-      `WordPress API returned ${response.status} ${response.statusText} for ${url}`,
-    );
-  }
-
-  return (await response.json()) as T;
+  throw lastError;
 }
 
 // Posts held back from the public site until they're fixed at the source in
@@ -95,7 +96,13 @@ export const EXCLUDED_SLUGS = new Set<string>([
   "the-2026-seo-playbook-what-actually-works-after-googles-latest-algorithm-shift",
 ]);
 
-export async function getPosts(): Promise<WordPressPost[]> {
+// fetched once per build; every blog page used to refetch these and trip the host's rate limit
+let postsCache: Promise<WordPressPost[]> | undefined;
+export function getPosts(): Promise<WordPressPost[]> {
+  return (postsCache ??= fetchPosts());
+}
+
+async function fetchPosts(): Promise<WordPressPost[]> {
   const posts: WordPressPost[] = [];
   const perPage = 100;
   let page = 1;
@@ -120,8 +127,8 @@ export async function getPosts(): Promise<WordPressPost[]> {
     return posts.filter((p) => !EXCLUDED_SLUGS.has(p.slug));
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
-    console.warn(`[wordpress] getPosts failed: ${message}`);
-    return posts.filter((p) => !EXCLUDED_SLUGS.has(p.slug));
+    // fail the build so Vercel keeps the last good deploy
+    throw new Error(`[wordpress] getPosts failed: ${message}`);
   }
 }
 
@@ -138,7 +145,12 @@ export async function getPostBySlug(slug: string): Promise<WordPressPost | null>
   }
 }
 
-export async function getPostsForNavigation(): Promise<WordPressPostNavigationItem[]> {
+let navCache: Promise<WordPressPostNavigationItem[]> | undefined;
+export function getPostsForNavigation(): Promise<WordPressPostNavigationItem[]> {
+  return (navCache ??= fetchPostsForNavigation());
+}
+
+async function fetchPostsForNavigation(): Promise<WordPressPostNavigationItem[]> {
   const posts: WordPressPostNavigationItem[] = [];
   const perPage = 100;
   let page = 1;
