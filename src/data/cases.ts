@@ -173,7 +173,7 @@ const CASES: Case[] = [
     },
     media: {
       cover: { src: W + "lsv-cover.webp", alt: "Attorney Vy H. Truong on the firm's homepage", pos: "50% 0%" },
-      before: { desktop: W + "lsv-before-d.webp", mobile: W + "lsv-before-m.webp", fullDesktop: W + "lsv-before-d.webp", fullMobile: W + "lsv-before-m.webp" },
+      before: { desktop: W + "lsv-before-d-v2.webp", mobile: W + "lsv-before-m-v2.webp", fullDesktop: W + "lsv-before-d-v2.webp", fullMobile: W + "lsv-before-m-v2.webp" },
       after: { desktop: W + "lsv-after-d.webp", mobile: W + "lsv-after-m.webp", fullDesktop: W + "lsv-after-d-full.webp", fullMobile: W + "lsv-after-m-full.webp" },
       og: W + "lsv-og.webp",
     },
