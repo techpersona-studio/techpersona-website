@@ -18,6 +18,9 @@ interface CaseVi {
   name?: string;
   kind?: string;
   hook?: string;
+  summary?: string;
+  outcomes?: string[];
+  proofLabel?: string;
   services?: string[];
   stamp?: string;
   seo: { title: string; description: string };
@@ -84,6 +87,42 @@ export const CASES_VI: Record<string, CaseVi> = {
       { label: "Kết quả", value: "2 chạm", caption: "để đặt món online hoặc đặt trọn quán" },
     ],
   },
+  "luat-su-vy": {
+    kind: "Văn phòng luật song ngữ",
+    hook: "Dịch vụ và form liên hệ, bằng tiếng Anh và tiếng Việt.",
+    summary: "Website để người đọc tiếng Anh và tiếng Việt tìm dịch vụ của văn phòng và gửi yêu cầu đặt hẹn.",
+    services: [
+      "Thiết kế và xây website song ngữ Anh/Việt",
+      "Bảy trang lĩnh vực pháp lý bằng mỗi ngôn ngữ",
+      "Form liên hệ gửi email về văn phòng và email xác nhận cho người gửi",
+      "Cài đặt SEO: tiêu đề, mô tả, liên kết ngôn ngữ và sơ đồ website",
+    ],
+    stamp: "Anh + Việt · Đã ra mắt",
+    seo: {
+      title: "Website văn phòng luật Vy H. Truong | TechPersona Studio",
+      description: "Website song ngữ cho văn phòng luật Vy H. Truong tại Dorchester, MA: bảy lĩnh vực pháp lý, các trang tiếng Anh và tiếng Việt, cùng form liên hệ. Ra mắt ngày 10/11/2026.",
+    },
+    outcomes: [
+      "Văn phòng có website cho cả người đọc tiếng Anh lẫn tiếng Việt.",
+      "Mỗi lĩnh vực pháp lý có trang riêng, kèm cách gọi điện hoặc gửi yêu cầu đặt hẹn.",
+      "Yêu cầu liên hệ được gửi về email của văn phòng. Người gửi nhận email xác nhận nếu có cung cấp địa chỉ email.",
+      "Cả hai ngôn ngữ đều có tiêu đề, mô tả và liên kết dành cho công cụ tìm kiếm.",
+    ],
+    proofLabel: "Các phần đã xây dựng",
+    proof: [
+      { value: "2", label: "ngôn ngữ: tiếng Anh và tiếng Việt", when: "Ra mắt ngày 10/11/2026" },
+      { value: "7", label: "lĩnh vực pháp lý, mỗi lĩnh vực có trang tiếng Anh và tiếng Việt" },
+      { value: "Email", label: "nhận yêu cầu liên hệ gửi về văn phòng" },
+    ],
+    board: [
+      { label: "Màu sắc", caption: "Bảng màu xanh navy của văn phòng, dùng trên mọi trang", swatches: ["Xanh navy", "Đỏ nâu", "Giấy ấm", "Đá vôi"] },
+      { label: "Chữ", caption: "Hai phông chữ dùng cho cả tiếng Anh và tiếng Việt" },
+      { label: "Tính năng", alt: "Trang chủ tiếng Việt và nút đổi ngôn ngữ", caption: "Người đọc tiếng Việt có các trang riêng" },
+      { label: "Tính năng", alt: "Bảy lĩnh vực pháp lý trên trang chủ", caption: "Bảy lĩnh vực, mỗi lĩnh vực có trang riêng để xem" },
+      { label: "Tính năng", alt: "Form gửi yêu cầu đặt hẹn", caption: "Yêu cầu được gửi về văn phòng qua email" },
+      { label: "Bản lưu", caption: "Website cũ: ngày 24/3/2025", text: "Ảnh website cũ lấy từ Wayback Machine, được lưu ngày 24/3/2025." },
+    ],
+  },
   "sample-story-ad": {
     name: "Quảng cáo kể chuyện mẫu",
     kind: "Huấn luyện viên giảm cân",
@@ -122,6 +161,9 @@ export function localizeCase(c: Case, lang: "en" | "vi"): Case {
     name: v.name ?? c.name,
     kind: v.kind ?? c.kind,
     hook: v.hook ?? c.hook,
+    summary: v.summary ?? c.summary,
+    outcomes: v.outcomes ?? c.outcomes,
+    proofLabel: v.proofLabel ?? c.proofLabel,
     services: v.services ?? c.services,
     stamp: v.stamp ?? c.stamp,
     seo: v.seo,

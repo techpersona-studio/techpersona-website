@@ -47,6 +47,7 @@ export interface Case {
   };
   outcomes: string[];
   proof: Proof[];
+  proofLabel?: string;
   board: Pin[];
 }
 
@@ -151,22 +152,55 @@ const CASES: Case[] = [
     ],
   },
   {
-    // coming soon: flip draft to false once screenshots and results exist
     slug: "luat-su-vy",
     type: "website",
-    status: "coming-soon",
-    draft: true,
+    status: "live",
+    since: "Nov 10, 2026",
+    dateCreated: "2026-11-10",
     name: "Law Offices of Vy H. Truong",
     kind: "Bilingual law firm",
-    accent: "#1E3A34",
-    hook: "",
-    summary: "A bilingual law firm site.",
-    services: [],
-    seo: { title: "Law Offices of Vy H. Truong | TechPersona Studio", description: "A bilingual law firm site." },
-    media: {},
-    outcomes: [],
-    proof: [],
-    board: [],
+    location: "Dorchester, MA",
+    url: "https://www.lawyertruong.com",
+    urlLabel: "lawyertruong.com",
+    accent: "#18234F",
+    hook: "The firm's services and contact form, in two languages.",
+    summary: "A website where English and Vietnamese speakers can find the firm's services and request an appointment.",
+    services: ["Website design & build, bilingual EN/VI", "Seven practice area pages in each language", "Contact form with email notifications and confirmations", "SEO setup: page titles, descriptions, language links and sitemap"],
+    stamp: "EN + VI · Live",
+    seo: {
+      title: "Vy H. Truong Law Firm Website | TechPersona Studio",
+      description: "A bilingual website for the Law Offices of Vy H. Truong in Dorchester, MA: seven practice areas, English and Vietnamese pages, and a contact form. Live Nov 10, 2026.",
+    },
+    media: {
+      cover: { src: W + "lsv-cover.webp", alt: "Attorney Vy H. Truong on the firm's homepage", pos: "50% 0%" },
+      before: { desktop: W + "lsv-before-d.webp", mobile: W + "lsv-before-m.webp", fullDesktop: W + "lsv-before-d.webp", fullMobile: W + "lsv-before-m.webp" },
+      after: { desktop: W + "lsv-after-d.webp", mobile: W + "lsv-after-m.webp", fullDesktop: W + "lsv-after-d-full.webp", fullMobile: W + "lsv-after-m-full.webp" },
+      og: W + "lsv-og.webp",
+    },
+    outcomes: [
+      "The firm can serve English and Vietnamese readers on the same website.",
+      "Each practice area has its own page, with a way to call or request an appointment.",
+      "Contact requests reach the firm's inbox, with email confirmation when the visitor gives an email address.",
+      "Both languages have page titles, descriptions and links for search engines.",
+    ],
+    proofLabel: "Built features",
+    proof: [
+      { value: "2", label: "languages: English and Vietnamese", when: "Live since Nov 10, 2026" },
+      { value: "7", label: "practice areas, each with an English and Vietnamese page" },
+      { value: "Email", label: "contact requests sent to the law office" },
+    ],
+    board: [
+      { kind: "palette", span: 2, label: "Color", caption: "The firm's navy palette, carried through every page", swatches: [
+        { name: "Navy", hex: "#18234F" }, { name: "Oxblood", hex: "#5E1F24" }, { name: "Warm paper", hex: "#EFEAE1" }, { name: "Limestone", hex: "#EEEBE6" } ] },
+      { kind: "type", span: 1, label: "Type", caption: "The same two fonts for English and Vietnamese",
+        specimen: { bg: "#18234F", ink: "#EFEAE1", accent: "#EFEAE1", names: "Cormorant Garamond + Be Vietnam Pro", lines: [
+          { font: "Cormorant Garamond", italic: true, weight: 400, size: 2.1, text: "Talk to Vy." },
+          { font: "Be Vietnam Pro", weight: 400, size: 1, text: "English and Tiếng Việt." } ] } },
+      { kind: "image", span: 1, label: "Feature", src: W + "lsv-feature-vi.webp", w: 700, h: 700, alt: "The Vietnamese homepage and language switch", caption: "Vietnamese readers get their own pages" },
+      { kind: "image", span: 1, label: "Feature", src: W + "lsv-feature-practice.webp", w: 700, h: 598, alt: "Seven practice areas on the homepage", caption: "Seven services, each with a page visitors can open" },
+      { kind: "image", span: 1, label: "Feature", src: W + "lsv-feature-contact.webp", w: 700, h: 934, alt: "The appointment request form", caption: "Requests go to the office by email" },
+      { kind: "note", span: 3, label: "Archive", caption: "Before view: March 24, 2025", text: "The before screenshots come from the Wayback Machine, captured on March 24, 2025." },
+    ],
   },
   {
     // AI story ad sample. Client deliberately unnamed.

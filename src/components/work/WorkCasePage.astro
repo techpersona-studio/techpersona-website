@@ -25,10 +25,11 @@ const ogImage = c.media.og ? absUrl(c.media.og) : undefined;
 const eyebrow = isAd ? `${TYPE_LABEL[c.type]} · ${c.kind}` : c.kind;
 const a = c.media.after;
 const b = c.media.before;
+const proofLabel = c.proofLabel ?? u.results;
 
 // Google Fonts only for specimen faces the site does not self-host
 const gf: Record<string, number> = {};
-c.board.forEach((p) => { if (p.kind === "type") p.specimen.lines.forEach((l) => { if (/Jakarta|Fraunces/.test(l.font)) gf[l.font] = l.weight ?? 400; }); });
+c.board.forEach((p) => { if (p.kind === "type") p.specimen.lines.forEach((l) => { if (/Jakarta|Fraunces|Be Vietnam Pro/.test(l.font)) gf[l.font] = l.weight ?? 400; }); });
 const gfHref = Object.keys(gf).length
   ? "https://fonts.googleapis.com/css2?" + Object.entries(gf).map(([f, w]) => `family=${f.replace(/ /g, "+")}:wght@${w}`).join("&") + "&display=swap"
   : undefined;
@@ -134,9 +135,9 @@ const jsonLd = [
     </section>
 
     {c.proof.length > 0 && (
-      <section class="res" aria-label={u.results}>
+      <section class="res" aria-label={proofLabel}>
         <div class="res-in">
-          <span class="trk">{u.results}</span>
+          <span class="trk">{proofLabel}</span>
           <div class="res-g">
             {c.proof.map((p) => (
               <div><b>{p.value}</b><span>{p.label}</span>{p.when && <em>{p.when}</em>}</div>
@@ -221,7 +222,7 @@ const jsonLd = [
     )}
 
     {!isAd && c.proof.length > 0 && (
-      <section class="sec stats" aria-label={u.resultsNum}>
+      <section class="sec stats" aria-label={c.proofLabel ?? u.resultsNum}>
         <div class="wrap">
           {c.proof.map((p, i) => (
             <div class="stat" style={`--i:${i}`}><b>{p.value}</b><span>{p.label}</span>{p.when && <em>{p.when}</em>}</div>
