@@ -199,7 +199,6 @@ const CASES: Case[] = [
       { kind: "image", span: 1, label: "Feature", src: W + "lsv-feature-vi.webp", w: 700, h: 700, alt: "The Vietnamese homepage and language switch", caption: "Vietnamese readers get their own pages" },
       { kind: "image", span: 1, label: "Feature", src: W + "lsv-feature-practice.webp", w: 700, h: 598, alt: "Seven practice areas on the homepage", caption: "Seven services, each with a page visitors can open" },
       { kind: "image", span: 1, label: "Feature", src: W + "lsv-feature-contact.webp", w: 700, h: 934, alt: "The appointment request form", caption: "Requests go to the office by email" },
-      { kind: "note", span: 3, label: "Archive", caption: "Before view: September 2026", text: "The before screenshots show the firm's previous website, captured on September 10, 2026, before the rebuild." },
     ],
   },
   {

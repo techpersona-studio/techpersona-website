@@ -120,7 +120,6 @@ export const CASES_VI: Record<string, CaseVi> = {
       { label: "Tính năng", alt: "Trang chủ tiếng Việt và nút đổi ngôn ngữ", caption: "Người đọc tiếng Việt có các trang riêng" },
       { label: "Tính năng", alt: "Bảy lĩnh vực pháp lý trên trang chủ", caption: "Bảy lĩnh vực, mỗi lĩnh vực có trang riêng để xem" },
       { label: "Tính năng", alt: "Form gửi yêu cầu đặt hẹn", caption: "Yêu cầu được gửi về văn phòng qua email" },
-      { label: "Bản lưu", caption: "Website cũ: tháng 9/2026", text: "Ảnh website cũ của văn phòng, chụp ngày 10/9/2026, trước khi làm lại." },
     ],
   },
   "sample-story-ad": {
